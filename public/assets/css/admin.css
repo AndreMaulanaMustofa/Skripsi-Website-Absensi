@@ -1,0 +1,180 @@
+body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background-color: #000;
+    background-repeat: no-repeat;
+}
+
+input,
+textarea {
+    background-color: #F3E5F5;
+    border-radius: 10px !important;
+    padding: 12px 15px 12px 15px !important;
+    width: 100%;
+    box-sizing: border-box;
+    border: none !important;
+    border: 1px solid #5a5a5a !important;
+    font-size: 16px !important;
+    color: #000 !important;
+    font-weight: 400;
+}
+
+input:focus,
+textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 2px solid #F26419 !important;
+    outline-width: 0;
+    font-weight: 400;
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0;
+}
+
+.card {
+    border-radius: 0;
+    border: none;
+}
+
+.card1 {
+    width: 50%;
+    padding: 100px;
+}
+
+.card1-1 {
+    width: 50%;
+    padding: 115px;
+}
+
+.card1-2 {
+    width: 50%;
+    padding: 156px;
+}
+
+.card2 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    background-image: url('https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80');
+}
+
+#logo {
+    width: 210px;
+    height: 60px;
+}
+
+#logo2 {
+    width: 60px;
+    height: 60px;
+}
+
+.heading {
+    margin-bottom: 60px !important;
+}
+
+::placeholder {
+    color: #575757 !important;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: #575757 !important;
+}
+
+::-ms-input-placeholder {
+    color: #575757 !important;
+}
+
+.form-control-label {
+    font-size: 15px;
+    margin-left: 15px;
+}
+
+.btn-color {
+    border-radius: 50px;
+    color: #fff;
+    background-color: #444A4E;
+    padding: 15px;
+    cursor: pointer;
+    border: none !important;
+    height: 50px;
+}
+
+.btn-color:hover {
+    color: white;
+    background-image: #F26419;
+}
+
+a {
+    color: #000;
+}
+
+a:hover {
+    color: #000;
+}
+
+.bottom {
+    width: 100%;
+    margin-top: 50px !important;
+}
+
+.sm-text {
+    font-size: 15px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+label {
+    margin-left: 20px;
+}
+
+#datepicker {
+    width: 180px;
+    margin: 0 20px 20px 20px;
+}
+
+#datepicker>span:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+    .card1 {
+        width: 100%;
+        padding: 40px 30px 10px 30px;
+    }
+    .card2 {
+        width: 100%;
+    }
+    .right {
+        margin-top: 100px !important;
+        margin-bottom: 100px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px !important;
+    }
+    .card2 {
+        padding: 50px;
+    }
+    .right {
+        margin-top: 50px !important;
+        margin-bottom: 50px !important;
+    }
+}
