@@ -23,7 +23,7 @@
 
     {{-- theme Style --}}
     <link rel="stylesheet" href="{{ asset('css/adminlte.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/mystyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     {{-- Alert JS --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
