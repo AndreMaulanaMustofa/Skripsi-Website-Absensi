@@ -24,9 +24,11 @@ class MahasiswaSeeder extends Seeder
                 'NoTelp' => 6285233899868,
                 'jenisKelamin' => 'Laki-Laki',
                 'tahunMasuk' => 2020,
-                'email' => 'andremm73@gmail.com',
-                'nama_orangTua' => 'Henry Mustofa Yudhi Annorsa',
-                'NoTelp_Ortu' => 6285233953999
+                'nama_Ayah' => 'Henry Mustofa Yudhi Annorsa',
+                'NoTelp_Ayah' => 6285233953999,
+                'nama_Ibu' => 'Ida Fitriani Rohmah',
+                'NoTelp_Ibu' => 6285233609988,
+                'Domisili' => 'Ponorogo'
             ]);
             mahasiswa::create([
                 'NIM' => 2041720211,
@@ -35,9 +37,11 @@ class MahasiswaSeeder extends Seeder
                 'NoTelp' => 628587955645,
                 'jenisKelamin' => 'Perempuan',
                 'tahunMasuk' => 2020,
-                'email' => 'Rexa1122@gmail.com',
-                'nama_orangTua' => 'Aury Widya Sri',
-                'NoTelp_Ortu' => 6285233655694
+                'nama_Ayah' => 'Rico Christian Wilson',
+                'NoTelp_Ayah' => 6285233245694,
+                'nama_Ibu' => 'Aury Widya Sri',
+                'NoTelp_Ibu' => 6285233655694,
+                'Domisili' => 'Jakarta Selatan'
             ]);
             DB::commit();
         }catch (\Throwable $th){

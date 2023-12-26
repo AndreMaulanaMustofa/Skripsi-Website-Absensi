@@ -16,6 +16,11 @@ class mahasiswa extends Model
         'Kelas',
         'jenisKelamin',
         'NoTelp',
-        'tahunMasuk'
+        'tahunMasuk',
+        'nama_Ayah',
+        'NoTelp_Ayah',
+        'nama_Ibu',
+        'NoTelp_Ibu',
+        'Domisili'
     ];
 }
