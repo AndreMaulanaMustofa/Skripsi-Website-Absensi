@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('jenisKelamin');
             $table->string('NoTelp', 15);
             $table->year('tahunMasuk');
+            $table->string('email');
+            $table->string('nama_orangTua');
+            $table->string('NoTelp_Ortu', 15);
             $table->timestamps();
         });
     }
