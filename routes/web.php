@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('mahasiswa')->group(function(){
     Route::get('/', [MahasiswaController::class, 'view'])->name('mahasiswa.view');
+});
+
+Route::prefix('kelas')->group(function(){
+    Route::get('/', [KelasController::class, 'view'])->name('kelas.view');
 });

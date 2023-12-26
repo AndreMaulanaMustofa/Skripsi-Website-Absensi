@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('kelas.view') }}" class="nav-link">
                 <i class="nav-icon fa-solid fa-folder"></i>
                     <p>
                         Data Kelas

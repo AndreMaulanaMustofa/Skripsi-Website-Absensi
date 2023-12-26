@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="searchInput" name="text-search" placeholder="Cari Data">
+                        <input type="text" class="form-control" name="search" id="searchInput" placeholder="Cari Data">
                     </div>
                 </div>
             </div>
@@ -29,24 +29,20 @@
                     <table class="table align-middle">
                         <thead>
                             <tr class="text-center bg-dark">
-                                <th scope="col">NIM</th>
-                                <th scope="col">Nama Lengkap</th>
-                                <th scope="col">Kelas</th>
-                                <th scope="col">Jenis Kelamin</th>
-                                <th scope="col">No telp</th>
-                                <th scope="col">Tahun Masuk</th>
+                                <th scope="col">No</th>
+                                <th scope="col">Jumlah Mahasiswa</th>
+                                <th scope="col">Ruang Kelas</th>
+                                <th scope="col">Jurusan</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            @forelse($mahasiswa as $m)
+                            @forelse($kelas as $key => $k)
                             <tr>
-                                <td>{{ $m->NIM }}</td>
-                                <td>{{ $m->namaLengkap }}</td>
-                                <td>{{ $m->Kelas }}</td>
-                                <td>{{ $m->jenisKelamin }}</td>
-                                <td>{{ $m->NoTelp }}</td>
-                                <td>{{ $m->tahunMasuk }}</td>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $k->jumlah_mahasiswa }}</td>
+                                <td>{{ $k->kelas }}</td>
+                                <td>{{ $k->jurusan }}</td>
                                 <td>
                                     <a href="#">
                                         <button class="btn btn-info btn-sm">Info</button>
