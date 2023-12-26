@@ -5,7 +5,7 @@
     <div class="content-header layout">
         <div class="container-fluid">
             <div class="row mb-2 mt-2">
-                <h3 class="mb-3 ">Data Mahasiswa</h3>
+                <h3 class="mb-3 ">Data Kelas</h3>
                 <div class="col-md-9">
                     <div class="dropdown ml-1">
                         <button class="btn btn-outline-primary mr-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -44,9 +44,6 @@
                                 <td>{{ $k->kelas }}</td>
                                 <td>{{ $k->jurusan }}</td>
                                 <td>
-                                    <a href="#">
-                                        <button class="btn btn-info btn-sm">Info</button>
-                                    </a>
                                     <a href="#">
                                         <button class="btn btn-success btn-sm">Edit</button>
                                     </a>

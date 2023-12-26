@@ -48,9 +48,64 @@
                                 <td>{{ $m->NoTelp }}</td>
                                 <td>{{ $m->tahunMasuk }}</td>
                                 <td>
-                                    <a href="#">
-                                        <button class="btn btn-info btn-sm">Info</button>
-                                    </a>
+                                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#infoMahasiswa{{ $m->id }}">Info</button>
+
+                                    <div class="modal animate__animated animate__zoomIn animate__faster" id="infoMahasiswa{{ $m->id }}" tabindex="-1" aria-hidden="true" aria-labelledby="infoMahasiswaLabel">
+                                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                                            <div class="modal-content">
+
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="infoMahasiswaLabel">Data {{ $m->namaLengkap }}</h1>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            Data Mahasiswa
+                                                            <hr style="border-color: #4056F4; border-width: 3px; opacity:inherit;">
+                                                            <div class="row">
+                                                                <div class="col-md-5">
+                                                                    <p class="text-left">NIM:</p>
+                                                                    <p class="text-left">Nama Lengkap:</p>
+                                                                    <p class="text-left">Kelas:</p>
+                                                                    <p class="text-left">Nomor Telepon:</p>
+                                                                    <p class="text-left">Tahun Masuk:</p>
+                                                                </div>
+                                                                <div class="col-md-7">
+                                                                    <p class="text-left">{{ $m->NIM }}</p>
+                                                                    <p class="text-left">{{ $m->namaLengkap }}</p>
+                                                                    <p class="text-left">{{ $m->Kelas }}</p>
+                                                                    <p class="text-left">{{ $m->NoTelp }}</p>
+                                                                    <p class="text-left">{{ $m->tahunMasuk }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            Data Ortu
+                                                            <hr style="border-color: #470FF4; border-width: 3px; opacity:inherit;">
+                                                            <div class="row">
+                                                                <div class="col-md-5">
+                                                                    <p class="text-left">Nama Ayah:</p>
+                                                                    <p class="text-left">Nomor HP Ayah:</p>
+                                                                    <p class="text-left">Nama Ibu:</p>
+                                                                    <p class="text-left">Nomor HP Ibu:</p>
+                                                                    <p class="text-left">Domisili:</p>
+                                                                </div>
+                                                                <div class="col-md-7" >
+                                                                    <p class="text-left">{{ $m->nama_Ayah }}</p>
+                                                                    <p class="text-left">{{ $m->NoTelp_Ayah }}</p>
+                                                                    <p class="text-left">{{ $m->nama_Ibu }}</p>
+                                                                    <p class="text-left">{{ $m->NoTelp_Ibu }}</p>
+                                                                    <p class="text-left">{{ $m->Domisili }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <a href="#">
                                         <button class="btn btn-success btn-sm">Edit</button>
                                     </a>
