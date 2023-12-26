@@ -30,8 +30,12 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.18/dist/sweetalert2.all.min.js"></script>
 
+    {{-- Animation CDN --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     {{-- JS --}}
     <script src="{{ asset('js/absensi.js') }}"></script>
+
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="overlay-wrapper">
