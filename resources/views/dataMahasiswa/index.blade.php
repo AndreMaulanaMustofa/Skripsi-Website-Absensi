@@ -7,16 +7,11 @@
             <div class="row mb-2 mt-2">
                 <h3 class="mb-3 ">Data Mahasiswa</h3>
                 <div class="col-md-9">
-                    <div class="dropdown ml-1">
-                        <button class="btn btn-outline-primary mr-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="{{ route('mahasiswa.create') }}">
+                        <button class="btn btn-outline-primary mr-2">
                             <i class="fa-solid fa-plus"></i> Tambahkan
                         </button>
-                        <ul class="dropdown-menu text-left">
-                            <li><a class="dropdown-item" href="#">Kelas</a></li>
-                            <li><a class="dropdown-item" href="#">Tahun Masuk</a></li>
-                            <li><a class="dropdown-item" href="#">Jenis Kelamin</a></li>
-                        </ul>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-3">
                     <div class="input-group mb-3">
@@ -58,7 +53,7 @@
                                                     <h1 class="modal-title fs-5" id="infoMahasiswaLabel">Data {{ $m->namaLengkap }}</h1>
                                                 </div>
 
-                                                <div class="modal-body">
+                                                <div class="modal-body back-logo">
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             Data Mahasiswa
@@ -106,7 +101,7 @@
                                         </div>
                                     </div>
 
-                                    <a href="#">
+                                    <a href="{{ route('mahasiswa.edit', $m->id) }}">
                                         <button class="btn btn-success btn-sm">Edit</button>
                                     </a>
                                     <a href="#">
@@ -114,7 +109,7 @@
                                     </a>
                                 </td>
                                 @empty
-                                <td colspan="7">Data Tidak Ditemukan / Kosong!</td>
+                                <td colspan="7">Data Tidak Ada!</td>
                             </tr>
                             @endforelse
                         </tbody>

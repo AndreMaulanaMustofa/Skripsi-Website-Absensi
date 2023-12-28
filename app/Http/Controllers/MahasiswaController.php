@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kelas;
 use App\Models\mahasiswa;
 use Illuminate\Http\Request;
 
@@ -11,5 +12,43 @@ class MahasiswaController extends Controller
         $mahasiswa = mahasiswa::all();
         $title = "Mahasiswa";
         return view('dataMahasiswa.index', compact('mahasiswa', 'title'));
+    }
+
+    public function create(){
+        $title = "Buat Data Mahasiswa";
+        $kelas = kelas::all();
+        return view('dataMahasiswa.create', compact('title', 'kelas'));
+    }
+
+    public function store(Request $request){
+        $mahasiswa = new Mahasiswa;
+
+        // Mahasiswa
+        $mahasiswa->NIM = $request->input('NIM');
+        $mahasiswa->namaLengkap = $request->input('nama_lengkap');
+        $mahasiswa->kelas = $request->input('kelas');
+        $mahasiswa->jenisKelamin = $request->input('jenisKelamin');
+        $mahasiswa->NoTelp = $request->input('NomorTelp');
+        $mahasiswa->tahunMasuk = date('Y', strtotime($request->input('tahunMasuk')));
+
+        // Ortu
+        $mahasiswa->nama_Ayah = $request->input('namaAyah');
+        $mahasiswa->NoTelp_Ayah = $request->input('NomorAyah');
+        $mahasiswa->nama_Ibu = $request->input('namaIbu');
+        $mahasiswa->NoTelp_Ibu = $request->input('NomorIbu');
+
+        // Domisili / Tempat tinggal sekarang
+        $mahasiswa->Domisili = $request->input('provinsiIndo');
+        
+        $mahasiswa->save();
+
+        return redirect()->route('mahasiswa.view');
+    }
+
+    public function edit($id){
+        $mahasiswa = Mahasiswa::find($id);
+        $kelas = Kelas::all();
+        $title = "Edit Data";
+        return view('dataMahasiswa.edit', compact('title', 'kelas', 'mahasiswa'));
     }
 }

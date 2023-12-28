@@ -105,3 +105,17 @@ th {
 .tbl-container {
     max-height: 500px;
 }
+
+.back-logo{
+    background-image: url('../img/polinema_logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 120px;
+    background-blend-mode: lighten;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.star-wajib{
+    color: orangered;
+    font-size: 25px;
+}

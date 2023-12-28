@@ -19,22 +19,22 @@ class KelasSeeder extends Seeder
 
             kelas::create([
                 'jumlah_mahasiswa' => 25,
-                'kelas' => 'TI-1D',
+                'kelas' => 'TI - 1D',
                 'jurusan' => 'Teknologi Informasi',
             ]);
             kelas::create([
                 'jumlah_mahasiswa' => 27,
-                'kelas' => 'TI-2D',
+                'kelas' => 'TI - 2D',
                 'jurusan' => 'Teknologi Informasi',
             ]);
             kelas::create([
                 'jumlah_mahasiswa' => 20,
-                'kelas' => 'TI-3D',
+                'kelas' => 'TI - 3D',
                 'jurusan' => 'Teknologi Informasi',
             ]);
             kelas::create([
                 'jumlah_mahasiswa' => 35,
-                'kelas' => 'TI-4D',
+                'kelas' => 'TI - 4D',
                 'jurusan' => 'Teknologi Informasi',
             ]);
             DB::commit();
