@@ -39,7 +39,7 @@ class MahasiswaController extends Controller
 
         // Domisili / Tempat tinggal sekarang
         $mahasiswa->Domisili = $request->input('provinsiIndo');
-        
+
         $mahasiswa->save();
 
         return redirect()->route('mahasiswa.view');
@@ -50,5 +50,30 @@ class MahasiswaController extends Controller
         $kelas = Kelas::all();
         $title = "Edit Data";
         return view('dataMahasiswa.edit', compact('title', 'kelas', 'mahasiswa'));
+    }
+
+    public function update(Request $request, $id){
+        $mahasiswa = Mahasiswa::find($id);
+
+        // Mahasiswa
+        $mahasiswa->NIM = $request->input('NIM');
+        $mahasiswa->namaLengkap = $request->input('nama_lengkap');
+        $mahasiswa->kelas = $request->input('kelas');
+        $mahasiswa->jenisKelamin = $request->input('jenisKelamin');
+        $mahasiswa->NoTelp = $request->input('NomorTelp');
+        $mahasiswa->tahunMasuk = date('Y', strtotime($request->input('tahunMasuk')));
+
+        // Ortu
+        $mahasiswa->nama_Ayah = $request->input('namaAyah');
+        $mahasiswa->NoTelp_Ayah = $request->input('NomorAyah');
+        $mahasiswa->nama_Ibu = $request->input('namaIbu');
+        $mahasiswa->NoTelp_Ibu = $request->input('NomorIbu');
+
+        // Domisili / Tempat tinggal sekarang
+        $mahasiswa->Domisili = $request->input('provinsiIndo');
+
+        $mahasiswa->update();
+
+        return redirect()->route('mahasiswa.view');
     }
 }
