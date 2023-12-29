@@ -76,4 +76,10 @@ class MahasiswaController extends Controller
 
         return redirect()->route('mahasiswa.view');
     }
+
+    public function delete($id){
+        Mahasiswa::find($id)->delete();
+
+        return redirect()->route('mahasiswa.view');
+    }
 }

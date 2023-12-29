@@ -104,9 +104,7 @@
                                     <a href="{{ route('mahasiswa.edit', $m->id) }}">
                                         <button class="btn btn-success btn-sm">Edit</button>
                                     </a>
-                                    <a href="#">
-                                        <button class="btn btn-danger btn-sm">Delete</button>
-                                    </a>
+                                    <button onclick="deleteData('{{ $m->id }}')" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                                 @empty
                                 <td colspan="7">Data Tidak Ada!</td>

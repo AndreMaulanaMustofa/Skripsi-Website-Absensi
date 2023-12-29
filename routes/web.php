@@ -21,6 +21,7 @@ Route::prefix('Mahasiswa')->group(function(){
     Route::post('storeData', [MahasiswaController::class, 'store'])->name('mahasiswa.store');
     Route::get('editData/{id}', [MahasiswaController::class, 'edit'])->name('mahasiswa.edit');
     Route::put('updateData/{id}', [MahasiswaController::class, 'update'])->name('mahasiswa.update');
+    Route::delete('deleteData/{id}', [MahasiswaController::class, 'delete'])->name('mahasiswa.delete');
 });
 
 Route::prefix('Kelas')->group(function(){
