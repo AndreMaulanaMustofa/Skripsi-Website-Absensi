@@ -83,16 +83,7 @@ function editData(id) {
         denyButtonText: `Batal`
     }).then((result) => {
         if (result.isConfirmed) {
-            var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-
-            $.ajax({
-                type: "POST",
-                url: "/mahasiswa/updateData/" + id,
-                data:{
-                    _token:csrfToken,
-                    _method: "PUT",
-                },
-            });
+            var myForm = document.getElementById('editForm');
 
             Swal.fire({
                 title: "Perubahan telah disimpan",
@@ -100,15 +91,16 @@ function editData(id) {
                 showConfirmButton: false,
                 timer: 1500
             });
+            myForm.submit();
 
         } else if (result.isDenied) {
             Swal.fire({
-                title: "Perubahan gagal disimpan",
+                title: "Perubahan telah dibatalkan",
                 icon: "error",
                 showConfirmButton: false,
                 timer: 1500
             });
-            window.location.href="/mahasiswa";
+            window.location.href="/Mahasiswa";
         }
     });
 }

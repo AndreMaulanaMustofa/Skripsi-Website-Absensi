@@ -31,9 +31,9 @@
                     <div class="col-md-4">
                         <p>Kelas<span class="star-wajib">*</span></p>
                     </div>
-                    <div class="col-md-2">
-                        <select name="kelas" id="kelas" class="form-control" required>
-                            <option value="" selected class="d-none">-- Pilih Kelas --</option>
+                    <div class="col-md-1">
+                        <select name="kelas" id="kelas" class="form-control" style="width: 95px;" required>
+                            <option value="" selected class="d-none">-- Kelas --</option>
                             @foreach ($kelas as $item)
                                 <option value="{{ $item->kelas }}">{{ $item->kelas }}</option>
                             @endforeach

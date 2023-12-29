@@ -7,7 +7,7 @@
         <div class="container-fluid px-4">
             <h3>Edit Data Mahasiswa</h3>
             <hr style="border-width: 2px; background-color: #B4B8C5">
-            <form action="{{ route('mahasiswa.update', $mahasiswa->id) }}" method="POST">
+            <form action="{{ route('mahasiswa.update', $mahasiswa->id) }}" method="POST" id="editForm">
                 @csrf
                 @method('PUT')
                 <div class="row mt-1">
@@ -32,8 +32,8 @@
                     <div class="col-md-4">
                         <p>Kelas<span class="star-wajib">*</span></p>
                     </div>
-                    <div class="col-sm-1">
-                        <select name="kelas" id="kelas" class="form-control">
+                    <div class="col-sm-2">
+                        <select name="kelas" id="kelas" class="form-control" style="width: 95px;">
                             @foreach ($kelas as $item)
                                 <option value="{{ $item->kelas }}" {{ $item->kelas == $mahasiswa->Kelas ? 'selected' : '' }}>{{ $item->kelas }}</option>
                             @endforeach
