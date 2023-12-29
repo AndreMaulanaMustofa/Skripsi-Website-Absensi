@@ -31,8 +31,9 @@
                     <div class="col-md-4">
                         <p>Kelas<span class="star-wajib">*</span></p>
                     </div>
-                    <div class="col-sm-1">
-                        <select name="kelas" id="kelas" class="form-control">
+                    <div class="col-md-2">
+                        <select name="kelas" id="kelas" class="form-control" required>
+                            <option value="" selected class="d-none">-- Pilih Kelas --</option>
                             @foreach ($kelas as $item)
                                 <option value="{{ $item->kelas }}">{{ $item->kelas }}</option>
                             @endforeach
@@ -63,13 +64,11 @@
                         <p>Tahun Masuk<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-1">
-                        <select name="tahunMasuk" class="form-control" id="tahunMasuk">
+                        <select name="tahunMasuk" class="form-control" id="tahunMasuk" required>
                             <option value="" style="display: none;">YYYY</option>
-                            <?php
-                                for ($tahun = 2020; $tahun <= 2024; $tahun++) {
-                                    echo "<option value='$tahun'>$tahun</option>";
-                                }
-                            ?>
+                            @for($tahun = 2020; $tahun <= 2024; $tahun++)
+                                <option value='{{ $tahun }}'>{{ $tahun }}</option>";
+                            @endfor
                         </select>
                     </div>
                 </div>
@@ -116,13 +115,13 @@
                         <p>Domisili<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-8">
-                        <select name="provinsiIndo" class="form-control" id="provinsi">
+                        <select name="provinsiIndo" class="form-control" id="provinsi" required>
                         </select>
                     </div>
                 </div>
                 <div class="col-mt-6 d-flex justify-content-center gap-3">
                     <button type="button" class="btn btn-danger" onclick="window.location.href='{{ route('mahasiswa.view') }}'">Kembali</button>
-                    <button onclick="tambahData()" class="btn btn-success">Tambah</button>
+                    <button onclick="validasiData()" class="btn btn-success">Tambah</button>
                 </div>
             </form>
         </div>

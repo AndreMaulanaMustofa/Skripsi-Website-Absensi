@@ -5,10 +5,11 @@
 <div class="content-wrapper" style="background-color: white">
     <div class="content-header p-4">
         <div class="container-fluid px-4">
-            <h3>Tambah Data Mahasiswa</h3>
+            <h3>Edit Data Mahasiswa</h3>
             <hr style="border-width: 2px; background-color: #B4B8C5">
-            <form action="{{ route('mahasiswa.store') }}" method="POST">
+            <form action="{{ route('mahasiswa.update', $mahasiswa->id) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="row mt-1">
                     <div class="col-md-4">
                         <p>NIM<span class="star-wajib">*</span></p>
@@ -65,22 +66,20 @@
                     <div class="col-md-1">
                         <select name="tahunMasuk" class="form-control">
                             <option value="" style="display: none;">YYYY</option>
-                            <?php
-                                for ($tahun = 2020; $tahun <= 2024; $tahun++) {
-                                    echo "<option value='$tahun' >$tahun</option>";
-                                }
-                            ?>
+                            @for($tahun = 2020; $tahun <= 2024; $tahun++)
+                                <option value='{{ $tahun }}' {{ $tahun == $mahasiswa->tahunMasuk ? 'selected': '' }} >{{ $tahun }}</option>";
+                            @endfor
                         </select>
                     </div>
                 </div>
-                <h3>Tambah Data Orang Tua</h3>
+                <h3>Edit Data Orang Tua</h3>
                 <hr style="border-width: 2px; background-color: #B4B8C5">
                 <div class="row mt-1">
                     <div class="col-md-4">
                         <p>Nama Ayah<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" name="namaAyah" class="form-control">
+                        <input type="text" name="namaAyah" class="form-control" value="{{ $mahasiswa->nama_Ayah }}">
                     </div>
                 </div>
                 <div class="row mt-1">
@@ -90,7 +89,7 @@
                     <div class="col-md-8">
                         <input type="tel" pattern="[0-9]+"
                             oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-                            class="form-control" name="NomorAyah" id="NomorAyah">
+                            class="form-control" name="NomorAyah" id="NomorAyah" value="{{ $mahasiswa->NoTelp_Ayah }}">
                     </div>
                 </div>
                 <div class="row mt-1">
@@ -98,7 +97,7 @@
                         <p>Nama Ibu<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" name="namaIbu" class="form-control">
+                        <input type="text" name="namaIbu" class="form-control" value="{{ $mahasiswa->nama_Ibu }}">
                     </div>
                 </div>
                 <div class="row mt-1">
@@ -108,7 +107,7 @@
                     <div class="col-md-8">
                         <input type="tel" pattern="[0-9]+"
                             oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-                            class="form-control" name="NomorIbu" id="NomorIbu">
+                            class="form-control" name="NomorIbu" id="NomorIbu" value="{{ $mahasiswa->NoTelp_Ibu }}">
                     </div>
                 </div>
                 <div class="row mt-1">
@@ -116,16 +115,16 @@
                         <p>Domisili<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-8">
-                        <select name="provinsiIndo" class="form-control" id="provinsi"></select>
+                        <select name="provinsiIndo" class="form-control" id="provinsi" data-domisili="{{ $mahasiswa->Domisili }}"></select>
                     </div>
                 </div>
                 <div class="col-mt-6 d-flex justify-content-center gap-3">
                     <button type="button" class="btn btn-danger" onclick="window.location.href='{{ route('mahasiswa.view') }}'">Kembali</button>
-                    <button type="submit" class="btn btn-success">Tambah</button>
+                    <button type="button" onclick="editData('{{ $mahasiswa->id }}')" class="btn btn-primary px-4">Edit</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<script>APIKota();</script>
+<script>APIKotaEdit();</script>
 @endsection
