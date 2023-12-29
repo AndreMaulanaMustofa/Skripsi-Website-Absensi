@@ -11,8 +11,10 @@ class kelas extends Model
     use Notifiable;
 
     protected $fillable = [
-        'jumlah_mahasiswa',
         'kelas',
-        'jurusan'
+        'jurusan',
+        'sks',
+        'nama_DPA',
+        'jumlah_mahasiswa',
     ];
 }

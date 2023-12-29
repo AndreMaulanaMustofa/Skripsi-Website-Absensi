@@ -18,24 +18,32 @@ class KelasSeeder extends Seeder
             DB::beginTransaction();
 
             kelas::create([
-                'jumlah_mahasiswa' => 25,
                 'kelas' => 'TI - 1D',
                 'jurusan' => 'Teknologi Informasi',
+                'sks' => 20,
+                'nama_DPA' => 'M. Hasyim ratsanjani, S.Kom., M.Kom.',
+                'jumlah_mahasiswa' => 25,
             ]);
             kelas::create([
-                'jumlah_mahasiswa' => 27,
                 'kelas' => 'TI - 2D',
                 'jurusan' => 'Teknologi Informasi',
+                'sks' => 20,
+                'nama_DPA' => 'Noprianto, S.Kom., M.Eng',
+                'jumlah_mahasiswa' => 25,
             ]);
             kelas::create([
-                'jumlah_mahasiswa' => 20,
                 'kelas' => 'TI - 3D',
                 'jurusan' => 'Teknologi Informasi',
+                'sks' => 20,
+                'nama_DPA' => 'Agung Nugroho Pramudhita, S.T., M.T.',
+                'jumlah_mahasiswa' => 25,
             ]);
             kelas::create([
-                'jumlah_mahasiswa' => 35,
                 'kelas' => 'TI - 4D',
                 'jurusan' => 'Teknologi Informasi',
+                'sks' => 20,
+                'nama_DPA' => 'Annisa Puspa Kirana, S. Kom, M.Kom',
+                'jumlah_mahasiswa' => 25,
             ]);
             DB::commit();
         } catch (\Throwable $th) {

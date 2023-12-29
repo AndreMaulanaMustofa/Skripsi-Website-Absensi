@@ -30,9 +30,11 @@
                         <thead>
                             <tr class="text-center bg-dark">
                                 <th scope="col">No</th>
-                                <th scope="col">Jumlah Mahasiswa</th>
                                 <th scope="col">Ruang Kelas</th>
                                 <th scope="col">Jurusan</th>
+                                <th scope="col">SKS</th>
+                                <th scope="col">Nama_DPA</th>
+                                <th scope="col">Jumlah Mahasiswa</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -40,9 +42,11 @@
                             @forelse($kelas as $key => $k)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $k->jumlah_mahasiswa }}</td>
                                 <td>{{ $k->kelas }}</td>
                                 <td>{{ $k->jurusan }}</td>
+                                <td>{{ $k->sks }}</td>
+                                <td>{{ $k->nama_DPA }}</td>
+                                <td>{{ $k->jumlah_mahasiswa }}</td>
                                 <td>
                                     <a href="#">
                                         <button class="btn btn-success btn-sm">Edit</button>
