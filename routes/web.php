@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('mahasiswa')->group(function(){
+Route::prefix('Mahasiswa')->group(function(){
     Route::get('/', [MahasiswaController::class, 'view'])->name('mahasiswa.view');
     Route::get('createData', [MahasiswaController::class, 'create'])->name('mahasiswa.create');
     Route::post('storeData', [MahasiswaController::class, 'store'])->name('mahasiswa.store');
@@ -23,6 +23,6 @@ Route::prefix('mahasiswa')->group(function(){
     Route::put('updateData/{id}', [MahasiswaController::class, 'update'])->name('mahasiswa.update');
 });
 
-Route::prefix('kelas')->group(function(){
+Route::prefix('Kelas')->group(function(){
     Route::get('/', [KelasController::class, 'view'])->name('kelas.view');
 });
