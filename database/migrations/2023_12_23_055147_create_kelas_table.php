@@ -17,7 +17,14 @@ return new class extends Migration
             $table->string('jurusan');
             $table->integer('sks');
             $table->string('nama_DPA');
-            $table->integer('jumlah_mahasiswa');
+            $table->string('matkul_1')->nullable();
+            $table->string('matkul_2')->nullable();
+            $table->string('matkul_3')->nullable();
+            $table->string('matkul_4')->nullable();
+            $table->string('matkul_5')->nullable();
+            $table->string('matkul_6')->nullable();
+            $table->string('matkul_7')->nullable();
+            $table->string('matkul_8')->nullable();
             $table->timestamps();
         });
     }

@@ -15,6 +15,13 @@ class kelas extends Model
         'jurusan',
         'sks',
         'nama_DPA',
-        'jumlah_mahasiswa',
+        'matkul_1',
+        'matkul_2',
+        'matkul_3',
+        'matkul_4',
+        'matkul_5',
+        'matkul_6',
+        'matkul_7',
+        'matkul_8',
     ];
 }
