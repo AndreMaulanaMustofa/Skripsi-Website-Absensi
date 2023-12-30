@@ -43,12 +43,10 @@
                                 <td>{{ $k->nama_DPA }}</td>
                                 <td>{{ $jumlahMahasiswa }}</td>
                                 <td>
-                                    <a href="#">
+                                    <a href="{{ route('kelas.edit', $k->id) }}">
                                         <button class="btn btn-success btn-sm">Edit</button>
                                     </a>
-                                    <a href="#">
-                                        <button class="btn btn-danger btn-sm">Delete</button>
-                                    </a>
+                                    <button onclick="deleteKelas('{{ $k->id }}')" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                                 @empty
                                 <td colspan="7">Data Tidak Ditemukan / Kosong!</td>

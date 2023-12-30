@@ -120,7 +120,7 @@
                 </div>
                 <div class="col-mt-6 d-flex justify-content-center gap-3">
                     <button type="button" class="btn btn-danger" onclick="window.location.href='{{ route('mahasiswa.view') }}'">Kembali</button>
-                    <button type="button" onclick="editData()" class="btn btn-primary px-4">Edit</button>
+                    <button type="button" onclick="editData()" class="btn btn-primary px-4">Ubah</button>
                 </div>
             </form>
         </div>
