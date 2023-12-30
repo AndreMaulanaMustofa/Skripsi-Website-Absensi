@@ -12,12 +12,7 @@ class KelasController extends Controller
         $kelas = Kelas::all();
         $title = "Kelas";
 
-        $dataKelas = Kelas::all();
-
-        foreach ($dataKelas as $item) {
-            $jumlahMahasiswa = Mahasiswa::where('Kelas', $item->kelas)->count();
-            echo "Jumlah mahasiswa di kelas {$item->kelas}: {$jumlahMahasiswa} mahasiswa\n";
-        }
+        $jumlahMahasiswa = 0;
 
         return view('kelas.index', compact('kelas', 'title', 'jumlahMahasiswa'));
     }
@@ -44,4 +39,37 @@ class KelasController extends Controller
 
         return redirect()->route('kelas.view');
     }
+
+    public function edit($id){
+        $title = "Edit Kelas";
+        $kelas = kelas::find($id);
+
+        return view('kelas.edit', compact('title', 'kelas'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $kelas = Kelas::find($id);
+
+        $kelas->kelas = $request->input('Kelas');
+        $kelas->jurusan = $request->input('jurusan');
+        $kelas->sks = $request->input('sks');
+        $kelas->nama_DPA = $request->input('namaDPA');
+
+        for ($i = 1; $i < 9; $i++) {
+            $matkul = 'matkul_' . $i;
+            $kelas->$matkul = $request->input($matkul);
+        }
+
+        $kelas->update();
+
+        return redirect()->route('kelas.view');
+    }
+
+    public function delete($id){
+        Kelas::find($id)->delete();
+
+        return redirect()->route('kelas.view');
+    }
+
 }
