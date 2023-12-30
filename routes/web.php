@@ -36,4 +36,5 @@ Route::prefix('Kelas')->group(function(){
 
 Route::prefix('Jadwal Kuliah')->group(function(){
     Route::get('/', [JadwalController::class, 'view'])->name('jadwal.view');
+    Route::get('createJadwal', [JadwalController::class, 'create'])->name('jadwal.create');
 });

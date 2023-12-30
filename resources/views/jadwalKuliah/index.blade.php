@@ -7,7 +7,7 @@
             <div class="row mb-2 mt-2">
                 <h3 class="mb-3 ">Jadwal Kuliah</h3>
                 <div class="col-md-9">
-                    <a href="{{ route('kelas.create') }}">
+                    <a href="{{ route('jadwal.create') }}">
                         <button class="btn btn-outline-primary mr-2">
                             <i class="fa-solid fa-plus"></i> Tambahkan
                         </button>
@@ -50,7 +50,7 @@
                                     <a href="{{ route('kelas.edit', $j->id) }}">
                                         <button class="btn btn-success btn-sm">Edit</button>
                                     </a>
-                                    <button onclick="deleteKelas('{{ $j->id }}')" class="btn btn-danger btn-sm">Delete</button>
+                                    <button onclick="deleteJadwal('{{ $j->id }}')" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                                 @empty
                                 <td colspan="7">Data Tidak Ada!</td>
