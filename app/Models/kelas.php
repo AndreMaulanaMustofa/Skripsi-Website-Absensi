@@ -22,6 +22,10 @@ class kelas extends Model
         'matkul_5',
         'matkul_6',
         'matkul_7',
-        'matkul_8',
+        'matkul_8'
     ];
+
+    public function jadwals(){
+        return $this->hasMany(jadwal::class);
+    }
 }
