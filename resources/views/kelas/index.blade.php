@@ -41,7 +41,7 @@
                                 <td>{{ $k->jurusan }}</td>
                                 <td>{{ $k->sks }}</td>
                                 <td>{{ $k->nama_DPA }}</td>
-                                <td>{{ $jumlahMahasiswa }}</td>
+                                <td>{{ $jumlahMahasiswa[$k->kelas] }}</td>
                                 <td>
                                     <a href="{{ route('kelas.edit', $k->id) }}">
                                         <button class="btn btn-success btn-sm">Edit</button>

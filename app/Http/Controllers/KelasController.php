@@ -12,7 +12,11 @@ class KelasController extends Controller
         $kelas = Kelas::all();
         $title = "Kelas";
 
-        $jumlahMahasiswa = 0;
+        $jumlahMahasiswa = [];
+
+        foreach ($kelas as $item) {
+            $jumlahMahasiswa[$item->kelas] = Mahasiswa::where('Kelas', $item->kelas)->count();
+        }
 
         return view('kelas.index', compact('kelas', 'title', 'jumlahMahasiswa'));
     }
