@@ -5,7 +5,7 @@
     <div class="content-header layout">
         <div class="container-fluid">
             <div class="row mb-2 mt-2">
-                <h3 class="mb-3 ">Data Kelas</h3>
+                <h3 class="mb-3 ">Jadwal Kuliah</h3>
                 <div class="col-md-9">
                     <a href="{{ route('kelas.create') }}">
                         <button class="btn btn-outline-primary mr-2">
@@ -25,28 +25,32 @@
                         <thead>
                             <tr class="text-center bg-dark">
                                 <th scope="col">No</th>
-                                <th scope="col">Ruang Kelas</th>
+                                <th scope="col">Kelas</th>
                                 <th scope="col">Jurusan</th>
-                                <th scope="col">SKS</th>
-                                <th scope="col">Nama_DPA</th>
-                                <th scope="col">Jumlah Mahasiswa</th>
+                                <th scope="col">Semester</th>
+                                <th scope="col">Hari</th>
+                                <th scope="col">Mata Kuliah</th>
+                                <th scope="col">Jam Mulai</th>
+                                <th scope="col">Jam Akhir</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            @forelse($kelas as $key => $k)
+                            @forelse($jadwal as $key => $j)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $k->kelas }}</td>
-                                <td>{{ $k->jurusan }}</td>
-                                <td>{{ $k->sks }}</td>
-                                <td>{{ $k->nama_DPA }}</td>
-                                <td>{{ $jumlahMahasiswa }}</td>
+                                <td>{{ $j->kelas }}</td>
+                                <td>{{ $j->jurusan }}</td>
+                                <td>{{ $j->semester }}</td>
+                                <td>{{ $j->hari }}</td>
+                                <td>{{ $j->matkul }}</td>
+                                <td>{{ date('H:s', strtotime($j->jam_mulai)) }}</td>
+                                <td>{{ date('H:s', strtotime($j->jam_akhir)) }}</td>
                                 <td>
-                                    <a href="{{ route('kelas.edit', $k->id) }}">
+                                    <a href="{{ route('kelas.edit', $j->id) }}">
                                         <button class="btn btn-success btn-sm">Edit</button>
                                     </a>
-                                    <button onclick="deleteKelas('{{ $k->id }}')" class="btn btn-danger btn-sm">Delete</button>
+                                    <button onclick="deleteKelas('{{ $j->id }}')" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                                 @empty
                                 <td colspan="7">Data Tidak Ada!</td>
