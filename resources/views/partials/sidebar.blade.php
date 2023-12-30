@@ -16,7 +16,7 @@
             </div>
         </div>
         <!-- Sidebar Menu -->
-        <nav class="mt-2">
+        <nav class="mt-2 position-relative">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item">
             <a href="{{ route('mahasiswa.view') }}" class="nav-link">
@@ -34,6 +34,15 @@
                     </p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon fa-solid fa-calendar"></i>
+                    <p>
+                        Jadwal Kuliah
+                    </p>
+                </a>
+            </li>
+            <hr style=" border-color: gray">
             <li class="nav-item">
                 <a href="#" class="nav-link">
                 <i class="nav-icon fa-solid fa-cloud"></i>
@@ -58,6 +67,7 @@
                     </p>
                 </a>
             </li>
+            <hr style="border-color: gray">
             <li class="nav-item">
                 <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-solid fa-gear"></i>
@@ -71,6 +81,15 @@
                 <i class=" nav-icon fas fa-solid fa-pen-to-square"></i>
                     <p>
                         Ubah Password
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item position-fixed bottom-0">
+                <hr style="border-color: gray; width: 100%">
+                <a href="#" class="nav-link">
+                <i class=" nav-icon fas fa-solid fa-door-open"></i>
+                    <p>
+                        Log Out
                     </p>
                 </a>
             </li>

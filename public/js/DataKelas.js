@@ -15,3 +15,28 @@ function mencariData() {
         });
     });
 }
+
+function validasiKelas(){
+    const formKelas = document.getElementById('FormKelas');
+
+    if(!formKelas.checkValidity()){
+        Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Lengkapi data terlebih dahulu!",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+        return false;
+    }else{
+        formKelas.submit();
+
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Data telah disimpan!",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    }
+}

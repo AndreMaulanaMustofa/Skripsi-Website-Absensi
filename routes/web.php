@@ -26,4 +26,9 @@ Route::prefix('Mahasiswa')->group(function(){
 
 Route::prefix('Kelas')->group(function(){
     Route::get('/', [KelasController::class, 'view'])->name('kelas.view');
+    Route::get('createKelas', [KelasController::class, 'create'])->name('kelas.create');
+    Route::post('storeKelas', [KelasController::class, 'store'])->name('kelas.store');
+    Route::get('editKelas/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
+    Route::put('updateKelas/{id}', [KelasController::class, 'update'])->name('kelas.update');
+    Route::delete('deleteKelas/{id}', [KelasController::class, 'delete'])->name('kelas.delete');
 });

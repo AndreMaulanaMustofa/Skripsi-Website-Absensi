@@ -7,16 +7,11 @@
             <div class="row mb-2 mt-2">
                 <h3 class="mb-3 ">Data Kelas</h3>
                 <div class="col-md-9">
-                    <div class="dropdown ml-1">
-                        <button class="btn btn-outline-primary mr-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="{{ route('kelas.create') }}">
+                        <button class="btn btn-outline-primary mr-2">
                             <i class="fa-solid fa-plus"></i> Tambahkan
                         </button>
-                        <ul class="dropdown-menu text-left">
-                            <li><a class="dropdown-item" href="#">Kelas</a></li>
-                            <li><a class="dropdown-item" href="#">Tahun Masuk</a></li>
-                            <li><a class="dropdown-item" href="#">Jenis Kelamin</a></li>
-                        </ul>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-md-3">
                     <div class="input-group mb-3">
@@ -46,7 +41,7 @@
                                 <td>{{ $k->jurusan }}</td>
                                 <td>{{ $k->sks }}</td>
                                 <td>{{ $k->nama_DPA }}</td>
-                                <td>{{ $k->jumlah_mahasiswa }}</td>
+                                <td>{{ $jumlahMahasiswa }}</td>
                                 <td>
                                     <a href="#">
                                         <button class="btn btn-success btn-sm">Edit</button>
