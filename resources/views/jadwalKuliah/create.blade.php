@@ -40,7 +40,7 @@
                         <p>Semester<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-sm-1">
-                        <input type="number" class="form-control" name="semester" id="semester" required placeholder="semester">
+                        <input type="number" min="1" max="8" class="form-control" name="semester" id="semester" required placeholder="semester">
                     </div>
                 </div>
                 <div class="row mt-1">
@@ -80,7 +80,7 @@
                     <div class="col-md-4">
                         <p>Jam Mulai<span class="star-wajib">*</span></p>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-1">
                         <input type="text" class="form-control" name="matkul_1" id="matkul_1">
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                     <div class="col-md-4">
                         <p>Jam Akhir<span class="star-wajib">*</span></p>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-1">
                         <input type="text" class="form-control" name="matkul_1" id="matkul_1">
                     </div>
                 </div>
