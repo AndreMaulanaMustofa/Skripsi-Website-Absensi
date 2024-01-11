@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AkunController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MahasiswaController;
@@ -37,4 +38,8 @@ Route::prefix('Kelas')->group(function(){
 Route::prefix('Jadwal Kuliah')->group(function(){
     Route::get('/', [JadwalController::class, 'view'])->name('jadwal.view');
     Route::get('createJadwal', [JadwalController::class, 'create'])->name('jadwal.create');
+});
+
+Route::prefix('Pengaturan')->group(function(){
+    Route::get('Password', [AkunController::class, 'indexPassword'])->name('akun.pass');
 });

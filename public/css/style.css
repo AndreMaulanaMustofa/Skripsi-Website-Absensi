@@ -119,3 +119,9 @@ th {
     color: orangered;
     font-size: 25px;
 }
+
+.input-password{
+    width: 100%;
+    border: 1px solid lightskyblue;
+    height: 40px;
+}
