@@ -1,7 +1,7 @@
 @extends('layouts.view')
 
 @section('container-absensi')
-<div class="content-wrapper" style="background-color: white">
+<div class="content-wrapper" style="background-color: white; margin-top: 120px;">
     <div class="content-header layout">
         <div class="container-fluid">
             <form action="#" method="POST">
