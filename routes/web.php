@@ -3,6 +3,7 @@
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/', [LoginController::class, 'login'])->name('Login.acc');
+Route::get('daftar', [LoginController::class, 'regis'])->name('Regis.acc');
 
 Route::prefix('Mahasiswa')->group(function(){
     Route::get('/', [MahasiswaController::class, 'view'])->name('mahasiswa.view');
