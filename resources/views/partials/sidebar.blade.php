@@ -12,7 +12,7 @@
                 <img src="{{ asset('img/polinema_logo.png') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Polinema</a>
+                <a href="#" class="d-block">Admin JTI</a>
             </div>
         </div>
         <!-- Sidebar Menu -->
@@ -69,7 +69,7 @@
             </li>
             <hr style="border-color: gray">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.data') }}" class="nav-link">
                 <i class="nav-icon fas fa-solid fa-gear"></i>
                     <p>
                         Pengaturan
@@ -77,7 +77,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('akun.pass') }}" class="nav-link">
+                <a href="{{ route('admin.pass') }}" class="nav-link">
                 <i class=" nav-icon fas fa-solid fa-pen-to-square"></i>
                     <p>
                         Ubah Password
