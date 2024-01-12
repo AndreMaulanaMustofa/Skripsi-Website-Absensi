@@ -41,5 +41,7 @@ Route::prefix('Jadwal Kuliah')->group(function(){
 });
 
 Route::prefix('Pengaturan')->group(function(){
-    Route::get('Password', [AkunController::class, 'indexPassword'])->name('akun.pass');
+    Route::get('/', [AkunController::class, 'index'])->name('admin.data');
+    Route::get('editAdmin', [AkunController::class, 'edit'])->name('admin.edit');
+    Route::get('Password', [AkunController::class, 'indexPassword'])->name('admin.pass');
 });
