@@ -125,3 +125,7 @@ th {
     border: 1px solid lightskyblue;
     height: 40px;
 }
+
+.input-akun:disabled{
+    background-color: white;
+}
