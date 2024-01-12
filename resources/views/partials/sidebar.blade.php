@@ -86,7 +86,7 @@
             </li>
             <li class="nav-item position-fixed bottom-0">
                 <hr style="border-color: gray; width: 100%">
-                <a href="#" class="nav-link">
+                <a href="{{ route('Login.acc') }}" class="nav-link">
                 <i class=" nav-icon fas fa-solid fa-door-open"></i>
                     <p>
                         Log Out
