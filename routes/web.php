@@ -39,9 +39,11 @@ Route::prefix('Kelas')->group(function(){
     Route::delete('deleteKelas/{id}', [KelasController::class, 'delete'])->name('kelas.delete');
 });
 
-Route::prefix('Jadwal Kuliah')->group(function(){
+Route::prefix('Jadwal Kuliah')->group(function () {
     Route::get('/', [JadwalController::class, 'view'])->name('jadwal.view');
     Route::get('createJadwal', [JadwalController::class, 'create'])->name('jadwal.create');
+    Route::get('/getKelas/{jur_id}', [JadwalController::class, 'getKelass'])->name('getkelass');
+    Route::get('/getMatkul/{id}', [JadwalController::class, 'getMatkul'])->name('getMatkul');
 });
 
 Route::prefix('Pengaturan')->group(function(){
