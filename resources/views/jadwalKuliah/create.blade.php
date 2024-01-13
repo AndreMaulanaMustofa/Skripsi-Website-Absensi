@@ -14,10 +14,10 @@
                         <p>Jurusan<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-sm-2">
-                        <select name="jurusan" class="form-control" id="jurusan">
+                        <select name="jurusan" class="form-control jurusan" id="jurusan">
                             <option selected style="display: none;">-- Pilih Jurusan --</option>
-                            @foreach ($kelas as $item)
-                                <option value="{{ $item->jurusan }}">{{ $item->jurusan }}</option>
+                            @foreach ($jurusan as $item)
+                                <option value="{{ $item->jur_id }}">{{ $item->nama_jurusan }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -27,11 +27,8 @@
                         <p>Kelas<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-2">
-                        <select name="kelas" id="kelas" class="form-control">
-                            <option selected style="display: none;">-- Pilih Kelas --</option>
-                            @foreach ($kelas as $item)
-                                <option value="{{ $item->kelas }}">{{ $item->kelas }}</option>
-                            @endforeach
+                        <select name="kelas" id="kelas" class="form-control kelas">
+                            <option selected style="display: none;">-- Pilih jurusan terlebih dahulu --</option>
                         </select>
                     </div>
                 </div>
@@ -63,16 +60,16 @@
                         <p>Mata Kuliah<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-3">
-                        <select name="matkul" id="matkul" class="form-control">
-                            <option selected style="display: none;">-- Pilih Mata Kuliah --</option>
-                            @foreach ($kelas as $item)
+                        <select name="matkul" id="matkul" class="form-control matkul">
+                            <option selected style="display: none;">-- Pilih kelas terlebih dahulu --</option>
+                            {{-- @foreach ($kelas as $item)
                                 @for ($i = 1; $i < 9; $i++)
                                     @php
                                         $matkul = 'matkul_' . $i;
                                     @endphp
                                     <option value="{{ $item->$matkul }}">{{ $item->$matkul }}</option>
                                 @endfor
-                            @endforeach
+                            @endforeach --}}
                         </select>
                     </div>
                 </div>
@@ -100,32 +97,54 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    $(document).ready(function () {
+    $(".jurusan").change(function() {
+        var selectedOption = $(this).children("option:selected").val();
 
-        $('#kelas option').hide();
+        // Lakukan permintaan Ajax
+        $.ajax({
+            url: 'getKelas/' + selectedOption,
+            type: 'GET',
+            success: function(data) {
+                // Hapus opsi lama pada pilihan kedua
+                $(".kelas").empty();
 
-        $('#jurusan').change(function () {
-            var selectedJurusan = $(this).val();
-
-            $('#kelas option').hide();
-
-            if (selectedJurusan == "Teknologi Informasi") {
-                $('#kelas option[value^="TI"]').show();
+                // Tambahkan opsi baru berdasarkan data dari server
+                $.each(data, function(id, value) {
+                    $(".kelas").append('<option value="" selected style="display:none;">-- Pilih Kelas --</option>');
+                    $(".kelas").append('<option value="' + id + '">' + value + '</option>');
+                });
             }
+        });
+    });
 
-            if(selectedJurusan == "Teknik Mesin"){
-                $('#kelas option[value^="TM"]').show();
-            }
+    $(".kelas").change(function() {
+        var kelas = $(this).children("option:selected").val();
 
-            if(selectedJurusan == "Sistem Informasi"){
-                $('#kelas option[value^="SI"]').show();
-            }
+        // Lakukan permintaan Ajax
+        $.ajax({
+            url: 'getMatkul/' + kelas,
+            type: 'GET',
+            success: function(data) {
+                // Hapus opsi lama pada pilihan ketiga
+                $(".matkul").empty();
+                $(".matkul").append('<option value="" selected style="display:none;">-- Pilih Mata Kuliah --</option>');
 
-            if(selectedJurusan == "Teknik Listrik"){
-                $('#kelas option[value^="TL"]').show();
+                // Tambahkan opsi baru berdasarkan data dari server
+                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_1 + '</option>');
+                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_2 + '</option>');
+                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_3 + '</option>');
+                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_4 + '</option>');
+                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_5 + '</option>');
+                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_6 + '</option>');
+                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_7 + '</option>');
+                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_8 + '</option>');
+
+                // Tambahkan kolom matkul lainnya sesuai kebutuhan
             }
         });
     });
 </script>
+
 @endsection
