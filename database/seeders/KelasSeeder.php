@@ -19,7 +19,7 @@ class KelasSeeder extends Seeder
 
             kelas::create([
                 'kelas' => 'TI - 1D',
-                'jurusan' => 'Teknologi Informasi',
+                'jur_id' => '1',
                 'sks' => 20,
                 'nama_DPA' => 'M. Hasyim Ratsanjani, S.Kom., M.Kom.',
                 'matkul_1' => 'Bahasa Inggris 1',
@@ -33,7 +33,7 @@ class KelasSeeder extends Seeder
             ]);
             kelas::create([
                 'kelas' => 'TM - 2D',
-                'jurusan' => 'Teknik Mesin',
+                'jur_id' => '2',
                 'sks' => 23,
                 'nama_DPA' => 'Noprianto, S.Kom., M.Eng',
                 'matkul_1' => 'Keselamatan dan Kesehatan Kerja',
@@ -47,7 +47,7 @@ class KelasSeeder extends Seeder
             ]);
             kelas::create([
                 'kelas' => 'SI - 3D',
-                'jurusan' => 'Sistem Informasi',
+                'jur_id' => '3',
                 'sks' => 24,
                 'nama_DPA' => 'Agung Nugroho Pramudhita, S.T., M.T.',
                 'matkul_1' => 'Basis Data',
@@ -61,7 +61,7 @@ class KelasSeeder extends Seeder
             ]);
             kelas::create([
                 'kelas' => 'TL - 4D',
-                'jurusan' => 'Teknik Listrik',
+                'jur_id' => '4',
                 'sks' => 26,
                 'nama_DPA' => 'Annisa Puspa Kirana, S. Kom, M.Kom',
                 'matkul_1' => 'Matematika 3',
