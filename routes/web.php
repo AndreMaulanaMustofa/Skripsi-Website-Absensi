@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KelasController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LoginController::class, 'login'])->name('Login.acc');
+Route::get('/', [LoginController::class, 'index'])->name('Login.acc');
+Route::post('/', [LoginController::class, 'login'])->name('login.auth');
+
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
 Route::get('daftar', [LoginController::class, 'regis'])->name('Regis.acc');
 
 Route::prefix('Mahasiswa')->group(function(){
