@@ -19,6 +19,9 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    {{-- Alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
@@ -33,18 +36,64 @@
                                 <img src="{{ asset('img/polinema_logo.png') }}" class="rounded mx-auto" style="width: 140px;" alt="...">
                                 <p class="text-white-50 mb-4"></p>
 
-                                <div class="form-outline form-white mb-4">
-                                    <label class="form-label text-black">Email</label>
-                                    <input type="email" class="form-control form-control-lg text-center input-custom" />
-                                </div>
+                                {{-- Alert Email saja --}}
+                                @error('email')
+                                    <script>
+                                        const Toast = Swal.mixin({
+                                            toast: true,
+                                            position: "bottom-end",
+                                            showConfirmButton: false,
+                                            timer: 3000,
+                                            timerProgressBar: true,
+                                            didOpen: (toast) => {
+                                                toast.onmouseenter = Swal.stopTimer;
+                                                toast.onmouseleave = Swal.resumeTimer;
+                                            }
+                                        });
+                                            Toast.fire({
+                                            icon: "error",
+                                            title: "Email tidak ditemukan!"
+                                        });
+                                    </script>
+                                @enderror
 
-                                <div class="form-outline form-white mb-4">
-                                    <label class="form-label text-black">Password</label>
-                                    <input type="password" class="form-control form-control-lg text-center input-custom" />
-                                </div>
-                                <br>
-                                <button class="btn btn-outline-primary btn-lg px-5" type="submit">Login</button>
+                                {{-- Alert Login Gagal --}}
+                                @error('fail-login')
+                                    <script>
+                                        const Toast = Swal.mixin({
+                                            toast: true,
+                                            position: "bottom-end",
+                                            showConfirmButton: false,
+                                            timer: 3000,
+                                            timerProgressBar: true,
+                                            didOpen: (toast) => {
+                                                toast.onmouseenter = Swal.stopTimer;
+                                                toast.onmouseleave = Swal.resumeTimer;
+                                            }
+                                        });
+                                            Toast.fire({
+                                            icon: "error",
+                                            title: "Email atau Password Salah!"
+                                        });
+                                    </script>
+                                @enderror
+
+                                <form action="{{ route('login.auth') }}" method="post">
+                                    @csrf
+                                    <div class="form-outline form-white mb-4">
+                                        <label class="form-label text-black">Email</label>
+                                        <input type="email" name="email" class="form-control form-control-lg text-center input-custom" required>
+                                    </div>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <label class="form-label text-black">Password</label>
+                                        <input type="password" name="password" class="form-control form-control-lg text-center input-custom" />
+                                    </div>
+                                    <br>
+                                    <button class="btn btn-outline-primary btn-lg px-5" type="submit">Login</button>
+                                </form>
                             </div>
+
                             <div>
                                 <p class="mb-0 text-black">Don't have an account? <a href="#!" class="text-black-50 fw-bold">Sign Up</a></p>
                             </div>
