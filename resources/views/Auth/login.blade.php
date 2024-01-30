@@ -78,6 +78,27 @@
                                     </script>
                                 @enderror
 
+                                {{-- Alert Berhasil Regis saja --}}
+                                @error('regis-success')
+                                    <script>
+                                        const Toast = Swal.mixin({
+                                            toast: true,
+                                            position: "bottom-end",
+                                            showConfirmButton: false,
+                                            timer: 3000,
+                                            timerProgressBar: true,
+                                            didOpen: (toast) => {
+                                                toast.onmouseenter = Swal.stopTimer;
+                                                toast.onmouseleave = Swal.resumeTimer;
+                                            }
+                                        });
+                                            Toast.fire({
+                                            icon: "success",
+                                            title: "Pendaftaran Berhasil!"
+                                        });
+                                    </script>
+                                @enderror
+
                                 <form action="{{ route('login.auth') }}" method="post">
                                     @csrf
                                     <div class="form-outline form-white mb-4">
@@ -95,7 +116,7 @@
                             </div>
 
                             <div>
-                                <p class="mb-0 text-black">Don't have an account? <a href="#!" class="text-black-50 fw-bold">Sign Up</a></p>
+                                <p class="mb-0 text-black">Don't have an account? <a href="{{ route('Regis.acc') }}" class="text-black-50 fw-bold">Sign Up</a></p>
                             </div>
                         </div>
                     </div>
