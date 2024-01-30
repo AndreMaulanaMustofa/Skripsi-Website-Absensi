@@ -25,28 +25,65 @@
     <section class="vh-100 back-login">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-12">
                     <div class="card bg-white text-white" style="border-radius: 1rem;">
                         <div class="card-body p-5 text-center">
+                            <h2 class="mb-4 text-black">Daftar Akun</h2>
                             <div class="mb-md-5 mt-md-4 pb-5">
-                                <h2 class="mb-4 text-black">Management Absensi</h2>
                                 <img src="{{ asset('img/polinema_logo.png') }}" class="rounded mx-auto" style="width: 140px;" alt="...">
                                 <p class="text-white-50 mb-4"></p>
 
-                                <div class="form-outline form-white mb-4">
-                                    <label class="form-label text-black">Email</label>
-                                    <input type="email" class="form-control form-control-lg text-center input-custom" />
-                                </div>
+                                <form action="{{ route('Regis.auth') }}" method="post">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label text-black">Username</label>
+                                                <input type="username" name="username" class="form-control form-control-lg text-center input-custom" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label text-black">Nama Lengkap</label>
+                                                <input type="text" name="namaLengkap" class="form-control form-control-lg text-center input-custom" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label text-black">Email</label>
+                                                <input type="email" name="email" class="form-control form-control-lg text-center input-custom" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label text-black">Password</label>
+                                                <input type="password" name="password" class="form-control form-control-lg text-center input-custom" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label text-black">Prodi</label>
+                                                <input type="text" name="prodi" class="form-control form-control-lg text-center input-custom" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label text-black">Jurusan</label>
+                                                <input type="text" name="jurusan" class="form-control form-control-lg text-center input-custom" />
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                <div class="form-outline form-white mb-4">
-                                    <label class="form-label text-black">Password</label>
-                                    <input type="password" class="form-control form-control-lg text-center input-custom" />
-                                </div>
-                                <br>
-                                <button class="btn btn-outline-primary btn-lg px-5" type="submit">Login</button>
+                                    <br>
+                                    <button class="btn btn-outline-primary btn-lg px-5" type="submit">Login</button>
+                                </form>
                             </div>
                             <div>
-                                <p class="mb-0 text-black">Don't have an account? <a href="#!" class="text-black-50 fw-bold">Sign Up</a></p>
+                                <p class="mb-0 text-black">Have an account? <a href="{{ route('Login.acc') }}" class="text-black-50 fw-bold">Sign In</a></p>
                             </div>
                         </div>
                     </div>
