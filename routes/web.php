@@ -5,7 +5,9 @@ use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\QRCodeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,12 +21,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route Login
 Route::get('/', [LoginController::class, 'index'])->name('Login.acc');
 Route::post('/', [LoginController::class, 'login'])->name('login.auth');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout.acc');
 
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-
-Route::get('daftar', [LoginController::class, 'regis'])->name('Regis.acc');
+Route::get('daftar', [RegisController::class, 'index'])->name('Regis.acc');
+Route::post('daftar', [RegisController::class, 'regis'])->name('Regis.auth');
 
 Route::prefix('Mahasiswa')->group(function(){
     Route::get('/', [MahasiswaController::class, 'view'])->name('mahasiswa.view');
@@ -56,3 +59,5 @@ Route::prefix('Pengaturan')->group(function(){
     Route::get('editAdmin', [AkunController::class, 'edit'])->name('admin.edit');
     Route::get('Password', [AkunController::class, 'indexPassword'])->name('admin.pass');
 });
+
+Route::get('QRCode', [QRCodeController::class, 'index'])->name('qrcode.view');

@@ -38,7 +38,7 @@
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $k->kelas }}</td>
-                                <td>{{ $k->jurusan }}</td>
+                                <td>{{ $k->jur_id }}</td>
                                 <td>{{ $k->sks }}</td>
                                 <td>{{ $k->nama_DPA }}</td>
                                 <td>{{ $jumlahMahasiswa[$k->kelas] }}</td>

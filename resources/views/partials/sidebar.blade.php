@@ -60,7 +60,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('qrcode.view') }}" class="nav-link">
                 <i class="nav-icon fas fa-solid fa-qrcode"></i>
                     <p>
                         QR Code
@@ -86,7 +86,7 @@
             </li>
             <li class="nav-item position-fixed bottom-0">
                 <hr style="border-color: gray; width: 100%">
-                <a href="{{ route('Login.acc') }}" class="nav-link">
+                <a href="{{ route('logout.acc') }}" class="nav-link">
                 <i class=" nav-icon fas fa-solid fa-door-open"></i>
                     <p>
                         Log Out
