@@ -6,12 +6,14 @@ use App\Models\jadwal;
 use App\Models\kelas;
 use App\Models\Jurusan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JadwalController extends Controller
 {
     public function view(){
         $title = "Jadwal Kuliah";
-        $jadwal = jadwal::all();
+        $jadwal = jadwal::groupBy('kelas')->get();
+
 
         return view('jadwalKuliah.index', compact('title', 'jadwal'));
     }
@@ -22,6 +24,10 @@ class JadwalController extends Controller
         $jurusan = Jurusan::all();
 
         return view('jadwalKuliah.create', compact('title', 'kelas', 'jurusan'));
+    }
+
+    public function storeJadwal(Request $request){
+        
     }
 
     public function getClass($jur_id){
@@ -66,6 +72,10 @@ class JadwalController extends Controller
         // Handle jika tidak menemukan kelas dengan id yang diberikan
         return response()->json(['error' => 'Kelas tidak ditemukan.'], 404);
     }
+}
+
+function store(){
+    
 }
 
 
