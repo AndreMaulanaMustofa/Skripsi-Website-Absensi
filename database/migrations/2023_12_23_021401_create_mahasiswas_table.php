@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
             $table->integer('NIM');
+            $table->string('password');
             $table->string('namaLengkap');
             $table->string('Kelas');
             $table->string('jenisKelamin');
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->string('nama_Ibu');
             $table->string('NoTelp_Ibu', 15);
             $table->string('Domisili');
+            $table->string('Status')->default('Offline');
             $table->timestamps();
         });
     }

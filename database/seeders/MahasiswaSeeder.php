@@ -19,6 +19,7 @@ class MahasiswaSeeder extends Seeder
 
             mahasiswa::create([
                 'NIM' => 2041720211,
+                'Password' => 2041720211,
                 'namaLengkap' => 'Andre Maulana Mustofa',
                 'Kelas' => 'TI - 3D',
                 'NoTelp' => 6285233899868,
@@ -28,10 +29,12 @@ class MahasiswaSeeder extends Seeder
                 'NoTelp_Ayah' => 6285233953999,
                 'nama_Ibu' => 'Ida Fitriani Rohmah',
                 'NoTelp_Ibu' => 6285233609988,
-                'Domisili' => 'Ponorogo'
+                'Domisili' => 'Ponorogo',
+                'Status' => 'Online'
             ]);
             mahasiswa::create([
-                'NIM' => 2041720211,
+                'NIM' => 2041720215,
+                'Password' => 2041720215,
                 'namaLengkap' => 'Rexa Christiani Yuli',
                 'Kelas' => 'TI - 3D',
                 'NoTelp' => 628587955645,
@@ -41,7 +44,8 @@ class MahasiswaSeeder extends Seeder
                 'NoTelp_Ayah' => 6285233245694,
                 'nama_Ibu' => 'Aury Widya Sri',
                 'NoTelp_Ibu' => 6285233655694,
-                'Domisili' => 'Jakarta Selatan'
+                'Domisili' => 'Jakarta Selatan',
+                'Status' => 'Offline'
             ]);
             DB::commit();
         }catch (\Throwable $th){
