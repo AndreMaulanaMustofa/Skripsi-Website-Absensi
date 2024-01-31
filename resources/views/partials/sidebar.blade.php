@@ -35,6 +35,14 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon fa-solid fa-graduation-cap"></i>
+                    <p>
+                        Data Jurusan
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ route('jadwal.view') }}" class="nav-link">
                 <i class="nav-icon fa-solid fa-calendar"></i>
                     <p>
@@ -52,7 +60,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('akun.home') }}" class="nav-link">
                 <i class="nav-icon fas fa-solid fa-building"></i>
                     <p>
                         Akun Mahasiswa
