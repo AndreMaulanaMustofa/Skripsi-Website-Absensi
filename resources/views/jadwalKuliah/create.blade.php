@@ -7,7 +7,7 @@
         <div class="container-fluid px-4">
             <h3>Tambah Jadwal Kuliah</h3>
             <hr style="border-width: 2px; background-color: #B4B8C5">
-            <form action="{{ route('kelas.store') }}" method="POST" id="FormKelas">
+            <form action="{{ route('jadwal.store') }}" method="POST" id="FormKelas">
                 @csrf
                 <div class="row mt-1">
                     <div class="col-md-4">
@@ -91,7 +91,7 @@
                 </div>
                 <div class="col-mt-6 d-flex justify-content-center gap-3">
                     <button type="button" class="btn btn-danger" onclick="window.location.href='{{ route('mahasiswa.view') }}'">Kembali</button>
-                    <button type="button" onclick="validasiKelas()" class="btn btn-success">Tambah</button>
+                    <button type="button" onclick="validasiJadwal()" class="btn btn-success">Tambah</button>
                 </div>
             </form>
         </div>

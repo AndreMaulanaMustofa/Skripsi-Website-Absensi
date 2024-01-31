@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\User\Controller;
 use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KelasController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\QRCodeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,12 +54,17 @@ Route::prefix('Jadwal Kuliah')->group(function () {
     Route::get('createJadwal', [JadwalController::class, 'create'])->name('jadwal.create');
     Route::get('/getKelas/{jur_id}', [JadwalController::class, 'getKelass'])->name('getkelass');
     Route::get('/getMatkul/{id}', [JadwalController::class, 'getMatkul'])->name('getMatkul');
+    Route::get('/store', [JadwalController::class, 'store'])->name('jadwal.store');
 });
 
 Route::prefix('Pengaturan')->group(function(){
-    Route::get('/', [AkunController::class, 'index'])->name('admin.data');
-    Route::get('editAdmin', [AkunController::class, 'edit'])->name('admin.edit');
-    Route::get('Password', [AkunController::class, 'indexPassword'])->name('admin.pass');
+    Route::get('/', [UserController::class, 'index'])->name('admin.data');
+    Route::get('editAdmin', [UserController::class, 'edit'])->name('admin.edit');
+    Route::get('Password', [UserController::class, 'indexPassword'])->name('admin.pass');
+});
+
+Route::prefix('akunMahasiswa')->group(function(){
+    Route::get('/', [AkunController::class, 'index'])->name('akun.home');
 });
 
 Route::get('QRCode', [QRCodeController::class, 'index'])->name('qrcode.view');

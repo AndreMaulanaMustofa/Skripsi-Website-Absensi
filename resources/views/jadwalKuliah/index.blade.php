@@ -28,10 +28,6 @@
                                 <th scope="col">Kelas</th>
                                 <th scope="col">Jurusan</th>
                                 <th scope="col">Semester</th>
-                                <th scope="col">Hari</th>
-                                <th scope="col">Mata Kuliah</th>
-                                <th scope="col">Jam Mulai</th>
-                                <th scope="col">Jam Akhir</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -42,11 +38,12 @@
                                 <td>{{ $j->kelas }}</td>
                                 <td>{{ $j->jurusan }}</td>
                                 <td>{{ $j->semester }}</td>
-                                <td>{{ $j->hari }}</td>
-                                <td>{{ $j->matkul }}</td>
-                                <td>{{ date('H:s', strtotime($j->jam_mulai)) }}</td>
-                                <td>{{ date('H:s', strtotime($j->jam_akhir)) }}</td>
+                                {{-- <td>{{ date('H:s', strtotime($j->jam_mulai)) }}</td>
+                                <td>{{ date('H:s', strtotime($j->jam_akhir)) }}</td> --}}
                                 <td>
+                                    <a href="{{ route('kelas.view', $j->id) }}">
+                                        <button class="btn btn-info btn-sm">Detail</button>
+                                    </a>
                                     <a href="{{ route('kelas.edit', $j->id) }}">
                                         <button class="btn btn-success btn-sm">Edit</button>
                                     </a>
