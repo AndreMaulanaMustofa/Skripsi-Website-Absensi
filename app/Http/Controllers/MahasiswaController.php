@@ -25,6 +25,7 @@ class MahasiswaController extends Controller
 
         // Mahasiswa
         $mahasiswa->NIM = $request->input('NIM');
+        $mahasiswa->password = $request->input('NIM');
         $mahasiswa->namaLengkap = $request->input('nama_lengkap');
         $mahasiswa->kelas = $request->input('kelas');
         $mahasiswa->jenisKelamin = $request->input('jenisKelamin');
@@ -57,6 +58,7 @@ class MahasiswaController extends Controller
 
         // Mahasiswa
         $mahasiswa->NIM = $request->input('NIM');
+        $mahasiswa->password = $request->input('NIM');
         $mahasiswa->namaLengkap = $request->input('nama_lengkap');
         $mahasiswa->kelas = $request->input('kelas');
         $mahasiswa->jenisKelamin = $request->input('jenisKelamin');
