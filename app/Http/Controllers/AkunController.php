@@ -2,25 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\mahasiswa;
 use Illuminate\Http\Request;
 
 class AkunController extends Controller
 {
     public function index(){
-        $title = "Pengaturan";
+        $title = "Akun Mahasiswa";
+        $mahasiswa = mahasiswa::all();
 
-        return view('pengaturan.index', compact('title'));
-    }
-
-    public function edit(){
-        $title = "Edit Pengaturan";
-
-        return view('pengaturan.edit', compact('title'));
-    }
-
-    Public function indexPassword(){
-        $title = "Ubah Password";
-
-        return view('pengaturan.password', compact('title'));
+        return view('akunMahasiswa.index', compact('title', 'mahasiswa'));
     }
 }
