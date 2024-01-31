@@ -22,7 +22,7 @@
                     <div class="container border text-center" style="width: 50%; height: 80%; ">
                         <div class="row mt-3">
                             <div class="row mb-2 mt-2">
-                                <h3>QR Code Generate</h3>
+                                <h3>QR Code Generator</h3>
                             </div>
                         </div>
                         <div class="container border d-flex align-items-center" style="width: 200px; height: 200px">
