@@ -12,6 +12,7 @@ class mahasiswa extends Model
 
     protected $fillable = [
         'NIM',
+        'password',
         'namaLengkap',
         'Kelas',
         'jenisKelamin',
@@ -21,6 +22,7 @@ class mahasiswa extends Model
         'NoTelp_Ayah',
         'nama_Ibu',
         'NoTelp_Ibu',
-        'Domisili'
+        'Domisili',
+        'Status'
     ];
 }
