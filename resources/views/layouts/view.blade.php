@@ -38,6 +38,7 @@
     <script src="{{ asset('js/DataMahasiswa.js') }}"></script>
     <script src="{{ asset('js/DataKelas.js') }}"></script>
     <script src="{{ asset('js/KotaApi.js') }}"></script>
+    <script src="{{ asset('js/DataJurusan.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
