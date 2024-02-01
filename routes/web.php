@@ -7,6 +7,7 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisController;
+use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\UserController;
@@ -38,6 +39,13 @@ Route::prefix('Mahasiswa')->group(function(){
     Route::get('editData/{id}', [MahasiswaController::class, 'edit'])->name('mahasiswa.edit');
     Route::put('updateData/{id}', [MahasiswaController::class, 'update'])->name('mahasiswa.update');
     Route::delete('deleteData/{id}', [MahasiswaController::class, 'delete'])->name('mahasiswa.delete');
+});
+
+Route::prefix('Jurusan')->group(function(){
+    Route::get('/', [JurusanController::class, 'index'])->name('jurusan.view');
+    Route::post('storeData', [JurusanController::class, 'store'])->name('jurusan.store');
+    Route::put('updateData/{id}', [JurusanController::class, 'update'])->name('jurusan.update');
+    Route::delete('deleteData/{id}', [JurusanController::class, 'delete'])->name('jurusan.delete');
 });
 
 Route::prefix('Kelas')->group(function(){
