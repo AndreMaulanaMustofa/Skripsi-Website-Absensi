@@ -35,7 +35,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('jurusan.view') }}" class="nav-link">
                 <i class="nav-icon fa-solid fa-graduation-cap"></i>
                     <p>
                         Data Jurusan
