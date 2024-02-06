@@ -14,7 +14,7 @@
                         <i class="fa-solid fa-filter"></i> Offline
                     </button>
                     <button class="btn btn-outline-secondary mr-2">
-                        Reset
+                        <i class="fa-solid fa-rotate"></i> Reset
                     </button>
                 </div>
                 <div class="col-md-3">
