@@ -1,6 +1,9 @@
 @extends('layouts.view')
 
 @section('container-absensi')
+@php
+    use App\Models\jadwal;
+@endphp
 <div class="content-wrapper" style="background-color: white">
     <div class="content-header layout">
         <div class="container-fluid">
@@ -38,10 +41,8 @@
                                 <td>{{ $j->kelas }}</td>
                                 <td>{{ $j->jurusan }}</td>
                                 <td>{{ $j->semester }}</td>
-                                {{-- <td>{{ date('H:s', strtotime($j->jam_mulai)) }}</td>
-                                <td>{{ date('H:s', strtotime($j->jam_akhir)) }}</td> --}}
                                 <td>
-                                    <a href="{{ route('kelas.view', $j->id) }}">
+                                    <a data-bs-toggle="collapse" href="#detailJadwal{{$j->id}}" role="button" aria-expanded="false" aria-controls="detailJadwal{{$j->id}}">
                                         <button class="btn btn-info btn-sm">Detail</button>
                                     </a>
                                     <a href="{{ route('kelas.edit', $j->id) }}">
@@ -49,8 +50,25 @@
                                     </a>
                                     <button onclick="deleteJadwal('{{ $j->id }}')" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
-                                @empty
-                                <td colspan="7">Data Tidak Ada!</td>
+                            </tr>
+                            <tr class="collapse fade" id="detailJadwal{{$j->id}}">
+                                <td colspan="5">
+                                    <div class="card card-body">
+                                        @php
+                                            $matkul = jadwal::where('jurusan', $j->jurusan)->get();
+                                        @endphp
+                                            <h3>Matakuliah</h3>
+                                            <ol>
+                                                @foreach($matkul as $mk)
+                                                <li>{{$mk->matkul}}</li>
+                                                @endforeach
+                                            </ol>
+                                    </div>
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="5">Data Tidak Ada!</td>
                             </tr>
                             @endforelse
                         </tbody>
