@@ -1,4 +1,4 @@
-@extends('layouts.view')
+    @extends('layouts.view')
 
 @section('container-absensi')
 <div class="content-wrapper" style="background-color: white">
@@ -38,7 +38,7 @@
                             <tr>
                                 <td>{{ $m->NIM }}</td>
                                 <td>{{ $m->namaLengkap }}</td>
-                                <td>{{ $m->Kelas }}</td>
+                                <td>{{ $m->kelas }}</td>
                                 <td>{{ $m->jenisKelamin }}</td>
                                 <td>{{ $m->NoTelp }}</td>
                                 <td>{{ $m->tahunMasuk }}</td>
