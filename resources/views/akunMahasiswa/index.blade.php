@@ -13,6 +13,9 @@
                     <button class="btn btn-outline-danger mr-2">
                         <i class="fa-solid fa-filter"></i> Offline
                     </button>
+                    <button class="btn btn-outline-secondary mr-2">
+                        Reset
+                    </button>
                 </div>
                 <div class="col-md-3">
                     <div class="input-group mb-3">
@@ -42,13 +45,13 @@
                                 <td>{{ $j->NIM }}</td>
                                 <td>{{ $j->password }}</td>
                                 <td>{{ $j->namaLengkap }}</td>
-                                <td>{{ $j->Kelas }}</td>
+                                <td>{{ $j->kelas }}</td>
                                 <td>{{ $j->tahunMasuk }}</td>
                                 <td>
                                     @if($j->Status == "Offline")
-                                        <button class="btn btn-danger btn-sm">Offline</button>
+                                        <button class="btn btn-danger btn-sm">{{$j->Status}}</button>
                                     @elseif($j->Status == "Online")
-                                        <button class="btn btn-success btn-sm">Online</button>
+                                        <button class="btn btn-success btn-sm">{{$j->Status}}</button>
                                     @endif
                                 </td>
                                 @empty
@@ -64,5 +67,54 @@
 </div>
 <script>
     mencariData();
+</script>
+
+<script>
+    $(document).ready(function() {
+        // Fungsi untuk menampilkan semua data mahasiswa
+        function showAllData() {
+            $('tbody tr').show();
+        }
+
+        // Fungsi untuk menyembunyikan semua data mahasiswa
+        function hideAllData() {
+            $('tbody tr').hide();
+        }
+
+        // Fungsi untuk menampilkan data mahasiswa berdasarkan status
+        function showDataByStatus(status) {
+            $('tbody tr').each(function() {
+                if ($(this).find('td:last button').text().trim() === status) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }
+
+        // Tambahkan penanganan klik pada tombol Online
+        $('.btn-outline-primary').on('click', function() {
+            hideAllData();
+            showDataByStatus('Online');
+        });
+
+        // Tambahkan penanganan klik pada tombol Offline
+        $('.btn-outline-danger').on('click', function() {
+            hideAllData();
+            showDataByStatus('Offline');
+        });
+
+        // Tambahkan penanganan klik pada tombol Reset
+        $('.btn-outline-secondary').on('click', function() {
+            showAllData();
+        });
+
+        // Tambahkan penanganan klik pada tombol untuk menampilkan semua data
+        $('.btn-outline-primary, .btn-outline-danger').on('click', function() {
+            if ($(this).hasClass('active')) {
+                showAllData();
+            }
+        });
+    });
 </script>
 @endsection
