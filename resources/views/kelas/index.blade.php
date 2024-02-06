@@ -1,6 +1,9 @@
 @extends('layouts.view')
 
 @section('container-absensi')
+@php
+use App\Models\mahasiswa;
+@endphp
 <div class="content-wrapper" style="background-color: white">
     <div class="content-header layout">
         <div class="container-fluid">
@@ -35,13 +38,16 @@
                         </thead>
                         <tbody class="text-center">
                             @forelse($kelas as $key => $k)
+                            @php
+                            $jml = mahasiswa::where('id_kelas', $k->id)->count();
+                            @endphp
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $k->kelas }}</td>
-                                <td>{{ $k->jur_id }}</td>
+                                <td>{{ $k->nama_jurusan }}</td>
                                 <td>{{ $k->sks }}</td>
                                 <td>{{ $k->nama_DPA }}</td>
-                                <td>{{ $jumlahMahasiswa[$k->kelas] }}</td>
+                                <td>{{ $jml }}</td>
                                 <td>
                                     <a href="{{ route('kelas.edit', $k->id) }}">
                                         <button class="btn btn-success btn-sm">Edit</button>
