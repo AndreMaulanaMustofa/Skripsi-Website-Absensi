@@ -27,7 +27,7 @@ class JadwalController extends Controller
     }
 
     public function storeJadwal(Request $request){
-        
+
     }
 
     public function getClass($jur_id){
@@ -75,7 +75,7 @@ class JadwalController extends Controller
 }
 
 function store(){
-    
+     
 }
 
 

@@ -3,22 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\kelas;
-use App\Models\mahasiswa;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
 {
     public function view(){
-        $kelas = Kelas::all();
+        $kelas = Kelas::join('jurusan','jurusan.jur_id','=','kelas.jur_id')->select('*')->get();
         $title = "Kelas";
 
-        $jumlahMahasiswa = [];
-
-        foreach ($kelas as $item) {
-            $jumlahMahasiswa[$item->kelas] = Mahasiswa::where('Kelas', $item->kelas)->count();
-        }
-
-        return view('kelas.index', compact('kelas', 'title', 'jumlahMahasiswa'));
+        return view('kelas.index', compact('kelas', 'title'));
     }
 
     public function create(){
