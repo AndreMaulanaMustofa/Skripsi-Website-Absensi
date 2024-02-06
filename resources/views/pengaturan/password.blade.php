@@ -10,7 +10,7 @@
                 <div class="container mt-5" style="background-color: white; width: 60%; height: 100%;">
                     <br>
 
-                    @error('error')
+                    @error('ubah-fail')
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
                             <div class="message">
                                 <span class="text-red-500">{{$message = "Current Password Salah! Silahkan Coba Lagi."}}</span>
@@ -19,12 +19,41 @@
                         </div>
                     @enderror
 
-                    <div class="container border" style="width: 90%; height: 80%; ">
-                        <div class="row mt-3">
-                            <div class="row mb-2 mt-2">
-                                <h3>Ubah Password</h3>
+                    @error('ubah-notSame')
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <div class="message">
+                                <span class="text-red-500">{{$message = "Repeat Password tidak sama dengan New Password."}}</span>
                             </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
+                    @enderror
+
+                    @error('ubah-success')
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <div class="message">
+                                <span class="text-red-500">{{$message = "Password berhasil diubah!"}}</span>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @enderror
+
+                    <form action="{{ route('admin.pass.update') }}" method="post">
+                        @csrf
+                        @method('put')
+                        <div class="container border" style="width: 90%; height: 80%; ">
+                            <div class="row mt-3">
+                                <div class="row mb-2 mt-2">
+                                    <h3>Ubah Password</h3>
+                                </div>
+                            </div>
+                            <div class="row mt-4 ml-1">
+                                <div class="col-4 mt-2" >
+                                    Current Password
+                                </div>
+                                <div class="col-8 ">
+                                    <input type="password" id="curPass" name="curPass" class="form-control input-password" placeholder="Masukkan Password saat ini" required>
+                                </div>
+                            </div>
                         <div class="row mt-4 ml-1">
                             <div class="col-4 mt-2">
                                 New Password
@@ -41,21 +70,13 @@
                                 <input type="password" id="repNewPass" name="repNewPass" class="form-control input-password" placeholder="Ulangi Masukkan Password Baru" required>
                             </div>
                         </div>
-                        <div class="row mt-4 ml-1">
-                            <div class="col-4 mt-2" >
-                                Current Password
-                            </div>
-                            <div class="col-8 ">
-                                <input type="password" id="curPass" name="curPass" class="form-control input-password" placeholder="Masukkan Password saat ini" required>
-                            </div>
-                        </div>
                         <div class="row mt-3">
                             <div class="col-9" style="color: black;"></div>
                             <div class="col-3">
                                 <button type="submit" style="width: 100%; margin-bottom: 13px; background-color:#42BB72; border:none; color:white; height: 40px">Simpan <i class="fa fa-save"></i></button>
                             </div>
                         </div>
-
+                    </form>
                     </div>
                     <br>
                 </div>
