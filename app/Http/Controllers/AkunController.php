@@ -9,8 +9,10 @@ class AkunController extends Controller
 {
     public function index(){
         $title = "Akun Mahasiswa";
-        $mahasiswa = mahasiswa::all();
+        $mahasiswa = mahasiswa::join('kelas','kelas.id','=','mahasiswas.id_kelas')->select('*')->get();
 
         return view('akunMahasiswa.index', compact('title', 'mahasiswa'));
     }
+
+    
 }
