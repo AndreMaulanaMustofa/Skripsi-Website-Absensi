@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MahasiswaController extends Controller
 {
     public function view(){
-        $mahasiswa = mahasiswa::all();
+        $mahasiswa = mahasiswa::join('kelas','kelas.id','=','mahasiswas.id_kelas')->select('*')->get();
         $title = "Mahasiswa";
         return view('dataMahasiswa.index', compact('mahasiswa', 'title'));
     }
