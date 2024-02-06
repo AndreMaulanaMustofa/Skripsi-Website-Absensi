@@ -69,6 +69,7 @@ Route::prefix('Pengaturan')->group(function(){
     Route::get('/', [UserController::class, 'index'])->name('admin.data');
     Route::get('editAdmin', [UserController::class, 'edit'])->name('admin.edit');
     Route::get('Password', [UserController::class, 'indexPassword'])->name('admin.pass');
+    Route::put('updatePassword', [UserController::class, 'updatePassword'])->name('admin.pass.update');
 });
 
 Route::prefix('akunMahasiswa')->group(function(){
