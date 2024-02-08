@@ -35,28 +35,6 @@
                                 <h2 class="mb-4 text-black">Manajemen Absensi</h2>
                                 <img src="{{ asset('img/polinema_logo.png') }}" class="rounded mx-auto" style="width: 140px;" alt="...">
                                 <p class="text-white-50 mb-4"></p>
-
-                                {{-- Alert Email saja --}}
-                                @error('email')
-                                    <script>
-                                        const Toast = Swal.mixin({
-                                            toast: true,
-                                            position: "bottom-end",
-                                            showConfirmButton: false,
-                                            timer: 3000,
-                                            timerProgressBar: true,
-                                            didOpen: (toast) => {
-                                                toast.onmouseenter = Swal.stopTimer;
-                                                toast.onmouseleave = Swal.resumeTimer;
-                                            }
-                                        });
-                                            Toast.fire({
-                                            icon: "error",
-                                            title: "Email tidak ditemukan!"
-                                        });
-                                    </script>
-                                @enderror
-
                                 {{-- Alert Login Gagal --}}
                                 @error('fail-login')
                                     <script>
