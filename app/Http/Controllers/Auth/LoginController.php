@@ -22,28 +22,31 @@ class LoginController extends Controller
         $login = $request->input('email');
 
         if (filter_var($login, FILTER_VALIDATE_EMAIL)) {
-            $userLogin = User::where('email', $login)->first();
+            $userLogin = Auth::guard('admin')->attempt([
+                'email' => $login,
+                'password' => $request->input('password')
+            ]);
 
             if ($userLogin) {
-                if (Hash::check($request->input('password'), $userLogin->password)) {
+                $adminPass = Auth::guard('admin')->user();
+
+                if (Hash::check($request->input('password'), $adminPass->password)) {
                     return redirect()->route('mahasiswa.view');
-                } else {
-                    return back()->withErrors([
-                        'fail-login' => 'error',
-                    ]);
                 }
-            } else {
-                return back()->withErrors([
-                    'email' => 'error',
-                ]);
-            }
+        } else {
+            return back()->withErrors([
+                'fail-login' => 'error',
+            ]);
         }
     }
+}
 
     public function logout(Request $request){
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         $request->session()->flush();
+
+        Auth::logout();
 
         return redirect()->route('Login.acc');
     }
