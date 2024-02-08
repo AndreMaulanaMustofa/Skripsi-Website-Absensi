@@ -11,29 +11,31 @@ class UserController extends Controller
 {
     public function index(){
         $title = "Pengaturan";
+        $user = Auth::guard('admin')->user();
 
-        return view('pengaturan.index', compact('title'));
+        return view('pengaturan.index', compact('title', 'user'));
     }
 
     public function edit(){
         $title = "Edit Pengaturan";
+        $user = Auth::guard('admin')->user();
 
-        return view('pengaturan.edit', compact('title'));
+        return view('pengaturan.edit', compact('title', 'user'));
     }
 
     Public function indexPassword(){
         $title = "Ubah Password";
+        $data = Auth::guard('admin')->user();
 
-        return view('pengaturan.password', compact('title'));
+        return view('pengaturan.password', compact('title', 'data'));
     }
 
-    public function updatePassword(Request $request){
-        $id = Auth::user()->id;
+    public function updatePassword(Request $request, $id){
         $user = User::find($id);
 
+        $currentPass = $request->input('curPass');
         $passwordBaru = $request->input('newPass');
         $passwordRepeat = $request->input('repNewPass');
-        $currentPass = $request->input('curPass');
 
         if (Hash::check($currentPass, $user->password)) {
             if ($passwordBaru == $passwordRepeat) {
@@ -41,7 +43,7 @@ class UserController extends Controller
                 $user->update();
 
                 return back()->withErrors([
-                    'ubah-success' => 'success',
+                    'ubah-success' => 'success'
                 ]);
             }else{
                 return back()->withErrors([
