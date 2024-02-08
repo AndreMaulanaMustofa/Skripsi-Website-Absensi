@@ -10,9 +10,9 @@
                     <div class="card mb-4 mb-xl-0">
                         <center><div class="card-header bg-blue">Profile Picture</div></center>
                         <div class="card-body text-center">
-                            <img class="img-account-profile rounded-circle mb-2" src="{{ asset('img/polinema_logo.png') }}" alt="" width="150px" data-toggle="modal" data-target="#profileModal">
-                            <div class="small mb-0"><h4>Admin JTI</h4></div>
-                            <div class="small text-muted  mb-4">jtipolinema@gmail.com</div>
+                            <img class="img-account-profile rounded-circle mb-2" src="{{ asset('img/' . $user->imgProfile) }}" alt="" width="150px" data-toggle="modal" data-target="#profileModal">
+                            <div class="small mb-0"><h4>{{ $user->username }}</h4></div>
+                            <div class="small text-muted  mb-4">{{ $user->email }}</div>
                         </div>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-body">
-                                    <img src="{{ asset('img/polinema_logo.png') }}" alt="Profile Picture" width="100%">
+                                    <img src="{{ asset('img/' . $user->imgProfile) }}" alt="Profile Picture" width="100%">
                                 </div>
                             </div>
                         </div>
@@ -34,35 +34,35 @@
                                 <div class="row gx-3 mb-3">
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="email">Email</label>
-                                        <input class="form-control input-akun" id="email" type="text" value="jtipolinema@gmail.com" disabled>
+                                        <input class="form-control input-akun" id="email" type="text" value="{{ $user->email }}" disabled>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="username">Username</label>
-                                        <input class="form-control input-akun" id="username" type="text" value="Admin JTI" disabled>
+                                        <input class="form-control input-akun" id="username" type="text" value="{{ $user->username }}" disabled>
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="small mb-1" for="fullName">Nama Lengkap</label>
-                                <input class="form-control input-akun" id="fullName" type="text" value="Admin Jurusan Teknologi Informasi" disabled>
+                                <input class="form-control input-akun" id="fullName" type="text" value="{{ $user->namaLengkap }}" disabled>
                                 </div>
 
                                 <div class="row gx-3 mb-3">
 
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="province">Prodi</label>
-                                        <input class="form-control input-akun" id="province" type="text" value="D4 Teknik Informatika" disabled>
+                                        <input class="form-control input-akun" id="province" type="text" value="{{ $user->prodi }}" disabled>
                                     </div>
 
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="city">Jurusan</label>
-                                        <input class="form-control input-akun" id="city" type="text" value="Teknologi Informasi" disabled>
+                                        <input class="form-control input-akun" id="city" type="text" value="{{ $user->jurusan }}" disabled>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="small mb-1" for="fullName">Alamat</label>
-                                <input class="form-control input-akun" id="fullName" type="text" value="Jl. Soekarno Hatta No.9, Jatimulyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65141" disabled>
+                                <input class="form-control input-akun" id="fullName" type="text" value="{{ $user->alamat }}" disabled>
                                 </div>
 
                                 <center>

@@ -12,20 +12,20 @@
                         <center><div class="card-header bg-gradient-blue">Profile Picture</div></center>
                         <div class="card-body text-center">
 
-                            <img class="img-account-profile rounded-circle mb-2" src="{{ asset('img/polinema_logo.png') }}" alt="" width="150px" data-toggle="modal" data-target="#profileModal">
+                            <img class="img-account-profile rounded-circle mb-2" src="{{ asset('img/' . $user->imgProfile) }}" alt="" width="150px" data-toggle="modal" data-target="#profileModal">
 
                             <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-body">
-                                            <img src="{{ asset('img/polinema_logo.png') }}" alt="Profile Picture" width="100%">
+                                            <img src="{{ asset('img/' . $user->imgProfile) }}" alt="Profile Picture" width="100%">
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="small mb-0"><h4>Admin JTI</h4></div>
-                            <div class="small text-muted  mb-4">jtipolinema@gmail.com</div>
+                            <div class="small mb-0"><h4>{{ $user->username }}</h4></div>
+                            <div class="small text-muted  mb-4">{{ $user->email }}</div>
 
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle bg-gradient-blue border-0"  type="button" data-toggle="dropdown">Ubah Foto Profil
@@ -55,35 +55,35 @@
                                     <!-- Form Group (first name)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="email">Email</label>
-                                        <input class="form-control" id="email" type="text" name="email" value="jtipolinema@gmail.com">
+                                        <input class="form-control" id="email" type="text" name="email" value="{{ $user->email }}">
                                     </div>
                                     <!-- Form Group (last name)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="username">Username</label>
-                                        <input class="form-control" id="username" style="cursor:default;" type="text" name="username" value="Admin JTI">
+                                        <input class="form-control" id="username" style="cursor:default;" type="text" name="username" value="{{ $user->username }}">
                                     </div>
                                 </div>
                                 <!-- Form Group (username)-->
                                 <div class="mb-3">
                                     <label class="small mb-1" for="fullName">Nama Lengkap</label>
-                                <input class="form-control" id="fullName" type="text" name="namaLengkap" value="Admin Jurusan Teknologi Informasi" >
+                                <input class="form-control" id="fullName" type="text" name="namaLengkap" value="{{ $user->namaLengkap }}" >
                                 </div>
                                 <!-- Form Row        -->
                                 <div class="row gx-3 mb-3">
                                     <!-- Form Group (organization name)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="prodi">Prodi</label>
-                                        <input class="form-control" id="prodi" name="prodi" type="text" value="D4 Teknik Informatika" >
+                                        <input class="form-control" id="prodi" name="prodi" type="text" value="{{ $user->prodi }}" >
                                     </div>
                                     <!-- Form Group (location)-->
                                     <div class="col-md-6">
                                         <label class="small mb-1" for="jurusan">Jurusan</label>
-                                        <input class="form-control" id="jurusan" name="jurusan" type="text" value="Teknologi Informasi" >
+                                        <input class="form-control" id="jurusan" name="jurusan" type="text" value="{{ $user->jurusan }}" >
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="small mb-1" for="alamat">Alamat</label>
-                                    <input class="form-control" id="alamat" name="detail" type="text" value="Jl. Soekarno Hatta No.9, Jatimulyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65141" >
+                                    <input class="form-control" id="alamat" name="detail" type="text" value="{{ $user->alamat }}" >
                                 </div>
                                 <!-- Save changes button-->
                                 <center>
