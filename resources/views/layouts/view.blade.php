@@ -42,7 +42,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" id="segar">
     <div class="overlay-wrapper">
 
         {{-- Navbar --}}
