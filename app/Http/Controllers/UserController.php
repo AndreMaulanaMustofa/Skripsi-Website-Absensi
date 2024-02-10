@@ -56,4 +56,50 @@ class UserController extends Controller
             ]);
         }
     }
+
+    public function updateUser(Request $request, $id){
+        $user = User::find($id);
+
+        $user->email        = $request->input('email');
+        $user->username     = $request->input('username');
+        $user->namaLengkap  = $request->input('namaLengkap');
+        $user->prodi        = $request->input('prodi');
+        $user->jurusan      = $request->input('jurusan');
+        $user->alamat       = $request->input('alamat');
+
+        $user->update();
+
+        return redirect()->route('admin.data')->withErrors([
+            'change-data' => 'success'
+        ]);
+    }
+
+    public function profile_image_update(Request $request, $id){
+        $user = User::find($id);
+
+        if($request->hasFile('img_profile')){
+            $file       = $request->file('img_profile');
+            $filename   = $user->username . '_' . $file->getClientOriginalName();
+            $file->move('img/', $filename);
+            $user->imgProfile = $filename;
+            $user->update();
+        }
+
+        return redirect()->route('admin.data');
+    }
+
+    public function profile_image_delete($id){
+        $user = User::find($id);
+
+        if($user->imgProfile != "polinema_logo.png"){
+            unlink(public_path('img/' . $user->imgProfile));
+        }
+
+        $user->imgProfile = "polinema_logo.png";
+        $user->update();
+
+        return redirect()->route('admin.edit')->withErrors([
+            'img-delete' => 'success'
+        ]);
+    }
 }
