@@ -68,8 +68,11 @@ Route::prefix('Jadwal Kuliah')->group(function () {
 Route::prefix('Pengaturan')->group(function(){
     Route::get('/', [UserController::class, 'index'])->name('admin.data');
     Route::get('editAdmin', [UserController::class, 'edit'])->name('admin.edit');
+    Route::put('updateUser/{id}', [UserController::class, 'updateUser'])->name('admin.update');
     Route::get('Password', [UserController::class, 'indexPassword'])->name('admin.pass');
     Route::put('updatePass/{id}', [UserController::class, 'updatePassword'])->name('pass.update');
+    Route::post('imgUpdate/{id}', [UserController::class, 'profile_image_update'])->name('profile.update');
+    Route::get('imgDelete/{id}', [UserController::class, 'profile_image_delete'])->name('profile.delete');
 });
 
 Route::prefix('akunMahasiswa')->group(function(){
