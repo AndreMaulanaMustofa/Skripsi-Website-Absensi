@@ -54,7 +54,7 @@
             </li>
             <hr style=" border-color: gray">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('absensi.view') }}" class="nav-link">
                 <i class="nav-icon fa-solid fa-cloud"></i>
                     <p>
                         Data Absensi
