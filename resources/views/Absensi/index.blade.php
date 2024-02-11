@@ -5,13 +5,31 @@
     <div class="content-header layout">
         <div class="container-fluid">
             <div class="row mb-2 mt-2">
-                <h3 class="mb-3 ">Jadwal Kuliah</h3>
+                <h3 class="mb-3 ">Data Absensi</h3>
                 <div class="col-md-9">
-                    <a href="{{ route('jadwal.create') }}">
-                        <button class="btn btn-outline-primary mr-2">
-                            <i class="fa-solid fa-plus"></i> Tambahkan
+                    <button class="btn btn-outline-primary mr-2" id="dateFilter">
+                        <i class="fa-solid fa-calendar"></i> Berdasarkan Tanggal
+                    </button>
+                    <script>
+                        document.getElementById('dateFilter').addEventListener("click", function(){
+                            flatpickr("#dateFilter", {
+                                enableTime: false,
+                                dateFormat: "Y-m-d",
+                            });
+                        });
+                    </script>
+                    <div class="btn-group">
+                        <button class="btn btn-outline-danger mr-2" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 5px">
+                            <i class="fa-solid fa-clipboard-check"></i> Berdasarkan Status
                         </button>
-                    </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Terlambat</a></li>
+                            <li><a href="#" class="dropdown-item">Tidak Terlambat</a></li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-outline-secondary mr-2">
+                        <i class="fa-solid fa-rotate"></i> Reset
+                    </button>
                 </div>
                 <div class="col-md-3">
                     <div class="input-group mb-3">
@@ -25,32 +43,40 @@
                         <thead>
                             <tr class="text-center bg-dark">
                                 <th scope="col">No</th>
+                                <th scope="col">NIM</th>
+                                <th scope="col">Nama Mahasiswa</th>
                                 <th scope="col">Kelas</th>
-                                <th scope="col">Jurusan</th>
                                 <th scope="col">Semester</th>
-                                <th scope="col">Hari</th>
-                                <th scope="col">Mata Kuliah</th>
-                                <th scope="col">Jam Mulai</th>
-                                <th scope="col">Jam Akhir</th>
+                                <th scope="col">Jenis Kelamin</th>
+                                <th scope="col">Tanggal Absen</th>
+                                <th scope="col">Jam Absen</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
+
                         <tbody class="text-center">
-                            @forelse($jadwal as $key => $j)
+                            @forelse($absensi as $key => $a)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $j->kelas }}</td>
-                                <td>{{ $j->jurusan }}</td>
-                                <td>{{ $j->semester }}</td>
-                                <td>{{ $j->hari }}</td>
-                                <td>{{ $j->matkul }}</td>
-                                <td>{{ date('H:s', strtotime($j->jam_mulai)) }}</td>
-                                <td>{{ date('H:s', strtotime($j->jam_akhir)) }}</td>
+                                <td>{{ $a->NIM }}</td>
+                                <td>{{ $a->namaMahasiswa }}</td>
+                                <td>{{ $a->kelas }}</td>
+                                <td>{{ $a->semester }}</td>
+                                <td>{{ $a->jenisKelamin }}</td>
+                                <td>{{ $a->tgl_absen }}</td>
+                                <td>{{ $a->jam_absen }}</td>
                                 <td>
-                                    <a href="{{ route('kelas.edit', $j->id) }}">
-                                        <button class="btn btn-success btn-sm">Edit</button>
+                                    @if($a->status == "Terlambat")
+                                        <button class="btn btn-danger btn-sm">{{$a->status}}</button>
+                                    @elseif($a->status == "Tidak Terlambat")
+                                        <button class="btn btn-success btn-sm">{{$a->status}}</button>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="#">
+                                        <button class="btn btn-danger btn-sm">Hapus</button>
                                     </a>
-                                    <button onclick="deleteJadwal('{{ $j->id }}')" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                                 @empty
                                 <td colspan="7">Data Tidak Ada!</td>
