@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\User\Controller;
 use App\Http\Controllers\Auth\LoginController as AuthLoginController;
@@ -57,12 +58,17 @@ Route::prefix('Kelas')->group(function(){
     Route::delete('deleteKelas/{id}', [KelasController::class, 'delete'])->name('kelas.delete');
 });
 
-Route::prefix('Jadwal Kuliah')->group(function () {
+Route::prefix('JadwalKuliah')->group(function () {
     Route::get('/', [JadwalController::class, 'view'])->name('jadwal.view');
     Route::get('createJadwal', [JadwalController::class, 'create'])->name('jadwal.create');
     Route::get('/getKelas/{jur_id}', [JadwalController::class, 'getKelass'])->name('getkelass');
     Route::get('/getMatkul/{id}', [JadwalController::class, 'getMatkul'])->name('getMatkul');
     Route::get('/store', [JadwalController::class, 'store'])->name('jadwal.store');
+});
+
+Route::prefix('DataAbsensi')->group(function(){
+    Route::get('/', [AbsensiController::class, 'index'])->name('absensi.view');
+    
 });
 
 Route::prefix('Pengaturan')->group(function(){
