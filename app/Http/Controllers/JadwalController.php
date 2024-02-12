@@ -99,4 +99,10 @@ class JadwalController extends Controller
 
         return redirect()->route('jadwal.view');
     }
+
+    public function deleteJadwal($id){
+        Jadwal::find($id)->delete();
+
+        return redirect()->route('jadwal.view');
+    }
 }

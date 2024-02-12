@@ -65,6 +65,7 @@ Route::prefix('JadwalKuliah')->group(function () {
     Route::get('/getMatkul/{id}', [JadwalController::class, 'getMatkul'])->name('getMatkul');
     Route::post('storeJadwal', [JadwalController::class, 'storeJadwal'])->name('jadwal.store');
     Route::get('editJadwal/{id}', [JadwalController::class, 'editJadwal'])->name('jadwal.edit');
+    Route::delete('deleteJadwal/{id}', [JadwalController::class, 'deleteJadwal'])->name('jadwal.delete');
 });
 
 Route::prefix('DataAbsensi')->group(function(){
