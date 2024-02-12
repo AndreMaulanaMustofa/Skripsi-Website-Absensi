@@ -45,25 +45,42 @@
                                     <a data-bs-toggle="collapse" href="#detailJadwal{{$j->id}}" role="button" aria-expanded="false" aria-controls="detailJadwal{{$j->id}}">
                                         <button class="btn btn-info btn-sm">Detail</button>
                                     </a>
-                                    <a href="{{ route('kelas.edit', $j->id) }}">
-                                        <button class="btn btn-success btn-sm">Edit</button>
-                                    </a>
-                                    <button onclick="deleteJadwal('{{ $j->id }}')" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             </tr>
                             <tr class="collapse fade" id="detailJadwal{{$j->id}}">
                                 <td colspan="5">
-                                    <div class="card card-body">
-                                        @php
-                                            $matkul = jadwal::where('jurusan', $j->jurusan)->get();
-                                        @endphp
-                                            <h3>Matakuliah</h3>
-                                            <ol>
-                                                @foreach($matkul as $mk)
-                                                <li>{{$mk->matkul}}</li>
-                                                @endforeach
-                                            </ol>
-                                    </div>
+                                    <table class="table align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Hari</th>
+                                                <th scope="col">Matkul</th>
+                                                <th scope="col">Jam Mulai</th>
+                                                <th scope="col">Jam Akhir</th>
+                                                <th scope="col">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-center">
+                                            @php
+                                                $matkul = jadwal::where('kelas', $j->kelas)->where('semester', $j->semester)->get();
+                                            @endphp
+                                            @foreach($matkul as $key => $mk)
+                                            <tr>
+                                                <td>{{ $key + 1 }}</td>
+                                                <td>{{$mk->hari}}</td>
+                                                <td>{{$mk->matkul}}</td>
+                                                <td>{{$mk->jam_mulai}}</td>
+                                                <td>{{$mk->jam_akhir}}</td>
+                                                <td>
+                                                    <a href="{{ route('kelas.edit', $j->id) }}">
+                                                        <button class="btn btn-success btn-sm">Edit</button>
+                                                    </a>
+                                                    <button onclick="deleteJadwal('{{ $j->id }}')" class="btn btn-danger btn-sm">Delete</button>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </td>
                             </tr>
                             @empty
