@@ -5,62 +5,167 @@
 <div class="content-wrapper" style="background-color: white">
     <div class="content-header p-4">
         <div class="container-fluid px-4">
-            <h3>Tambah Data Kelas</h3>
+            <h3>Edit Jadwal Kuliah</h3>
             <hr style="border-width: 2px; background-color: #B4B8C5">
-            <form action="{{ route('kelas.update', $kelas->id) }}" method="POST" id="FormKelas">
-                @method('PUT')
+            <form action="{{ route('jadwal.store') }}" method="POST" id="FormJadwal">
                 @csrf
-                <div class="row mt-1">
-                    <div class="col-md-4">
-                        <p>Kelas<span class="star-wajib">*</span></p>
-                    </div>
-                    <div class="col-md-1">
-                        <input type="text" class="form-control" name="Kelas" id="Kelas" value="{{ $kelas->kelas }}" required>
-                    </div>
-                </div>
+                @method('PUT')
                 <div class="row mt-1">
                     <div class="col-md-4">
                         <p>Jurusan<span class="star-wajib">*</span></p>
                     </div>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" name="jurusan" id="jurusan" value="{{ $kelas->jurusan }}" required>
+                    <div class="col-sm-2">
+                        <select name="jurusan" class="form-control jurusan" id="jurusan">
+                            <option selected style="display: none;">-- Pilih Jurusan --</option>
+                            @foreach ($jurusan as $item)
+                                <option value="{{ $item->jur_id }}" {{ $item->nama_jurusan == $jadwal->jurusan ? 'selected' : '' }}>{{ $item->nama_jurusan }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="row mt-1">
                     <div class="col-md-4">
-                        <p>SKS<span class="star-wajib">*</span></p>
+                        <p>Kelas<span class="star-wajib">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <select name="kelas" id="kelas" class="form-control kelas">
+                            <option selected style="display: none;">-- Pilih jurusan terlebih dahulu --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-md-4">
+                        <p>Semester<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-sm-1">
-                        <input type="number" class="form-control" name="sks" id="sks" value="{{ $kelas->sks }}" required>
+                        <input type="number" min="1" max="8" class="form-control" name="semester" id="semester" required placeholder="semester">
                     </div>
                 </div>
                 <div class="row mt-1">
                     <div class="col-md-4">
-                        <p>Nama DPA<span class="star-wajib">*</span></p>
+                        <p>Hari<span class="star-wajib">*</span></p>
                     </div>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" name="namaDPA" id="namaDPA" value="{{ $kelas->nama_DPA }}" required>
+                    <div class="col-md-2">
+                        <select name="hari" id="hari" class="form-control">
+                            <option selected style="display: none;">-- Pilih Hari --</option>
+                            <option value="Senin">Senin</option>
+                            <option value="Selasa">Selasa</option>
+                            <option value="Rabu">Rabu</option>
+                            <option value="Kamis">Kamis</option>
+                            <option value="Jumat">Jumat</option>
+                        </select>
                     </div>
                 </div>
-                @for ($i = 1; $i < 9; $i++)
-                    <div class="row mt-1">
-                        <div class="col-md-4">
-                            <p>Mata Kuliah {{ $i }}<span class="star-wajib"></span></p>
-                        </div>
-                        @php
-                            $matkul = "matkul_" . $i;
-                        @endphp
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" name="{{ $matkul }}" id="{{ $matkul }}" value="{{ $kelas->$matkul }}">
-                        </div>
+                <div class="row mt-1">
+                    <div class="col-md-4">
+                        <p>Mata Kuliah<span class="star-wajib">*</span></p>
                     </div>
-                @endfor
+                    <div class="col-md-3">
+                        <select name="matkul" id="matkul" class="form-control matkul">
+                            <option selected style="display: none;">-- Pilih kelas terlebih dahulu --</option>
+                            {{-- @foreach ($kelas as $item)
+                                @for ($i = 1; $i < 9; $i++)
+                                    @php
+                                        $matkul = 'matkul_' . $i;
+                                    @endphp
+                                    <option value="{{ $item->$matkul }}">{{ $item->$matkul }}</option>
+                                @endfor
+                            @endforeach --}}
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-md-4">
+                        <p>Jam Mulai<span class="star-wajib">*</span></p>
+                    </div>
+                    <div class="col-md-1">
+                        <input type="text" class="form-control" name="matkul_1" id="matkul_1">
+                    </div>
+                </div>
+                <script>
+                    const jamMulai = document.getElementById('matkul_1');
+
+                    flatpickr(jamMulai, {
+                        enableTime: true,
+                        noCalendar: true,
+                        dateFormat: "H:i",
+                        time_24hr: true
+                    });
+                </script>
+                <div class="row mt-1">
+                    <div class="col-md-4">
+                        <p>Jam Akhir<span class="star-wajib">*</span></p>
+                    </div>
+                    <div class="col-md-1">
+                        <input type="text" class="form-control" name="matkul_2" id="matkul_2">
+                    </div>
+                </div>
+                <script>
+                    const jamAkhir = document.getElementById('matkul_2');
+
+                    flatpickr(jamAkhir, {
+                        enableTime: true,
+                        noCalendar: true,
+                        dateFormat: "H:i",
+                        time_24hr: true
+                    });
+                </script>
                 <div class="col-mt-6 d-flex justify-content-center gap-3">
-                    <button type="button" class="btn btn-danger" onclick="window.location.href='{{ route('kelas.view') }}'">Kembali</button>
-                    <button type="button" onclick="editKelas()" class="btn btn-primary px-4">Ubah</button>
+                    <button type="button" class="btn btn-danger" onclick="window.location.href='{{ route('mahasiswa.view') }}'">Kembali</button>
+                    <button type="button" onclick="validasiJadwal()" class="btn btn-success">Tambah</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(".jurusan").change(function() {
+        var selectedOption = $(this).children("option:selected").val();
+
+        // Lakukan permintaan Ajax
+        $.ajax({
+            url: 'getKelas/' + selectedOption,
+            type: 'GET',
+            success: function(data) {
+                // Hapus opsi lama pada pilihan kedua
+                $(".kelas").empty();
+
+                // Tambahkan opsi baru berdasarkan data dari server
+                $.each(data, function(id, value) {
+                    $(".kelas").append('<option value="" selected style="display:none;">-- Pilih Kelas --</option>');
+                    $(".kelas").append('<option value="' + id + '">' + value + '</option>');
+                });
+            }
+        });
+    });
+
+    $(".kelas").change(function() {
+        var kelas = $(this).children("option:selected").val();
+
+        // Lakukan permintaan Ajax
+        $.ajax({
+            url: 'getMatkul/' + kelas,
+            type: 'GET',
+            success: function(data) {
+                // Hapus opsi lama pada pilihan ketiga
+                $(".matkul").empty();
+                $(".matkul").append('<option value="" selected style="display:none;">-- Pilih Mata Kuliah --</option>');
+
+                // Tambahkan opsi baru berdasarkan data dari server
+                $(".matkul").append('<option value="' + data.matkul_1 + '">' + data.matkul_1 + '</option>');
+                $(".matkul").append('<option value="' + data.matkul_2 + '">' + data.matkul_2 + '</option>');
+                $(".matkul").append('<option value="' + data.matkul_3 + '">' + data.matkul_3 + '</option>');
+                $(".matkul").append('<option value="' + data.matkul_4 + '">' + data.matkul_4 + '</option>');
+                $(".matkul").append('<option value="' + data.matkul_5 + '">' + data.matkul_5 + '</option>');
+                $(".matkul").append('<option value="' + data.matkul_6 + '">' + data.matkul_6 + '</option>');
+                $(".matkul").append('<option value="' + data.matkul_7 + '">' + data.matkul_7 + '</option>');
+                $(".matkul").append('<option value="' + data.matkul_8 + '">' + data.matkul_8 + '</option>');
+
+                // Tambahkan kolom matkul lainnya sesuai kebutuhan
+            }
+        });
+    });
+</script>
+
 @endsection

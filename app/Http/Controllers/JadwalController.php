@@ -85,4 +85,18 @@ class JadwalController extends Controller
             return response()->json(['error' => 'Kelas tidak ditemukan.'], 404);
         }
     }
+
+    public function editJadwal($id){
+        $title = "Edit Jadwal";
+        $jadwal = Jadwal::find($id);
+        $jurusan = Jurusan::all();
+
+        return view('jadwalKuliah.edit', compact('title', 'jadwal', 'jurusan'));
+    }
+
+    public function updateJadwal(Request $request, $id){
+        $jadwal = Jadwal::find($id);
+
+        return redirect()->route('jadwal.view');
+    }
 }

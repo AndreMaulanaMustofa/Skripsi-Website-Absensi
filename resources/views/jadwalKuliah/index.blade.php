@@ -72,7 +72,7 @@
                                                 <td>{{$mk->jam_mulai}}</td>
                                                 <td>{{$mk->jam_akhir}}</td>
                                                 <td>
-                                                    <a href="{{ route('kelas.edit', $j->id) }}">
+                                                    <a href="{{ route('jadwal.edit', $j->id) }}">
                                                         <button class="btn btn-success btn-sm">Edit</button>
                                                     </a>
                                                     <button onclick="deleteJadwal('{{ $j->id }}')" class="btn btn-danger btn-sm">Delete</button>
