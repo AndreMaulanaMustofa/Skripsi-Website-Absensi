@@ -7,7 +7,7 @@
         <div class="container-fluid px-4">
             <h3>Tambah Jadwal Kuliah</h3>
             <hr style="border-width: 2px; background-color: #B4B8C5">
-            <form action="{{ route('jadwal.store') }}" method="POST" id="FormKelas">
+            <form action="{{ route('jadwal.store') }}" method="POST" id="FormJadwal">
                 @csrf
                 <div class="row mt-1">
                     <div class="col-md-4">
@@ -81,14 +81,34 @@
                         <input type="text" class="form-control" name="matkul_1" id="matkul_1">
                     </div>
                 </div>
+                <script>
+                    const jamMulai = document.getElementById('matkul_1');
+
+                    flatpickr(jamMulai, {
+                        enableTime: true,
+                        noCalendar: true,
+                        dateFormat: "H:i",
+                        time_24hr: true
+                    });
+                </script>
                 <div class="row mt-1">
                     <div class="col-md-4">
                         <p>Jam Akhir<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-1">
-                        <input type="text" class="form-control" name="matkul_1" id="matkul_1">
+                        <input type="text" class="form-control" name="matkul_2" id="matkul_2">
                     </div>
                 </div>
+                <script>
+                    const jamAkhir = document.getElementById('matkul_2');
+
+                    flatpickr(jamAkhir, {
+                        enableTime: true,
+                        noCalendar: true,
+                        dateFormat: "H:i",
+                        time_24hr: true
+                    });
+                </script>
                 <div class="col-mt-6 d-flex justify-content-center gap-3">
                     <button type="button" class="btn btn-danger" onclick="window.location.href='{{ route('mahasiswa.view') }}'">Kembali</button>
                     <button type="button" onclick="validasiJadwal()" class="btn btn-success">Tambah</button>
@@ -132,14 +152,14 @@
                 $(".matkul").append('<option value="" selected style="display:none;">-- Pilih Mata Kuliah --</option>');
 
                 // Tambahkan opsi baru berdasarkan data dari server
-                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_1 + '</option>');
-                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_2 + '</option>');
-                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_3 + '</option>');
-                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_4 + '</option>');
-                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_5 + '</option>');
-                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_6 + '</option>');
-                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_7 + '</option>');
-                $(".matkul").append('<option value="' + data.id + '">' + data.matkul_8 + '</option>');
+                $(".matkul").append('<option value="' + data.matkul_1 + '">' + data.matkul_1 + '</option>');
+                $(".matkul").append('<option value="' + data.matkul_2 + '">' + data.matkul_2 + '</option>');
+                $(".matkul").append('<option value="' + data.matkul_3 + '">' + data.matkul_3 + '</option>');
+                $(".matkul").append('<option value="' + data.matkul_4 + '">' + data.matkul_4 + '</option>');
+                $(".matkul").append('<option value="' + data.matkul_5 + '">' + data.matkul_5 + '</option>');
+                $(".matkul").append('<option value="' + data.matkul_6 + '">' + data.matkul_6 + '</option>');
+                $(".matkul").append('<option value="' + data.matkul_7 + '">' + data.matkul_7 + '</option>');
+                $(".matkul").append('<option value="' + data.matkul_8 + '">' + data.matkul_8 + '</option>');
 
                 // Tambahkan kolom matkul lainnya sesuai kebutuhan
             }

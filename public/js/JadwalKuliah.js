@@ -35,3 +35,27 @@ function deleteJadwal(id){
     });
 }
 
+function validasiJadwal(){
+    const formJadwal = document.getElementById('FormJadwal');
+
+    if(!formJadwal.checkValidity()){
+        Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Lengkapi data terlebih dahulu!",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+        return false;
+    }else{
+        formJadwal.submit();
+
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Data telah disimpan!",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    }
+}

@@ -63,12 +63,11 @@ Route::prefix('JadwalKuliah')->group(function () {
     Route::get('createJadwal', [JadwalController::class, 'create'])->name('jadwal.create');
     Route::get('/getKelas/{jur_id}', [JadwalController::class, 'getKelass'])->name('getkelass');
     Route::get('/getMatkul/{id}', [JadwalController::class, 'getMatkul'])->name('getMatkul');
-    Route::get('/store', [JadwalController::class, 'store'])->name('jadwal.store');
+    Route::post('/store', [JadwalController::class, 'storeJadwal'])->name('jadwal.store');
 });
 
 Route::prefix('DataAbsensi')->group(function(){
     Route::get('/', [AbsensiController::class, 'index'])->name('absensi.view');
-    
 });
 
 Route::prefix('Pengaturan')->group(function(){
