@@ -46,6 +46,35 @@ class JadwalSeeder extends Seeder
                 'jam_mulai' => '14:00',
                 'jam_akhir' => '16:00'
             ]);
+            jadwal::create([
+                'kelas' => 'TI - 2D',
+                'jurusan' => 'Teknologi Informasi',
+                'semester' => 4,
+                'hari' => 'Senin',
+                'matkul' => 'Bahasa Indonesia',
+                'jam_mulai' => '07:00',
+                'jam_akhir' => '10:00'
+            ]);
+
+            jadwal::create([
+                'kelas' => 'TI - 2D',
+                'jurusan' => 'Teknologi Informasi',
+                'semester' => 4,
+                'hari' => 'Selasa',
+                'matkul' => 'Bahasa Inggris',
+                'jam_mulai' => '10:00',
+                'jam_akhir' => '12:00'
+            ]);
+
+            jadwal::create([
+                'kelas' => 'TI - 2D',
+                'jurusan' => 'Teknologi Informasi',
+                'semester' => 4,
+                'hari' => 'Rabu',
+                'matkul' => 'Bahasa Jerman',
+                'jam_mulai' => '14:00',
+                'jam_akhir' => '16:00'
+            ]);
             DB::commit();
         } catch (\Throwable $th) {
             DB::rollback();
