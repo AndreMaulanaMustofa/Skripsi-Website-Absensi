@@ -21,16 +21,21 @@
                     <div class="col-md-4">
                         <p>Jurusan<span class="star-wajib">*</span></p>
                     </div>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" name="jurusan" id="jurusan" required>
+                    <div class="col-md-2">
+                        <select name="jurusan" id="jurusan" class="form-control">
+                            <option style="display: none;" selected>-- Pilih Jurusan --</option>
+                            @foreach($jurusan as $jur)
+                                <option value="{{ $jur->jur_id }}">{{ $jur->nama_jurusan }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="row mt-1">
                     <div class="col-md-4">
-                        <p>SKS<span class="star-wajib">*</span></p>
+                        <p>Semester<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-sm-1">
-                        <input type="number" class="form-control" name="sks" id="sks" required>
+                        <input type="number" class="form-control" name="semester" id="semester" min="0" required>
                     </div>
                 </div>
                 <div class="row mt-1">

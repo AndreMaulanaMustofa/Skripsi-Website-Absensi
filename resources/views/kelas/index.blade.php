@@ -30,7 +30,7 @@ use App\Models\mahasiswa;
                                 <th scope="col">No</th>
                                 <th scope="col">Ruang Kelas</th>
                                 <th scope="col">Jurusan</th>
-                                <th scope="col">SKS</th>
+                                <th scope="col">Semester</th>
                                 <th scope="col">Nama_DPA</th>
                                 <th scope="col">Jumlah Mahasiswa</th>
                                 <th scope="col">Aksi</th>
@@ -45,7 +45,7 @@ use App\Models\mahasiswa;
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $k->kelas }}</td>
                                 <td>{{ $k->nama_jurusan }}</td>
-                                <td>{{ $k->sks }}</td>
+                                <td>{{ $k->semester }}</td>
                                 <td>{{ $k->nama_DPA }}</td>
                                 <td>{{ $jml }}</td>
                                 <td>
