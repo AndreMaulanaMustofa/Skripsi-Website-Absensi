@@ -27,7 +27,19 @@ class JadwalController extends Controller
     }
 
     public function storeJadwal(Request $request){
+        $jadwal = new Jadwal;
 
+        $jadwal->jurusan    = $request->input('jurusan');
+        $jadwal->kelas      = $request->input('kelas');
+        $jadwal->semester   = $request->input('semester');
+        $jadwal->hari       = $request->input('hari');
+        $jadwal->matkul     = $request->input('matkul');
+        $jadwal->jam_mulai  = date('H:i', strtotime($request->input('matkul_1')));
+        $jadwal->jam_akhir  = date('H:i', strtotime($request->input('matkul_2')));
+
+        $jadwal->save();
+
+        return redirect()->route('jadwal.view');
     }
 
     public function getClass($jur_id){
@@ -47,36 +59,30 @@ class JadwalController extends Controller
     }
 
     public function getMatkul($id)
-{
-    // Ambil data dari database berdasarkan $id
-    $kelas = Kelas::find($id);
+    {
+        // Ambil data dari database berdasarkan $id
+        $kelas = Kelas::find($id);
 
-    // Pastikan $kelas tidak null sebelum melanjutkan
-    if ($kelas) {
-        // Format data ke dalam array
-        $options = [
-            'id' => $kelas->id,
-            'matkul_1' => $kelas->matkul_1,
-            'matkul_2' => $kelas->matkul_2,
-            'matkul_3' => $kelas->matkul_3,
-            'matkul_4' => $kelas->matkul_4,
-            'matkul_5' => $kelas->matkul_5,
-            'matkul_6' => $kelas->matkul_6,
-            'matkul_7' => $kelas->matkul_7,
-            'matkul_8' => $kelas->matkul_8,
-            // Tambahkan kolom matkul lainnya sesuai kebutuhan
-        ];
+        // Pastikan $kelas tidak null sebelum melanjutkan
+        if ($kelas) {
+            // Format data ke dalam array
+            $options = [
+                'id' => $kelas->id,
+                'matkul_1' => $kelas->matkul_1,
+                'matkul_2' => $kelas->matkul_2,
+                'matkul_3' => $kelas->matkul_3,
+                'matkul_4' => $kelas->matkul_4,
+                'matkul_5' => $kelas->matkul_5,
+                'matkul_6' => $kelas->matkul_6,
+                'matkul_7' => $kelas->matkul_7,
+                'matkul_8' => $kelas->matkul_8,
+                // Tambahkan kolom matkul lainnya sesuai kebutuhan
+            ];
 
-        return response()->json($options);
-    } else {
-        // Handle jika tidak menemukan kelas dengan id yang diberikan
-        return response()->json(['error' => 'Kelas tidak ditemukan.'], 404);
+            return response()->json($options);
+        } else {
+            // Handle jika tidak menemukan kelas dengan id yang diberikan
+            return response()->json(['error' => 'Kelas tidak ditemukan.'], 404);
+        }
     }
-}
-
-function store(){
-     
-}
-
-
 }
