@@ -20,7 +20,7 @@ class KelasSeeder extends Seeder
             kelas::create([
                 'kelas' => 'TI - 1D',
                 'jur_id' => '1',
-                'sks' => 20,
+                'semester' => 2,
                 'nama_DPA' => 'M. Hasyim Ratsanjani, S.Kom., M.Kom.',
                 'matkul_1' => 'Bahasa Inggris 1',
                 'matkul_2' => 'Pancasila',
@@ -34,7 +34,7 @@ class KelasSeeder extends Seeder
             kelas::create([
                 'kelas' => 'TM - 2D',
                 'jur_id' => '2',
-                'sks' => 23,
+                'semester' => 3,
                 'nama_DPA' => 'Noprianto, S.Kom., M.Eng',
                 'matkul_1' => 'Keselamatan dan Kesehatan Kerja',
                 'matkul_2' => 'Ilmu Komunikasi dan Organisasi',
@@ -48,7 +48,7 @@ class KelasSeeder extends Seeder
             kelas::create([
                 'kelas' => 'SI - 3D',
                 'jur_id' => '3',
-                'sks' => 24,
+                'semester' => 5,
                 'nama_DPA' => 'Agung Nugroho Pramudhita, S.T., M.T.',
                 'matkul_1' => 'Basis Data',
                 'matkul_2' => 'Rekayasa Perangkat Lunak',
@@ -62,7 +62,7 @@ class KelasSeeder extends Seeder
             kelas::create([
                 'kelas' => 'TL - 4D',
                 'jur_id' => '4',
-                'sks' => 26,
+                'semester' => 7,
                 'nama_DPA' => 'Annisa Puspa Kirana, S. Kom, M.Kom',
                 'matkul_1' => 'Matematika 3',
                 'matkul_2' => 'Kecerdasan Buatan',
