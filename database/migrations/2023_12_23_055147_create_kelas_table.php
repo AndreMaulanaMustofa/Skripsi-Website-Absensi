@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('kelas');
             $table->string('jur_id');
-            $table->integer('sks');
+            $table->integer('semester');
             $table->string('nama_DPA');
             $table->string('matkul_1')->nullable();
             $table->string('matkul_2')->nullable();

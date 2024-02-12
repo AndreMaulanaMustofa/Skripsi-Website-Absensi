@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jurusan;
 use App\Models\kelas;
 use Illuminate\Http\Request;
 
@@ -16,15 +17,16 @@ class KelasController extends Controller
 
     public function create(){
         $title = "Buat Kelas";
-        return view('kelas.create', compact('title'));
+        $jurusan = Jurusan::all();
+        return view('kelas.create', compact('title', 'jurusan'));
     }
 
     public function store(Request $request){
         $kelas = new Kelas;
 
         $kelas->kelas = $request->input('Kelas');
-        $kelas->jurusan = $request->input('jurusan');
-        $kelas->sks = $request->input('sks');
+        $kelas->jur_id = $request->input('jurusan');
+        $kelas->semester = $request->input('semester');
         $kelas->nama_DPA = $request->input('namaDPA');
 
         for ($i=1; $i < 9; $i++) {
@@ -40,8 +42,9 @@ class KelasController extends Controller
     public function edit($id){
         $title = "Edit Kelas";
         $kelas = kelas::find($id);
+        $jurusan = Jurusan::all();
 
-        return view('kelas.edit', compact('title', 'kelas'));
+        return view('kelas.edit', compact('title', 'kelas', 'jurusan'));
     }
 
     public function update(Request $request, $id)
@@ -49,8 +52,8 @@ class KelasController extends Controller
         $kelas = Kelas::find($id);
 
         $kelas->kelas = $request->input('Kelas');
-        $kelas->jurusan = $request->input('jurusan');
-        $kelas->sks = $request->input('sks');
+        $kelas->jur_id = $request->input('jurusan');
+        $kelas->semester = $request->input('semester');
         $kelas->nama_DPA = $request->input('namaDPA');
 
         for ($i = 1; $i < 9; $i++) {
