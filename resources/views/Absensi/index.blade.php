@@ -7,27 +7,19 @@
             <div class="row mb-2 mt-2">
                 <h3 class="mb-3 ">Data Absensi</h3>
                 <div class="col-md-9">
-                    <button class="btn btn-outline-primary mr-2" id="dateFilter">
+                    <button class="btn btn-outline-primary mr-2 date" data-bs-toggle="modal" data-bs-target="#dateModal">
                         <i class="fa-solid fa-calendar"></i> Berdasarkan Tanggal
                     </button>
-                    <script>
-                        document.getElementById('dateFilter').addEventListener("click", function(){
-                            flatpickr("#dateFilter", {
-                                enableTime: false,
-                                dateFormat: "Y-m-d",
-                            });
-                        });
-                    </script>
                     <div class="btn-group">
                         <button class="btn btn-outline-danger mr-2" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 5px">
                             <i class="fa-solid fa-clipboard-check"></i> Berdasarkan Status
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="#" class="dropdown-item">Terlambat</a></li>
-                            <li><a href="#" class="dropdown-item">Tidak Terlambat</a></li>
+                            <li><a href="#" class="dropdown-item status">Terlambat</a></li>
+                            <li><a href="#" class="dropdown-item status">Tidak Terlambat</a></li>
                         </ul>
                     </div>
-                    <button class="btn btn-outline-secondary mr-2">
+                    <button class="btn btn-outline-secondary mr-2 reset">
                         <i class="fa-solid fa-rotate"></i> Reset
                     </button>
                 </div>
@@ -55,7 +47,7 @@
                             </tr>
                         </thead>
 
-                        <tbody class="text-center">
+                        <tbody class="text-center absenFilter regular">
                             @forelse($absensi as $key => $a)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
@@ -74,9 +66,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="#">
-                                        <button class="btn btn-danger btn-sm">Hapus</button>
-                                    </a>
+                                    <button onclick="deleteData('{{ $a->id }}')" class="btn btn-danger btn-sm">Hapus</button>
                                 </td>
                                 @empty
                                 <td colspan="7">Data Tidak Ada!</td>
@@ -84,6 +74,7 @@
                             @endforelse
                         </tbody>
                     </table>
+                    @include('Absensi.dateModal')
                 </div>
             </div>
         </div>
@@ -92,4 +83,73 @@
 <script>
     mencariData();
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/4.0.0-beta/jquery.min.js" integrity="sha512-qFOQ9YFAeGj1gDOuUD61g3D+tLDv3u1ECYWqT82WQoaWrOhAY+5mRMTTVsQdWutbA5FORCnkEPEgU0OF8IzGvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+
+        $(document).on('click', '.reset', function(){
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '{{ route('absensi.view') }}', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                window.location.href = '{{ route('absensi.view') }}';
+                }else{
+                    document.getElementById('segar').innerHTML = xhr.responseText;
+                };
+            };
+            xhr.send();
+        });
+
+    $(document).on('click', '.status', function() {
+        var status = $(this).html();
+        $.ajax({
+            url: "DataAbsensi/getAbsensi/" + status,
+            method: "GET",
+            data: {status: status},
+            success: function(data) {
+                $('.absenFilter').html(data);
+                $('.absenFilter').removeClass('regular').addClass('filtered');
+            }
+        });
+    });
+
+    function deleteData(id){
+    Swal.fire({
+    title: "Hapus Data",
+    text: "Data yang dihapus tidak dapat dikembalikan.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Hapus",
+    cancelButtonText: "Batal"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+
+                $.ajax({
+                    type: "DELETE",
+                    url: "DataAbsensi/deleteData/" + id,
+                    data: {
+                        _token: csrfToken,
+                    },
+                    success: function() {
+                        Swal.fire({
+                            title: "Terhapus!",
+                            text: "Data telah dihapus.",
+                            icon: "success",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        window.location.reload();
+                    },
+                });
+            }
+        });
+    }
+</script>
+
+
+
+
 @endsection

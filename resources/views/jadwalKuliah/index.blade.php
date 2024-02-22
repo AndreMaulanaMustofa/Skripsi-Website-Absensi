@@ -38,16 +38,16 @@
                             @forelse($jadwal as $key => $j)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $j->kelas }}</td>
-                                <td>{{ $j->jurusan }}</td>
-                                <td>{{ $j->semester }}</td>
+                                <td>{{ $j->n_kelas }}</td>
+                                <td>{{ $j->n_jurusan }}</td>
+                                <td>{{ $j->smt }}</td>
                                 <td>
-                                    <a data-bs-toggle="collapse" href="#detailJadwal{{$j->id}}" role="button" aria-expanded="false" aria-controls="detailJadwal{{$j->id}}">
+                                    <a data-bs-toggle="collapse" href="#detailJadwal{{$j->jur_id}}" role="button" aria-expanded="false" aria-controls="detailJadwal{{$j->id}}">
                                         <button class="btn btn-info btn-sm">Detail</button>
                                     </a>
                                 </td>
                             </tr>
-                            <tr class="collapse fade" id="detailJadwal{{$j->id}}">
+                            <tr class="collapse fade" id="detailJadwal{{$j->jur_id}}">
                                 <td colspan="5">
                                     <table class="table align-middle">
                                         <thead>
@@ -62,7 +62,7 @@
                                         </thead>
                                         <tbody class="text-center">
                                             @php
-                                                $matkul = jadwal::where('kelas', $j->kelas)->where('semester', $j->semester)->get();
+                                                $matkul = jadwal::where('kelas', $j->j_kelas)->where('semester', $j->smt)->get();
                                             @endphp
                                             @foreach($matkul as $key => $mk)
                                             <tr>
@@ -72,10 +72,10 @@
                                                 <td>{{$mk->jam_mulai}}</td>
                                                 <td>{{$mk->jam_akhir}}</td>
                                                 <td>
-                                                    <a href="{{ route('jadwal.edit', $j->id) }}">
+                                                    <a href="{{ route('jadwal.edit', $mk->id) }}">
                                                         <button class="btn btn-success btn-sm">Edit</button>
                                                     </a>
-                                                    <button onclick="deleteJadwal('{{ $j->id }}')" class="btn btn-danger btn-sm">Delete</button>
+                                                    <button onclick="deleteJadwal('{{ $mk->id }}')" class="btn btn-danger btn-sm">Delete</button>
                                                 </td>
                                             </tr>
                                             @endforeach

@@ -13,4 +13,27 @@ class AbsensiController extends Controller
 
         return view('Absensi.index', compact('title', 'absensi'));
     }
+
+    public function getAbsensi($status){
+        $getStatus = Absensi::where('status', $status)->get();
+
+        return view('Absensi.getStatus', compact('getStatus'));
+    }
+
+    public function getAbsensibyDate($tgl_absen){
+        $getStatus = Absensi::where('tgl_absen', $tgl_absen)->get();
+
+        return view('Absensi.getStatus', compact('getStatus'));
+    }
+
+    public function getAbsensibyDateRange($tglawal,$tglakhir){
+        $getStatus = Absensi::whereBetween('tgl_absen', [$tglawal, $tglakhir])->get();
+        return view('Absensi.getStatus', compact('getStatus'));
+    }
+
+    public function delete($id){
+        Absensi::find($id)->delete();
+
+        return redirect()->route('Absensi.index')->with('success','Data Berhasil Dihapus');
+    }
 }

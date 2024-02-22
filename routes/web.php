@@ -34,7 +34,7 @@ Route::get('daftar', [RegisController::class, 'index'])->name('Regis.acc');
 Route::post('daftar', [RegisController::class, 'regis'])->name('Regis.auth');
 
 Route::middleware(['admin.auth'])->group(function(){
-    
+
     Route::prefix('Mahasiswa')->group(function(){
         Route::get('/', [MahasiswaController::class, 'view'])->name('mahasiswa.view');
         Route::get('createData', [MahasiswaController::class, 'create'])->name('mahasiswa.create');
@@ -72,6 +72,10 @@ Route::middleware(['admin.auth'])->group(function(){
 
     Route::prefix('DataAbsensi')->group(function(){
         Route::get('/', [AbsensiController::class, 'index'])->name('absensi.view');
+        Route::get('/getAbsensi/{status}', [AbsensiController::class, 'getAbsensi']);
+        Route::get('/getAbsensibyDate/{tgl_absen}', [AbsensiController::class, 'getAbsensibyDate']);
+        Route::get('/getAbsensibyDateRange/{tglawal}/{tglakhir}', [AbsensiController::class, 'getAbsensibyDateRange']);
+        Route::delete('/deleteData/{id}', [AbsensiController::class, 'delete'])->name('absensi.delete');
     });
 
     Route::prefix('Pengaturan')->group(function(){

@@ -12,9 +12,10 @@ class JadwalController extends Controller
 {
     public function view(){
         $title = "Jadwal Kuliah";
-        $jadwal = jadwal::groupBy('kelas')->get();
-
-
+        $jadwal = jadwal::join('kelas','kelas.id','=','jadwals.kelas')
+        ->join('jurusan','jurusan.jur_id','=','jadwals.jurusan')
+        ->select('kelas.kelas as n_kelas','jurusan.nama_jurusan as n_jurusan','jadwals.semester as smt','hari','matkul','jam_mulai','jam_akhir','jadwals.kelas as j_kelas','jadwals.jurusan as jur_id')
+        ->groupBy('jadwals.jurusan')->get();
         return view('jadwalKuliah.index', compact('title', 'jadwal'));
     }
 
@@ -88,10 +89,12 @@ class JadwalController extends Controller
 
     public function editJadwal($id){
         $title = "Edit Jadwal";
-        $jadwal = Jadwal::find($id);
-        $jurusan = Jurusan::all();
+        $jadwal = jadwal::join('kelas','kelas.id','=','jadwals.kelas')
+        ->join('jurusan','jurusan.jur_id','=','jadwals.jurusan')
+        ->select('kelas.kelas as n_kelas','jurusan.nama_jurusan as n_jurusan','jadwals.semester as smt','hari','matkul','jam_mulai','jam_akhir','jadwals.kelas as j_kelas','jadwals.jurusan as jur_id','jadwals.kelas as kel_id')
+        ->where('jadwals.id',$id)->first();
 
-        return view('jadwalKuliah.edit', compact('title', 'jadwal', 'jurusan'));
+        return view('jadwalKuliah.edit', compact('title', 'jadwal'));
     }
 
     public function updateJadwal(Request $request, $id){

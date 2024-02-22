@@ -1,12 +1,20 @@
 @extends('layouts.view')
 
 @section('container-absensi')
-
+@php
+use App\Models\kelas;
+use App\Models\Jurusan;
+@endphp
 <div class="content-wrapper" style="background-color: white">
     <div class="content-header p-4">
         <div class="container-fluid px-4">
             <h3>Edit Jadwal Kuliah</h3>
             <hr style="border-width: 2px; background-color: #B4B8C5">
+            @php
+    $kelas = kelas::whereNotIn('id', [$jadwal->kelas])->get();
+    $jurusan = Jurusan::whereNotIn('jur_id', [$jadwal->jurusan])->get();
+@endphp
+
             <form action="{{ route('jadwal.store') }}" method="POST" id="FormJadwal">
                 @csrf
                 @method('PUT')
@@ -16,7 +24,7 @@
                     </div>
                     <div class="col-sm-2">
                         <select name="jurusan" class="form-control jurusan" id="jurusan">
-                            <option selected style="display: none;">-- Pilih Jurusan --</option>
+                            <option value="{{$jadwal->jurusan}}" selected style="display: none;">{{$jadwal->n_jurusan}} [Dipilih]</option>
                             @foreach ($jurusan as $item)
                                 <option value="{{ $item->jur_id }}" {{ $item->nama_jurusan == $jadwal->jurusan ? 'selected' : '' }}>{{ $item->nama_jurusan }}</option>
                             @endforeach

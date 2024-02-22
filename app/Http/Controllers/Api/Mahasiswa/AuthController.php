@@ -46,7 +46,7 @@ class AuthController extends Controller
         Session::flush();
         // Redirect to the login page or any other desired page
         return response()->json([
-                'message' => "Logout Success",
+                'message' => "Logout Success", 
             ], 200);
     }
 }
