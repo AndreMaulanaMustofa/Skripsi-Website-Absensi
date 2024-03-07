@@ -91,14 +91,25 @@ class JadwalController extends Controller
         $title = "Edit Jadwal";
         $jadwal = jadwal::join('kelas','kelas.id','=','jadwals.kelas')
         ->join('jurusan','jurusan.jur_id','=','jadwals.jurusan')
-        ->select('kelas.kelas as n_kelas','jurusan.nama_jurusan as n_jurusan','jadwals.semester as smt','hari','matkul','jam_mulai','jam_akhir','jadwals.kelas as j_kelas','jadwals.jurusan as jur_id','jadwals.kelas as kel_id')
+        ->select('kelas.kelas as n_kelas','jurusan.nama_jurusan as n_jurusan','jadwals.semester as smt','hari','matkul','jam_mulai','jam_akhir','jadwals.kelas as j_kelas','jadwals.jurusan as jur_id','jadwals.kelas as kel_id','jadwals.id as jadwalid')
         ->where('jadwals.id',$id)->first();
+        $kelas = kelas::whereNotIn('id', [$jadwal->j_kelas])->get();
+        $jurusan = Jurusan::whereNotIn('jur_id', [$jadwal->jur_id])->get();
 
-        return view('jadwalKuliah.edit', compact('title', 'jadwal'));
+        return view('jadwalKuliah.edit', compact('title', 'jadwal','kelas','jurusan'));
     }
 
     public function updateJadwal(Request $request, $id){
         $jadwal = Jadwal::find($id);
+
+        $jadwal->kelas = $request->input('kelas');
+        $jadwal->jurusan = $request->input('jurusan');
+        $jadwal->semester = $request->input('semester');
+        $jadwal->hari = $request->input('hari');
+        $jadwal->matkul = $request->input('matkul');
+        $jadwal->jam_mulai = $request->input('jam_mulai');
+        $jadwal->jam_akhir = $request->input('jam_akhir');
+        $jadwal->save();
 
         return redirect()->route('jadwal.view');
     }
