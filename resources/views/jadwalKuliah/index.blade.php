@@ -81,7 +81,7 @@
                                                     </button>
 
                                                     <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#KuliahCode{{ $mk->id }}" onclick="generateQRCode(`{{ $mk->matkul }}`, `{{ date('H:i', strtotime($mk->jam_mulai)) }}`)">
-                                                        Info
+                                                        QR Code
                                                     </button>
 
                                                     <div class="modal animate__animated animate__zoomIn animate__faster" id="KuliahCode{{ $mk->id }}" tabindex="-1" aria-hidden="true" aria-labelledby="KuliahCodeLabel">
