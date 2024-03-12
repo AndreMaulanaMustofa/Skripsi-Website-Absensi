@@ -39,7 +39,7 @@
                                 <th scope="col">Nama Mahasiswa</th>
                                 <th scope="col">Kelas</th>
                                 <th scope="col">Semester</th>
-                                <th scope="col">Jenis Kelamin</th>
+                                <th scope="col">Mata Kuliah</th>
                                 <th scope="col">Tanggal Absen</th>
                                 <th scope="col">Jam Absen</th>
                                 <th scope="col">Status</th>
@@ -55,7 +55,7 @@
                                 <td>{{ $a->namaMahasiswa }}</td>
                                 <td>{{ $a->kelas }}</td>
                                 <td>{{ $a->semester }}</td>
-                                <td>{{ $a->jenisKelamin }}</td>
+                                <td>Bahasa Inggris 2</td>
                                 <td>{{ $a->tgl_absen }}</td>
                                 <td>{{ $a->jam_absen }}</td>
                                 <td>
