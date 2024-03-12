@@ -10,7 +10,6 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\MahasiswaController;
-use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -92,8 +91,5 @@ Route::middleware(['admin.auth'])->group(function(){
     Route::prefix('akunMahasiswa')->group(function(){
         Route::get('/', [AkunController::class, 'index'])->name('akun.home');
     });
-
-    Route::get('QRCode', [QRCodeController::class, 'index'])->name('qrcode.view');
-
 });
 
