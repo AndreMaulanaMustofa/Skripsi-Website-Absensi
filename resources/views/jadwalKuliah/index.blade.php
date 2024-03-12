@@ -75,7 +75,33 @@
                                                     <a href="{{ route('jadwal.edit', $mk->id) }}">
                                                         <button class="btn btn-success btn-sm">Edit</button>
                                                     </a>
-                                                    <button onclick="deleteJadwal('{{ $mk->id }}')" class="btn btn-danger btn-sm">Delete</button>
+
+                                                    <button onclick="deleteJadwal('{{ $mk->id }}')" class="btn btn-danger btn-sm">
+                                                        Delete
+                                                    </button>
+
+                                                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#KuliahCode{{ $mk->id }}" onclick="generateQRCode(`{{ $mk->matkul }}`, `{{ date('H:i', strtotime($mk->jam_mulai)) }}`)">
+                                                        Info
+                                                    </button>
+
+                                                    <div class="modal animate__animated animate__zoomIn animate__faster" id="KuliahCode{{ $mk->id }}" tabindex="-1" aria-hidden="true" aria-labelledby="KuliahCodeLabel">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">QR Code {{ $mk->matkul }}</h1>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body d-flex justify-content-center">
+                                                                    <div id="qrcode"></div>
+                                                                </div>
+                                                                <div class="modal-footer d-flex justify-content-center">
+                                                                    <div class="col-3">
+                                                                        <button style="width: 100%; margin-bottom: 13px; background-color:red; border:none; color:white; height: 40px;" onclick="downloadQRCode()">PNG <i class="fa fa-download"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             @endforeach
