@@ -55,7 +55,7 @@
                                 <td>{{ $a->namaMahasiswa }}</td>
                                 <td>{{ $a->kelas }}</td>
                                 <td>{{ $a->semester }}</td>
-                                <td>Bahasa Inggris 2</td>
+                                <td>{{ $a->mataKuliah }}</td>
                                 <td>{{ $a->tgl_absen }}</td>
                                 <td>{{ $a->jam_absen }}</td>
                                 <td>

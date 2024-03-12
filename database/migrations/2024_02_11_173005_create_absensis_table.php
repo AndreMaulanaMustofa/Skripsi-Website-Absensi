@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('namaMahasiswa');
             $table->string('kelas');
             $table->string('semester');
-            $table->string('jenisKelamin');
+            $table->string('mataKuliah');
             $table->string('tgl_absen');
             $table->string('jam_absen');
             $table->string('status');

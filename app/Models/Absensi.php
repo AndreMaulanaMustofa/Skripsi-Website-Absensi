@@ -14,7 +14,7 @@ class Absensi extends Model
         'NIM',
         'namaMahasiswa',
         'kelas',
-        'jenisKelamin',
+        'mataKuliah',
         'semester',
         'tgl_absen',
         'jam_absen',
