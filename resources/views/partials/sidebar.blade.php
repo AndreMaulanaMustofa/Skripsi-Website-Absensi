@@ -44,6 +44,7 @@
                     </p>
                 </a>
             </li>
+            <hr style=" border-color: gray">
             <li class="nav-item">
                 <a href="{{ route('jadwal.view') }}" class="nav-link">
                 <i class="nav-icon fa-solid fa-calendar"></i>
@@ -52,7 +53,6 @@
                     </p>
                 </a>
             </li>
-            <hr style=" border-color: gray">
             <li class="nav-item">
                 <a href="{{ route('absensi.view') }}" class="nav-link">
                 <i class="nav-icon fa-solid fa-cloud"></i>
@@ -66,14 +66,6 @@
                 <i class="nav-icon fas fa-solid fa-building"></i>
                     <p>
                         Akun Mahasiswa
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('qrcode.view') }}" class="nav-link">
-                <i class="nav-icon fas fa-solid fa-qrcode"></i>
-                    <p>
-                        QR Code
                     </p>
                 </a>
             </li>

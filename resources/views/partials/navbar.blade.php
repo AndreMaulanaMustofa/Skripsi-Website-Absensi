@@ -1,11 +1,5 @@
 <nav class="main-header navbar navbar-expand navbar-light">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-
-    </ul>
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <!-- Navbar Search -->
@@ -27,9 +21,12 @@
         </li>
 
         <!-- Messages Dropdown Menu -->
+        @php
+            $user = Auth::guard('admin')->user();
+        @endphp
         <li class="nav-item dropdown mr-3">
             <a class="nav-link nav-icon-hover mb-3" id="drop2" data-toggle="dropdown">
-                <img src="{{ asset('img/polinema_logo.png') }}" alt="Polinema Picture" width="40" height="40" class="rounded-circle ">
+                <img src="{{ asset('img/'. $user->imgProfile) }}" alt="Polinema Picture" width="40" height="40" class="rounded-circle ">
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up " aria-labelledby="drop2 ">
                 <div class="message-body ">
