@@ -45,12 +45,15 @@
     <script src="{{ asset('js/DataJurusan.js') }}"></script>
     <script src="{{ asset('js/JadwalKuliah.js') }}"></script>
     <script src="{{ asset('js/CodeGenerate.js') }}"></script>
+    <script src="{{ asset('js/DataAbsensi.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     {{-- QR Code Generate --}}
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/4.0.0-beta/jquery.min.js" integrity="sha512-qFOQ9YFAeGj1gDOuUD61g3D+tLDv3u1ECYWqT82WQoaWrOhAY+5mRMTTVsQdWutbA5FORCnkEPEgU0OF8IzGvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
 <body class="hold-transition sidebar-mini" id="segar">
