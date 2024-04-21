@@ -34,6 +34,6 @@ class AbsensiController extends Controller
     public function delete($id){
         Absensi::find($id)->delete();
 
-        return redirect()->route('Absensi.index')->with('success','Data Berhasil Dihapus');
+        return redirect()->route('Absensi.index');
     }
 }
