@@ -75,7 +75,7 @@ Route::middleware(['admin.auth'])->group(function(){
         Route::get('/getAbsensi/{status}', [AbsensiController::class, 'getAbsensi']);
         Route::get('/getAbsensibyDate/{tgl_absen}', [AbsensiController::class, 'getAbsensibyDate']);
         Route::get('/getAbsensibyDateRange/{tglawal}/{tglakhir}', [AbsensiController::class, 'getAbsensibyDateRange']);
-        Route::delete('/deleteData/{id}', [AbsensiController::class, 'delete'])->name('absensi.delete');
+        Route::delete('deleteData/{id}', [AbsensiController::class, 'delete'])->name('absensi.delete');
     });
 
     Route::prefix('Pengaturan')->group(function(){
