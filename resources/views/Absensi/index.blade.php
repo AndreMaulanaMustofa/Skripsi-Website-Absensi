@@ -19,7 +19,7 @@
                             <li><a href="#" class="dropdown-item status">Tidak Terlambat</a></li>
                         </ul>
                     </div>
-                    <button class="btn btn-outline-secondary mr-2 reset">
+                    <button class="btn btn-outline-secondary mr-2 reset" onclick="window.location.reload()">
                         <i class="fa-solid fa-rotate"></i> Reset
                     </button>
                 </div>
@@ -66,7 +66,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <button onclick="deleteData('{{ $a->id }}')" class="btn btn-danger btn-sm">Hapus</button>
+                                    <button onclick="deleteAbsensi('{{ $a->id }}')" class="btn btn-danger btn-sm">Hapus</button>
                                 </td>
                                 @empty
                                 <td colspan="7">Data Tidak Ada!</td>
@@ -82,22 +82,6 @@
 </div>
 <script>
     mencariData();
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/4.0.0-beta/jquery.min.js" integrity="sha512-qFOQ9YFAeGj1gDOuUD61g3D+tLDv3u1ECYWqT82WQoaWrOhAY+5mRMTTVsQdWutbA5FORCnkEPEgU0OF8IzGvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-
-        $(document).on('click', '.reset', function(){
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', '{{ route('absensi.view') }}', true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                window.location.href = '{{ route('absensi.view') }}';
-                }else{
-                    document.getElementById('segar').innerHTML = xhr.responseText;
-                };
-            };
-            xhr.send();
-        });
 
     $(document).on('click', '.status', function() {
         var status = $(this).html();
@@ -111,45 +95,5 @@
             }
         });
     });
-
-    function deleteData(id){
-    Swal.fire({
-    title: "Hapus Data",
-    text: "Data yang dihapus tidak dapat dikembalikan.",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Hapus",
-    cancelButtonText: "Batal"
-        }).then((result) => {
-            if (result.isConfirmed) {
-
-                var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-
-                $.ajax({
-                    type: "DELETE",
-                    url: "DataAbsensi/deleteData/" + id,
-                    data: {
-                        _token: csrfToken,
-                    },
-                    success: function() {
-                        Swal.fire({
-                            title: "Terhapus!",
-                            text: "Data telah dihapus.",
-                            icon: "success",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        window.location.reload();
-                    },
-                });
-            }
-        });
-    }
 </script>
-
-
-
-
 @endsection
