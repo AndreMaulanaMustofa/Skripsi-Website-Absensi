@@ -62,11 +62,11 @@ Route::middleware(['admin.auth'])->group(function(){
     Route::prefix('JadwalKuliah')->group(function () {
         Route::get('/', [JadwalController::class, 'view'])->name('jadwal.view');
         Route::get('createJadwal', [JadwalController::class, 'create'])->name('jadwal.create');
-        Route::get('/getKelas/{jur_id}', [JadwalController::class, 'getKelass'])->name('getkelass');
-        Route::get('/getMatkul/{id}', [JadwalController::class, 'getMatkul'])->name('getMatkul');
+        Route::get('getKelas/{jur_id}', [JadwalController::class, 'getKelas']);
+        Route::get('getMatkul/{kelas}/{semester}', [JadwalController::class, 'getMatkul']);
         Route::post('storeJadwal', [JadwalController::class, 'storeJadwal'])->name('jadwal.store');
         Route::get('editJadwal/{id}', [JadwalController::class, 'editJadwal'])->name('jadwal.edit');
-        Route::post('updateJadwal/{id}', [JadwalController::class, 'updateJadwal'])->name('jadwal.update');
+        Route::put('updateJadwal/{id}', [JadwalController::class, 'updateJadwal'])->name('jadwal.update');
         Route::delete('deleteJadwal/{id}', [JadwalController::class, 'deleteJadwal'])->name('jadwal.delete');
     });
 
@@ -75,6 +75,10 @@ Route::middleware(['admin.auth'])->group(function(){
         Route::get('/getAbsensi/{status}', [AbsensiController::class, 'getAbsensi']);
         Route::get('/getAbsensibyDate/{tgl_absen}', [AbsensiController::class, 'getAbsensibyDate']);
         Route::get('/getAbsensibyDateRange/{tglawal}/{tglakhir}', [AbsensiController::class, 'getAbsensibyDateRange']);
+        Route::get('tambahData', [AbsensiController::class, 'create'])->name('absensi.create');
+        Route::get('getMahasiswa/{NIM}', [AbsensiController::class, 'getMahasiswa']);
+        Route::get('getKelas/{id}', [AbsensiController::class, 'getKelas']);
+        Route::post('storeData', [AbsensiController::class, 'store'])->name('absensi.store');
         Route::delete('deleteData/{id}', [AbsensiController::class, 'delete'])->name('absensi.delete');
     });
 
