@@ -78,15 +78,11 @@ function APIKotaEdit() {
             allRegencies.forEach((element) => {
                 var option = document.createElement("option");
                 option.dataset.reg = element.id;
-                option.value = element.name
-                    .toLowerCase()
-                    .replace(/\b\w/g, (l) => l.toUpperCase());
-                option.textContent = element.name
-                    .toLowerCase()
-                    .replace(/\b\w/g, (l) => l.toUpperCase());
+                option.value = element.name.toLowerCase().replace(/\b\w/g, (l) => l.toUpperCase());
+                option.textContent = element.name.toLowerCase().replace(/\b\w/g, (l) => l.toUpperCase());
                 kotaSelect.appendChild(option);
 
-                if (element.name.toLowerCase().replace(/\b\w/g, (l) => l.toUpperCase()) == dataKota){
+                if (option.value.toLowerCase() === dataKota.toLowerCase()) {
                     option.selected = true;
                 }
             });

@@ -7,17 +7,17 @@
             <h3>Edit Jadwal Kuliah</h3>
             <hr style="border-width: 2px; background-color: #B4B8C5">
 
-            <form action="{{ url('JadwalKuliah/updateJadwal/' . $jadwal->jadwalid) }}" method="POST" id="FormJadwal">
+            <form action="{{ route('jadwal.update', $jadwal->id) }}" method="POST" id="FormJadwal">
                 @csrf
+                @method('PUT')
                 <div class="row mt-1">
                     <div class="col-md-4">
                         <p>Jurusan<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-sm-2">
                         <select name="jurusan" class="form-control jurusan" id="jurusan">
-                            <option value="{{$jadwal->jur_id}}" selected style="display: none;">{{$jadwal->n_jurusan}} [Dipilih]</option>
                             @foreach ($jurusan as $item)
-                                <option value="{{ $item->jur_id }}">{{ $item->nama_jurusan }}</option>
+                                <option value="{{ $item->jur_id }}" {{ $item->jur_id == $jadwal->jurusan ? 'selected' : ''}}>{{ $item->nama_jurusan }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -28,7 +28,10 @@
                     </div>
                     <div class="col-md-2">
                         <select name="kelas" id="kelas" class="form-control kelas">
-                            <option selected style="display: none;" value="{{$jadwal->kel_id}}">{{$jadwal->n_kelas}}</option>
+                            @php
+                                $namaKelas = App\Models\Kelas::find($jadwal->kelas);
+                            @endphp
+                            <option selected style="display: none;" value="{{$namaKelas->id}}">{{$namaKelas->kelas}}</option>
                         </select>
                     </div>
                 </div>
@@ -37,7 +40,7 @@
                         <p>Semester<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-sm-1">
-                        <input type="number" min="1" max="8" class="form-control" name="semester" value="{{$jadwal->smt}}" id="semester" required placeholder="semester">
+                        <input type="number" min="1" max="8" class="form-control semester" name="semester" value="{{$jadwal->semester}}" id="semester" placeholder="semester">
                     </div>
                 </div>
                 <div class="row mt-1">
@@ -46,32 +49,11 @@
                     </div>
                     <div class="col-md-2">
                         <select name="hari" id="hari" class="form-control">
-                            <option selected style="display: none;" value="{{$jadwal->hari}}">{{$jadwal->hari}} [Terpilih]</option>
-                            @if($jadwal->hari == "Senin")
-                            <option value="Selasa">Selasa</option>
-                            <option value="Rabu">Rabu</option>
-                            <option value="Kamis">Kamis</option>
-                            <option value="Jumat">Jumat</option>
-                            @elseif($jadwal->hari == "Selasa")
-                            <option value="Senin">Senin</option>
-                            <option value="Rabu">Rabu</option>
-                            <option value="Kamis">Kamis</option>
-                            <option value="Jumat">Jumat</option>
-                            @elseif($jadwal->hari == "Rabu")
-                            <option value="Senin">Senin</option>
-                            <option value="Selasa">Selasa</option>
-                            <option value="Kamis">Kamis</option>
-                            <option value="Jumat">Jumat</option>
-                            @elseif($jadwal->hari == "Kamis")
-                            <option value="Senin">Senin</option>
-                            <option value="Selasa">Selasa</option>
-                            <option value="Rabu">Rabu</option>
-                            <option value="Jumat">Jumat</option>
-                            @else<option value="Senin">Senin</option>
-                            <option value="Selasa">Selasa</option>
-                            <option value="Rabu">Rabu</option>
-                            <option value="Kamis">Kamis</option>
-                            @endif
+                            <option value="Senin" {{ $jadwal->hari == "Senin" ? 'selected' : ''}}>Senin</option>
+                            <option value="Selasa" {{ $jadwal->hari == "Selasa" ? 'selected' : ''}}>Selasa</option>
+                            <option value="Rabu" {{ $jadwal->hari == "Rabu" ? 'selected' : ''}}>Rabu</option>
+                            <option value="Kamis" {{ $jadwal->hari == "Kamis" ? 'selected' : '' }}>Kamis</option>
+                            <option value="Jumat" {{ $jadwal->hari == "Jumat" ? 'selected' : '' }}>Jumat</option>
                         </select>
                     </div>
                 </div>
@@ -82,14 +64,6 @@
                     <div class="col-md-3">
                         <select name="matkul" id="matkul" class="form-control matkul">
                             <option selected style="display: none;" value="{{$jadwal->matkul}}">{{$jadwal->matkul}}</option>
-                            {{-- @foreach ($kelas as $item)
-                                @for ($i = 1; $i < 9; $i++)
-                                    @php
-                                        $matkul = 'matkul_' . $i;
-                                    @endphp
-                                    <option value="{{ $item->$matkul }}">{{ $item->$matkul }}</option>
-                                @endfor
-                            @endforeach --}}
                         </select>
                     </div>
                 </div>
@@ -137,55 +111,78 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    $(".jurusan").change(function() {
-        var selectedOption = $(this).children("option:selected").val();
-        console.log(selectedOption);
+$(document).ready(function(){
+    var jurusan = $(".jurusan").val();
+    var kelas = $(".kelas").val();
+    var semester = $(".semester").val();
 
-        // Lakukan permintaan Ajax
+    $(".jurusan").change(function(){
+        var selectedJurusan = $(this).val(); // Ambil nilai yang dipilih oleh pengguna
+
         $.ajax({
-            url: "{{url('JadwalKuliah/getKelas')}}/" + selectedOption,
+            url: 'getKelas/' + selectedJurusan,
             type: 'GET',
-            success: function(data) {
-                // Hapus opsi lama pada pilihan kedua
+            success: function(data){
                 $(".kelas").empty();
+                $(".kelas").append('<option selected class="d-none">-- Pilih Kelas -- </option>');
 
-                // Tambahkan opsi baru berdasarkan data dari server
-                $.each(data, function(id, value) {
-                    $(".kelas").append('<option value="" selected style="display:none;">-- Pilih Kelas --</option>');
-                    $(".kelas").append('<option value="' + id + '">' + value + '</option>');
+                $.each(data, function(id, kelas) {
+                    $(".kelas").append('<option value="' + id + '" data-kelas="' + kelas + '">' + kelas + '</option>');
                 });
             }
         });
     });
 
-    $(".kelas").change(function() {
-        var kelas = $(this).children("option:selected").val();
+    $(".kelas").change(function(){
+        var selectedKelas = $(this).find("option:selected").data("kelas");
 
-        // Lakukan permintaan Ajax
         $.ajax({
-            url: "{{url('JadwalKuliah/getMatkul')}}/" + kelas,
+            url: 'getMatkul/' + selectedKelas + '/' + $(".semester").val(),
             type: 'GET',
-            success: function(data) {
-                // Hapus opsi lama pada pilihan ketiga
+            success: function(data){
                 $(".matkul").empty();
-                $(".matkul").append('<option value="" selected style="display:none;">-- Pilih Mata Kuliah --</option>');
+                $(".matkul").append('<option selected class="d-none"> -- Pilih Mata Kuliah -- </option>');
 
-                // Tambahkan opsi baru berdasarkan data dari server
-                $(".matkul").append('<option value="' + data.matkul_1 + '">' + data.matkul_1 + '</option>');
-                $(".matkul").append('<option value="' + data.matkul_2 + '">' + data.matkul_2 + '</option>');
-                $(".matkul").append('<option value="' + data.matkul_3 + '">' + data.matkul_3 + '</option>');
-                $(".matkul").append('<option value="' + data.matkul_4 + '">' + data.matkul_4 + '</option>');
-                $(".matkul").append('<option value="' + data.matkul_5 + '">' + data.matkul_5 + '</option>');
-                $(".matkul").append('<option value="' + data.matkul_6 + '">' + data.matkul_6 + '</option>');
-                $(".matkul").append('<option value="' + data.matkul_7 + '">' + data.matkul_7 + '</option>');
-                $(".matkul").append('<option value="' + data.matkul_8 + '">' + data.matkul_8 + '</option>');
-
-                // Tambahkan kolom matkul lainnya sesuai kebutuhan
+                if(data) {
+                    for(var i = 1; i <= 8; i++) {
+                        var matkul = data['matkul_' + i];
+                        if(matkul) {
+                            $(".matkul").append('<option value ="' + matkul + '">' + matkul + '</option>');
+                        }
+                    }
+                } else {
+                    $(".matkul").append('<option value = "" class="d-none" selected> Matkul tidak ditemukan </option>')
+                }
             }
         });
     });
+
+    $(".semester").change(function(){
+        var selectedKelas = $(".kelas").find("option:selected").data("kelas");
+        var selectedSemester = $(this).val();
+
+        $.ajax({
+            url: 'getMatkul/' + selectedKelas + '/' + selectedSemester,
+            type: 'GET',
+            success: function(data){
+                $(".matkul").empty();
+                $(".matkul").append('<option selected class="d-none"> -- Pilih Mata Kuliah -- </option>');
+
+                if(data) {
+                    for(var i = 1; i <= 8; i++) {
+                        var matkul = data['matkul_' + i];
+                        if(matkul) {
+                            $(".matkul").append('<option value ="' + matkul + '">' + matkul + '</option>');
+                        }
+                    }
+                } else {
+                    $(".matkul").append('<option value = "" class="d-none" selected> Matkul tidak ditemukan </option>')
+                }
+            }
+        });
+    });
+});
 </script>
 
 @endsection

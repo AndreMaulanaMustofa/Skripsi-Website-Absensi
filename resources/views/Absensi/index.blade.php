@@ -7,12 +7,17 @@
             <div class="row mb-2 mt-2">
                 <h3 class="mb-3 ">Data Absensi</h3>
                 <div class="col-md-9">
-                    <button class="btn btn-outline-primary mr-2 date" data-bs-toggle="modal" data-bs-target="#dateModal">
-                        <i class="fa-solid fa-calendar"></i> Berdasarkan Tanggal
+                    <a href="{{ route('absensi.create') }}">
+                        <button class="btn btn-outline-primary mr-2">
+                            <i class="fa-solid fa-plus mr-2"></i>Tambah Data
+                        </button>
+                    </a>
+                    <button class="btn btn-outline-dark mr-2 date" data-bs-toggle="modal" data-bs-target="#dateModal">
+                        <i class="fa-solid fa-calendar mr-2"></i> Berdasarkan Tanggal
                     </button>
                     <div class="btn-group">
                         <button class="btn btn-outline-danger mr-2" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 5px">
-                            <i class="fa-solid fa-clipboard-check"></i> Berdasarkan Status
+                            <i class="fa-solid fa-clipboard-check mr-2"></i> Berdasarkan Status
                         </button>
                         <ul class="dropdown-menu">
                             <li><a href="#" class="dropdown-item status">Terlambat</a></li>
@@ -20,7 +25,7 @@
                         </ul>
                     </div>
                     <button class="btn btn-outline-secondary mr-2 reset" onclick="window.location.reload()">
-                        <i class="fa-solid fa-rotate"></i> Reset
+                        <i class="fa-solid fa-rotate mr-2"></i> Reset
                     </button>
                 </div>
                 <div class="col-md-3">
@@ -40,6 +45,7 @@
                                 <th scope="col">Kelas</th>
                                 <th scope="col">Semester</th>
                                 <th scope="col">Mata Kuliah</th>
+                                <th scope="col">Hari</th>
                                 <th scope="col">Tanggal Absen</th>
                                 <th scope="col">Jam Absen</th>
                                 <th scope="col">Status</th>
@@ -56,6 +62,7 @@
                                 <td>{{ $a->kelas }}</td>
                                 <td>{{ $a->semester }}</td>
                                 <td>{{ $a->mataKuliah }}</td>
+                                <td>{{ $a->hari }}</td>
                                 <td>{{ $a->tgl_absen }}</td>
                                 <td>{{ $a->jam_absen }}</td>
                                 <td>
@@ -63,6 +70,8 @@
                                         <button class="btn btn-danger btn-sm">{{$a->status}}</button>
                                     @elseif($a->status == "Tidak Terlambat")
                                         <button class="btn btn-success btn-sm">{{$a->status}}</button>
+                                    @elseif($a->status == "Tidak Absen")
+                                        <button class="btn btn-dark btn-sm">{{ $a->status }}</button>
                                     @endif
                                 </td>
                                 <td>

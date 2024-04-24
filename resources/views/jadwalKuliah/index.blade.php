@@ -62,7 +62,7 @@
                                         </thead>
                                         <tbody class="text-center">
                                             @php
-                                                $matkul = jadwal::where('kelas', $j->j_kelas)->where('semester', $j->smt)->get();
+                                                $matkul = jadwal::where('semester', $j->smt)->where('kelas', $j->j_kelas)->get();
                                             @endphp
                                             @foreach($matkul as $key => $mk)
                                             <tr>
@@ -80,7 +80,7 @@
                                                         Delete
                                                     </button>
 
-                                                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#KuliahCode{{ $mk->id }}" onclick="generateQRCode(`{{ $mk->matkul }}`, `{{ date('H:i', strtotime($mk->jam_mulai)) }}`)">
+                                                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#KuliahCode{{ $mk->id }}" onclick="generateQRCode(`{{ $mk->id }}`, `{{ $mk->matkul }}`, `{{ date('H:i', strtotime($mk->jam_mulai)) }}`)">
                                                         QR Code
                                                     </button>
 
@@ -92,7 +92,7 @@
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body d-flex justify-content-center">
-                                                                    <div id="qrcode"></div>
+                                                                    <div id="qrcode-{{ $mk->id }}"></div>
                                                                 </div>
                                                                 <div class="modal-footer d-flex justify-content-center">
                                                                     <div class="col-3">

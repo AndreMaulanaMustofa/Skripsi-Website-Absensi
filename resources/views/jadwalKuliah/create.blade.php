@@ -37,7 +37,7 @@
                         <p>Semester<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-sm-1">
-                        <input type="number" min="1" max="8" class="form-control" name="semester" id="semester" required placeholder="semester">
+                        <input type="number" min="1" max="8" class="form-control semester" name="semester" id="semester" required placeholder="semester">
                     </div>
                 </div>
                 <div class="row mt-1">
@@ -62,14 +62,6 @@
                     <div class="col-md-3">
                         <select name="matkul" id="matkul" class="form-control matkul">
                             <option selected style="display: none;">-- Pilih kelas terlebih dahulu --</option>
-                            {{-- @foreach ($kelas as $item)
-                                @for ($i = 1; $i < 9; $i++)
-                                    @php
-                                        $matkul = 'matkul_' . $i;
-                                    @endphp
-                                    <option value="{{ $item->$matkul }}">{{ $item->$matkul }}</option>
-                                @endfor
-                            @endforeach --}}
                         </select>
                     </div>
                 </div>
@@ -117,51 +109,70 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    $(".jurusan").change(function() {
-        var selectedOption = $(this).children("option:selected").val();
+    $(".jurusan").change(function(){
+        var selectedJurusan = $(this).children("option:selected").val();
 
-        // Lakukan permintaan Ajax
         $.ajax({
-            url: 'getKelas/' + selectedOption,
+            url: 'getKelas/' + selectedJurusan,
             type: 'GET',
-            success: function(data) {
-                // Hapus opsi lama pada pilihan kedua
+            success: function(data){
                 $(".kelas").empty();
+                $(".kelas").append('<option selected class="d-none">-- Pilih Kelas -- </option>');
 
-                // Tambahkan opsi baru berdasarkan data dari server
-                $.each(data, function(id, value) {
-                    $(".kelas").append('<option value="" selected style="display:none;">-- Pilih Kelas --</option>');
-                    $(".kelas").append('<option value="' + id + '">' + value + '</option>');
+                $.each(data, function(id, kelas) {
+                    $(".kelas").append('<option value="' + id + '" data-kelas="' + kelas + '">' + kelas + '</option>');
                 });
             }
         });
     });
 
-    $(".kelas").change(function() {
-        var kelas = $(this).children("option:selected").val();
 
-        // Lakukan permintaan Ajax
+    $(".kelas").change(function(){
+        var selectedKelas = $(".kelas").find("option:selected").data("kelas");
+
         $.ajax({
-            url: 'getMatkul/' + kelas,
+            url: 'getMatkul/' + selectedKelas + '/' + $(".semester").val(),
             type: 'GET',
-            success: function(data) {
-                // Hapus opsi lama pada pilihan ketiga
+            success: function(data){
                 $(".matkul").empty();
-                $(".matkul").append('<option value="" selected style="display:none;">-- Pilih Mata Kuliah --</option>');
+                $(".matkul").append('<option selected class="d-none"> -- Pilih Mata Kuliah -- </option>');
 
-                // Tambahkan opsi baru berdasarkan data dari server
-                $(".matkul").append('<option value="' + data.matkul_1 + '">' + data.matkul_1 + '</option>');
-                $(".matkul").append('<option value="' + data.matkul_2 + '">' + data.matkul_2 + '</option>');
-                $(".matkul").append('<option value="' + data.matkul_3 + '">' + data.matkul_3 + '</option>');
-                $(".matkul").append('<option value="' + data.matkul_4 + '">' + data.matkul_4 + '</option>');
-                $(".matkul").append('<option value="' + data.matkul_5 + '">' + data.matkul_5 + '</option>');
-                $(".matkul").append('<option value="' + data.matkul_6 + '">' + data.matkul_6 + '</option>');
-                $(".matkul").append('<option value="' + data.matkul_7 + '">' + data.matkul_7 + '</option>');
-                $(".matkul").append('<option value="' + data.matkul_8 + '">' + data.matkul_8 + '</option>');
+                if(data) {
+                    for(var i = 1; i <= 8; i++) {
+                        var matkul = data['matkul_' + i];
+                        if(matkul) {
+                            $(".matkul").append('<option value ="' + matkul + '">' + matkul + '</option>');
+                        }
+                    }
+                } else {
+                    $(".matkul").append('<option value = "" class="d-none" selected> Matkul tidak ditemukan </option>')
+                }
+            }
+        });
+    });
 
-                // Tambahkan kolom matkul lainnya sesuai kebutuhan
+    $(".semester").change(function(){
+        var selectedKelas = $(".kelas").find("option:selected").data("kelas");
+        var selectedSemester = $(this).val();
+
+        $.ajax({
+            url: 'getMatkul/' + selectedKelas + '/' + selectedSemester,
+            type: 'GET',
+            success: function(data){
+                $(".matkul").empty();
+                $(".matkul").append('<option selected class="d-none"> -- Pilih Mata Kuliah -- </option>');
+
+                if(data) {
+                    for(var i = 1; i <= 8; i++) {
+                        var matkul = data['matkul_' + i];
+                        if(matkul) {
+                            $(".matkul").append('<option value ="' + matkul + '">' + matkul + '</option>');
+                        }
+                    }
+                } else {
+                    $(".matkul").append('<option value = "" class="d-none" selected> Matkul tidak ditemukan </option>')
+                }
             }
         });
     });

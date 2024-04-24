@@ -5,7 +5,8 @@
     <td>{{ $a->namaMahasiswa }}</td>
     <td>{{ $a->kelas }}</td>
     <td>{{ $a->semester }}</td>
-    <td>{{ $a->jenisKelamin }}</td>
+    <td>{{ $a->mataKuliah }}</td>
+    <td>{{ $a->hari }}</td>
     <td>{{ $a->tgl_absen }}</td>
     <td>{{ $a->jam_absen }}</td>
     <td>

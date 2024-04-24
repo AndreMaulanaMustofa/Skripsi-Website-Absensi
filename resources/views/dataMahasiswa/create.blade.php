@@ -35,7 +35,7 @@
                         <select name="kelas" id="kelas" class="form-control" style="width: 95px;" required>
                             <option value="" selected class="d-none">-- Kelas --</option>
                             @foreach ($kelas as $item)
-                                <option value="{{ $item->kelas }}">{{ $item->kelas }}</option>
+                                <option value="{{ $item->id }}">{{ $item->kelas }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -79,7 +79,7 @@
                         <p>Nama Ayah<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" name="namaAyah" id="namaAyah" class="form-control" required>
+                        <input type="text" name="namaAyah" id="namaAyah" class="form-control" >
                     </div>
                 </div>
                 <div class="row mt-1">
@@ -89,7 +89,7 @@
                     <div class="col-md-8">
                         <input type="tel" pattern="[0-9]+"
                             oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-                            class="form-control" name="NomorAyah" id="NomorAyah" required>
+                            class="form-control" name="NomorAyah" id="NomorAyah" >
                     </div>
                 </div>
                 <div class="row mt-1">
@@ -97,7 +97,7 @@
                         <p>Nama Ibu<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" name="namaIbu" id="namaIbu" class="form-control" required>
+                        <input type="text" name="namaIbu" id="namaIbu" class="form-control" >
                     </div>
                 </div>
                 <div class="row mt-1">
@@ -107,7 +107,7 @@
                     <div class="col-md-8">
                         <input type="tel" pattern="[0-9]+"
                             oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-                            class="form-control" name="NomorIbu" id="NomorIbu" required>
+                            class="form-control" name="NomorIbu" id="NomorIbu" >
                     </div>
                 </div>
                 <div class="row mt-1">
@@ -115,7 +115,7 @@
                         <p>Domisili<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-8">
-                        <select name="provinsiIndo" class="form-control" id="provinsi" required>
+                        <select name="provinsiIndo" class="form-control" id="provinsi" >
                         </select>
                     </div>
                 </div>

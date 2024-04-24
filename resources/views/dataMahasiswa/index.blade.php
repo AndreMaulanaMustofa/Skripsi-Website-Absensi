@@ -38,7 +38,10 @@
                             <tr>
                                 <td>{{ $m->NIM }}</td>
                                 <td>{{ $m->namaLengkap }}</td>
-                                <td>{{ $m->kelas }}</td>
+                                @php
+                                    $namaKelas = App\Models\Kelas::find($m->id_kelas);
+                                @endphp
+                                <td>{{ $namaKelas->kelas }}</td>
                                 <td>{{ $m->jenisKelamin }}</td>
                                 <td>{{ $m->NoTelp }}</td>
                                 <td>{{ $m->tahunMasuk }}</td>
@@ -69,7 +72,10 @@
                                                                 <div class="col-md-7">
                                                                     <p class="text-left">{{ $m->NIM }}</p>
                                                                     <p class="text-left">{{ $m->namaLengkap }}</p>
-                                                                    <p class="text-left">{{ $m->Kelas }}</p>
+                                                                    @php
+                                                                        $namaKelas = App\Models\Kelas::find($m->id_kelas);
+                                                                    @endphp
+                                                                    <p class="text-left">{{ $namaKelas->kelas }}</p>
                                                                     <p class="text-left">{{ $m->NoTelp }}</p>
                                                                     <p class="text-left">{{ $m->tahunMasuk }}</p>
                                                                 </div>
@@ -87,10 +93,26 @@
                                                                     <p class="text-left">Domisili:</p>
                                                                 </div>
                                                                 <div class="col-md-7" >
-                                                                    <p class="text-left">{{ $m->nama_Ayah }}</p>
-                                                                    <p class="text-left">{{ $m->NoTelp_Ayah }}</p>
-                                                                    <p class="text-left">{{ $m->nama_Ibu }}</p>
-                                                                    <p class="text-left">{{ $m->NoTelp_Ibu }}</p>
+                                                                    @if($m->nama_Ayah != null)
+                                                                        <p class="text-left">{{ $m->nama_Ayah }}</p>
+                                                                    @else
+                                                                        <p class="text-left">Tidak terisi</p>
+                                                                    @endif
+                                                                    @if($m->NoTelp_Ayah != null)
+                                                                        <p class="text-left">{{ $m->NoTelp_Ayah }}</p>
+                                                                    @else
+                                                                        <p class="text-left">Tidak terisi</p>
+                                                                    @endif
+                                                                    @if($m->nama_Ibu != null)
+                                                                        <p class="text-left">{{ $m->nama_Ibu }}</p>
+                                                                    @else
+                                                                        <p class="text-left">Tidak terisi</p>
+                                                                    @endif
+                                                                    @if($m->NoTelp_Ibu != null)
+                                                                        <p class="text-left">{{ $m->NoTelp_Ibu }}</p>
+                                                                    @else
+                                                                        <p class="text-left">Tidak terisi</p>
+                                                                    @endif
                                                                     <p class="text-left">{{ $m->Domisili }}</p>
                                                                 </div>
                                                             </div>
