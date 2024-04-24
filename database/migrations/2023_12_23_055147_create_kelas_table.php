@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('matkul_6')->nullable();
             $table->string('matkul_7')->nullable();
             $table->string('matkul_8')->nullable();
-            $table->timestamps();
         });
     }
 

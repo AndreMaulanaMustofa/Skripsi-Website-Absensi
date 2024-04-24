@@ -14,4 +14,6 @@ class Jurusan extends Model
     protected $fillable = [
         'nama_jurusan',
     ];
+
+    public $timestamps = false;
 }

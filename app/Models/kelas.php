@@ -28,4 +28,6 @@ class kelas extends Model
     public function jadwals(){
         return $this->hasMany(jadwal::class);
     }
+
+    public $timestamps = false;
 }

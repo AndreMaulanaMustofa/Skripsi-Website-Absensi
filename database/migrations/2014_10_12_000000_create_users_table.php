@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('alamat')->nullable();
             $table->string('imgProfile')->default('polinema_logo.png');
             $table->rememberToken();
-            $table->timestamps();
         });
     }
 

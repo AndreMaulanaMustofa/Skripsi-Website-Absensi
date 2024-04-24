@@ -11,4 +11,6 @@ class Matakuliah extends Model
 
     protected $table= 'matakuliah';
     protected $primaryKey = 'id_matakuliah';
+
+    public $timestamps = false;
 }

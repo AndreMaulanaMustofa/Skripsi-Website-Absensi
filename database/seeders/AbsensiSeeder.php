@@ -23,7 +23,8 @@ class AbsensiSeeder extends Seeder
                 'kelas' => 'TI - 3D',
                 'mataKuliah' => 'Bahasa Inggris 2',
                 'semester' => 5,
-                'tgl_absen' => now()->toDateString(),
+                'hari' => 'Selasa',
+                'tgl_absen' => now()->format('d-m-Y'),
                 'jam_absen' => '06.30',
                 'status' => 'Tidak Terlambat'
             ]);

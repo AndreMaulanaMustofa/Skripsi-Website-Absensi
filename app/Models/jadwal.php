@@ -23,4 +23,6 @@ class jadwal extends Model
     public function kelas(){
         return $this->belongsTo(Kelas::class);
     }
+
+    public $timestamps = false;
 }

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('matkul');
             $table->time('jam_mulai');
             $table->time('jam_akhir');
-            $table->timestamps();
         });
     }
 

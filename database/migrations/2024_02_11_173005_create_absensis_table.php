@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('kelas');
             $table->string('semester');
             $table->string('mataKuliah');
+            $table->string('hari');
             $table->string('tgl_absen');
             $table->string('jam_absen');
             $table->string('status');
-            $table->timestamps();
         });
     }
 

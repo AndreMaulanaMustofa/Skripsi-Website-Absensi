@@ -14,7 +14,7 @@ class mahasiswa extends Model
         'NIM',
         'password',
         'namaLengkap',
-        'Kelas',
+        'id_kelas',
         'jenisKelamin',
         'NoTelp',
         'tahunMasuk',
@@ -25,4 +25,6 @@ class mahasiswa extends Model
         'Domisili',
         'Status'
     ];
+
+    public $timestamps = false;
 }

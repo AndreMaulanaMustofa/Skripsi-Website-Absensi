@@ -16,8 +16,11 @@ class Absensi extends Model
         'kelas',
         'mataKuliah',
         'semester',
+        'hari',
         'tgl_absen',
         'jam_absen',
         'status'
     ];
+
+    public $timestamps = false;
 }

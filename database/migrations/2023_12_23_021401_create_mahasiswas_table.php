@@ -20,13 +20,12 @@ return new class extends Migration
             $table->string('jenisKelamin');
             $table->string('NoTelp', 15);
             $table->year('tahunMasuk');
-            $table->string('nama_Ayah');
-            $table->string('NoTelp_Ayah', 15);
-            $table->string('nama_Ibu');
-            $table->string('NoTelp_Ibu', 15);
+            $table->string('nama_Ayah')->nullable();
+            $table->string('NoTelp_Ayah', 15)->nullable();
+            $table->string('nama_Ibu')->nullable();
+            $table->string('NoTelp_Ibu', 15)->nullable();
             $table->string('Domisili');
             $table->string('Status')->default('Offline');
-            $table->timestamps();
         });
     }
 
