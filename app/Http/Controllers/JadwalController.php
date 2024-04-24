@@ -43,60 +43,47 @@ class JadwalController extends Controller
         return redirect()->route('jadwal.view');
     }
 
-    public function getClass($jur_id){
-        $jurus = kelas::where('jur_id', $jur_id)->first();
+    public function getKelas($jur_id)
+    {
+        $kelas = kelas::where('jur_id', $jur_id)->groupBy('kelas')->pluck('kelas', 'id');
 
-        if($jurus){
-            return view('jadwalKuliah.getData.kelas', compact('jurus'));
-        }
+        return response()->json($kelas);
     }
 
-    public function getKelass($jur_id)
-    {
-        // Ambil data dari database berdasarkan $id
-        $options = kelas::where('jur_id', $jur_id)->pluck('kelas', 'id');
+    public function getMatkul($kelas, $semesterKls){
+        $semester = Kelas::where('kelas', $kelas)->where('semester', $semesterKls)->first();
 
-        return response()->json($options);
-    }
-
-    public function getMatkul($id)
-    {
-        // Ambil data dari database berdasarkan $id
-        $kelas = Kelas::find($id);
-
-        // Pastikan $kelas tidak null sebelum melanjutkan
-        if ($kelas) {
-            // Format data ke dalam array
+        if ($semester) {
             $options = [
-                'id' => $kelas->id,
-                'matkul_1' => $kelas->matkul_1,
-                'matkul_2' => $kelas->matkul_2,
-                'matkul_3' => $kelas->matkul_3,
-                'matkul_4' => $kelas->matkul_4,
-                'matkul_5' => $kelas->matkul_5,
-                'matkul_6' => $kelas->matkul_6,
-                'matkul_7' => $kelas->matkul_7,
-                'matkul_8' => $kelas->matkul_8,
-                // Tambahkan kolom matkul lainnya sesuai kebutuhan
+                'id' => $semester->id,
+                'matkul_1' => $semester->matkul_1,
+                'matkul_2' => $semester->matkul_2,
+                'matkul_3' => $semester->matkul_3,
+                'matkul_4' => $semester->matkul_4,
+                'matkul_5' => $semester->matkul_5,
+                'matkul_6' => $semester->matkul_6,
+                'matkul_7' => $semester->matkul_7,
+                'matkul_8' => $semester->matkul_8
             ];
 
             return response()->json($options);
-        } else {
-            // Handle jika tidak menemukan kelas dengan id yang diberikan
-            return response()->json(['error' => 'Kelas tidak ditemukan.'], 404);
         }
     }
 
     public function editJadwal($id){
         $title = "Edit Jadwal";
-        $jadwal = jadwal::join('kelas','kelas.id','=','jadwals.kelas')
-        ->join('jurusan','jurusan.jur_id','=','jadwals.jurusan')
-        ->select('kelas.kelas as n_kelas','jurusan.nama_jurusan as n_jurusan','jadwals.semester as smt','hari','matkul','jam_mulai','jam_akhir','jadwals.kelas as j_kelas','jadwals.jurusan as jur_id','jadwals.kelas as kel_id','jadwals.id as jadwalid')
-        ->where('jadwals.id',$id)->first();
-        $kelas = kelas::whereNotIn('id', [$jadwal->j_kelas])->get();
-        $jurusan = Jurusan::whereNotIn('jur_id', [$jadwal->jur_id])->get();
+        // $jadwal = jadwal::join('kelas','kelas.id','=','jadwals.kelas')
+        // ->join('jurusan','jurusan.jur_id','=','jadwals.jurusan')
+        // ->select('kelas.kelas as n_kelas','jurusan.nama_jurusan as n_jurusan','jadwals.semester as smt','hari','matkul','jam_mulai','jam_akhir','jadwals.kelas as j_kelas','jadwals.jurusan as jur_id','jadwals.kelas as kel_id','jadwals.id as jadwalid')
+        // ->where('jadwals.id',$id)->first();
+        // $kelas = kelas::whereNotIn('id', [$jadwal->j_kelas])->get();
+        // $jurusan = Jurusan::whereNotIn('jur_id', [$jadwal->jur_id])->get();
 
-        return view('jadwalKuliah.edit', compact('title', 'jadwal','kelas','jurusan'));
+        $jadwal = Jadwal::find($id);
+        $kelas  = Kelas::all();
+        $jurusan = Jurusan::all();
+
+        return view('jadwalKuliah.edit', compact('title', 'jadwal', 'kelas', 'jurusan'));
     }
 
     public function updateJadwal(Request $request, $id){
@@ -109,7 +96,8 @@ class JadwalController extends Controller
         $jadwal->matkul = $request->input('matkul');
         $jadwal->jam_mulai = $request->input('jam_mulai');
         $jadwal->jam_akhir = $request->input('jam_akhir');
-        $jadwal->save();
+        
+        $jadwal->update();
 
         return redirect()->route('jadwal.view');
     }
