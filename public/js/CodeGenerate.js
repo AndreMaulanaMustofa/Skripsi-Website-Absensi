@@ -1,12 +1,12 @@
-function generateQRCode(matkul, jam) {
+function generateQRCode(id, matkul, jam) {
     // Pastikan data yang akan di-encode tidak kosong
-    if (!matkul && !jam) {
+    if (!id || !matkul || !jam) {
         console.error('Data cannot be empty');
         return;
     }
 
     // Clear the existing content inside the 'qrcode' element
-    var qrcodeContainer = document.getElementById('qrcode');
+    var qrcodeContainer = document.getElementById('qrcode-'+ id);
     if (qrcodeContainer) {
         qrcodeContainer.innerHTML = '';
 
@@ -24,7 +24,7 @@ function generateQRCode(matkul, jam) {
         overlayDiv.style.height = '100%';
 
         var img = document.createElement('img');
-        img.src = 'img/polinema_logo.png'; // Gantilah dengan path gambar Anda
+        img.src = 'img/polinema_logo.png';
         img.style.position = 'absolute';
         img.style.top = '50%';
         img.style.left = '50%';
@@ -38,9 +38,6 @@ function generateQRCode(matkul, jam) {
         console.error('QR Code container not found');
     }
 }
-
-// // Panggil fungsi generateQRCode dengan data yang diinginkan
-// generateQRCode('2041720211');
 
 
 function downloadQRCode() {
