@@ -33,3 +33,28 @@ function deleteAbsensi(id){
         }
     });
 }
+
+function validasiAbsen(){
+    const formAbsen = document.getElementById('FormAbsen');
+
+    if(!formAbsen.checkValidity()){
+        Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Lengkapi data terlebih dahulu!",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+        return false;
+    }else{
+        formAbsen.submit();
+
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Data telah disimpan!",
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    }
+}
