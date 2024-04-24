@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MahasiswaController extends Controller
 {
     public function view(){
-        $mahasiswa = mahasiswa::join('kelas','kelas.id','=','mahasiswas.id_kelas')->select('*')->get();
+        $mahasiswa = mahasiswa::join('kelas','kelas.id','=','mahasiswas.id_kelas')->select('mahasiswas.*')->orderBy('mahasiswas.id', 'asc')->get();
         $title = "Mahasiswa";
         return view('dataMahasiswa.index', compact('mahasiswa', 'title'));
     }
@@ -27,7 +27,7 @@ class MahasiswaController extends Controller
         $mahasiswa->NIM = $request->input('NIM');
         $mahasiswa->password = $request->input('NIM');
         $mahasiswa->namaLengkap = $request->input('nama_lengkap');
-        $mahasiswa->kelas = $request->input('kelas');
+        $mahasiswa->id_kelas = $request->input('kelas');
         $mahasiswa->jenisKelamin = $request->input('jenisKelamin');
         $mahasiswa->NoTelp = $request->input('NomorTelp');
         $mahasiswa->tahunMasuk = date('Y', strtotime($request->input('tahunMasuk')));
@@ -60,7 +60,7 @@ class MahasiswaController extends Controller
         $mahasiswa->NIM = $request->input('NIM');
         $mahasiswa->password = $request->input('NIM');
         $mahasiswa->namaLengkap = $request->input('nama_lengkap');
-        $mahasiswa->kelas = $request->input('kelas');
+        $mahasiswa->id_kelas = $request->input('kelas');
         $mahasiswa->jenisKelamin = $request->input('jenisKelamin');
         $mahasiswa->NoTelp = $request->input('NomorTelp');
         $mahasiswa->tahunMasuk = date('Y', strtotime($request->input('tahunMasuk')));
