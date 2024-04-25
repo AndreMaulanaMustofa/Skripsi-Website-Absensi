@@ -84,7 +84,7 @@
                                                         Delete
                                                     </button>
 
-                                                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#KuliahCode{{ $mk->id }}" onclick="generateQRCode(`{{ $mk->id }}`, `{{ $mk->matkul }}`, `{{ date('H:i', strtotime($mk->jam_mulai)) }}`)">
+                                                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#KuliahCode{{ $mk->id }}" onclick="generateQRCode(`{{ $mk->id }}`, `{{ $mk->matkul }}`, `{{ date('H:i', strtotime($mk->jam_mulai)) }}`, `{{ $mk->hari }}`)">
                                                         QR Code
                                                     </button>
 
@@ -100,7 +100,7 @@
                                                                 </div>
                                                                 <div class="modal-footer d-flex justify-content-center">
                                                                     <div class="col-3">
-                                                                        <button style="width: 100%; margin-bottom: 13px; background-color:red; border:none; color:white; height: 40px;" onclick="downloadQRCode()">PNG <i class="fa fa-download"></i></button>
+                                                                        <button style="width: 100%; margin-bottom: 13px; background-color:red; border:none; color:white; height: 40px;" onclick="downloadQRCode(`{{ $mk->id }}`)">PNG <i class="fa fa-download"></i></button>
                                                                     </div>
                                                                 </div>
                                                             </div>
