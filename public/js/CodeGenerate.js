@@ -1,6 +1,6 @@
-function generateQRCode(id, matkul, jam) {
+function generateQRCode(id, matkul, jam, hari) {
     // Pastikan data yang akan di-encode tidak kosong
-    if (!id || !matkul || !jam) {
+    if (!id || !matkul || !jam || !hari) {
         console.error('Data cannot be empty');
         return;
     }
@@ -12,7 +12,7 @@ function generateQRCode(id, matkul, jam) {
 
         // Generate the new QR code
         var qrcode = new QRCode(qrcodeContainer, {
-            text: matkul + ', ' + jam,
+            text: matkul + ', ' + jam + ', ' + hari,
             width: 270,
             height: 270,
         });
@@ -40,9 +40,9 @@ function generateQRCode(id, matkul, jam) {
 }
 
 
-function downloadQRCode() {
+function downloadQRCode(id) {
     // Mengonversi elemen QR code menjadi gambar menggunakan html2canvas
-    var qrcode = document.getElementById("qrcode");
+    var qrcode = document.getElementById("qrcode-" + id);
     html2canvas(qrcode).then(function(canvas) {
         // Mengubah canvas menjadi data URL
         var imgDataUrl = canvas.toDataURL('image/png');
