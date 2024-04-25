@@ -121,7 +121,7 @@ $(document).ready(function(){
         var selectedJurusan = $(this).val(); // Ambil nilai yang dipilih oleh pengguna
 
         $.ajax({
-            url: 'getKelas/' + selectedJurusan,
+            url: "{{url('JadwalKuliah/getKelas')}}/" + selectedJurusan,
             type: 'GET',
             success: function(data){
                 $(".kelas").empty();
@@ -130,6 +130,12 @@ $(document).ready(function(){
                 $.each(data, function(id, kelas) {
                     $(".kelas").append('<option value="' + id + '" data-kelas="' + kelas + '">' + kelas + '</option>');
                 });
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText); // Output error responseText ke konsol
+                console.error(status); // Output status error ke konsol
+                console.error(error); // Output pesan error ke konsol
+                // Di sini kamu bisa menambahkan kode untuk menampilkan pesan error kepada pengguna
             }
         });
     });
@@ -138,7 +144,7 @@ $(document).ready(function(){
         var selectedKelas = $(this).find("option:selected").data("kelas");
 
         $.ajax({
-            url: 'getMatkul/' + selectedKelas + '/' + $(".semester").val(),
+            url: "{{url('JadwalKuliah/getMatkul')}}/" + selectedKelas + '/' + $(".semester").val(),
             type: 'GET',
             success: function(data){
                 $(".matkul").empty();
@@ -163,7 +169,7 @@ $(document).ready(function(){
         var selectedSemester = $(this).val();
 
         $.ajax({
-            url: 'getMatkul/' + selectedKelas + '/' + selectedSemester,
+            url: "{{url('JadwalKuliah/getMatkul')}}/" + selectedKelas + '/' + selectedSemester,
             type: 'GET',
             success: function(data){
                 $(".matkul").empty();
