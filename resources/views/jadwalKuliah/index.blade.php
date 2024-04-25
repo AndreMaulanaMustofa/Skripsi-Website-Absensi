@@ -38,16 +38,20 @@
                             @forelse($jadwal as $key => $j)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $j->n_kelas }}</td>
-                                <td>{{ $j->n_jurusan }}</td>
-                                <td>{{ $j->smt }}</td>
+                                @php
+                                    $kelas = App\Models\Kelas::find($j->kelas);
+                                    $jurusan = App\Models\Jurusan::find($j->jurusan);
+                                @endphp
+                                <td>{{ $kelas->kelas }}</td>
+                                <td>{{ $jurusan->nama_jurusan }}</td>
+                                <td>{{$j->semester}}</td>
                                 <td>
-                                    <a data-bs-toggle="collapse" href="#detailJadwal{{$j->jur_id}}" role="button" aria-expanded="false" aria-controls="detailJadwal{{$j->id}}">
+                                    <a data-bs-toggle="collapse" href="#detailJadwal{{str_replace(" ","",strtolower($j->kelas))}}" role="button" aria-expanded="false" aria-controls="detailJadwal{{$j->id}}">
                                         <button class="btn btn-info btn-sm">Detail</button>
                                     </a>
                                 </td>
                             </tr>
-                            <tr class="collapse fade" id="detailJadwal{{$j->jur_id}}">
+                            <tr class="collapse fade" id="detailJadwal{{str_replace(" ","",strtolower($j->kelas))}}">
                                 <td colspan="5">
                                     <table class="table align-middle">
                                         <thead>
@@ -62,7 +66,7 @@
                                         </thead>
                                         <tbody class="text-center">
                                             @php
-                                                $matkul = jadwal::where('semester', $j->smt)->where('kelas', $j->j_kelas)->get();
+                                                $matkul = jadwal::where('semester', $j->semester)->where('kelas', $j->kelas)->get();
                                             @endphp
                                             @foreach($matkul as $key => $mk)
                                             <tr>
