@@ -12,10 +12,7 @@ class JadwalController extends Controller
 {
     public function view(){
         $title = "Jadwal Kuliah";
-        $jadwal = jadwal::join('kelas','kelas.id','=','jadwals.kelas')
-        ->join('jurusan','jurusan.jur_id','=','jadwals.jurusan')
-        ->select('kelas.kelas as n_kelas','jurusan.nama_jurusan as n_jurusan','jadwals.semester as smt','hari','matkul','jam_mulai','jam_akhir','jadwals.kelas as j_kelas','jadwals.jurusan as jur_id')
-        ->groupBy('jadwals.jurusan')->get();
+        $jadwal = jadwal::groupBy('semester')->get();
         return view('jadwalKuliah.index', compact('title', 'jadwal'));
     }
 
@@ -88,15 +85,16 @@ class JadwalController extends Controller
 
     public function updateJadwal(Request $request, $id){
         $jadwal = Jadwal::find($id);
+        $jur = Jurusan::where('jur_id', $request->input('jurusan'))->first();
 
         $jadwal->kelas = $request->input('kelas');
-        $jadwal->jurusan = $request->input('jurusan');
+        $jadwal->jurusan = $jur->nama_jurusan;
         $jadwal->semester = $request->input('semester');
         $jadwal->hari = $request->input('hari');
         $jadwal->matkul = $request->input('matkul');
         $jadwal->jam_mulai = $request->input('jam_mulai');
         $jadwal->jam_akhir = $request->input('jam_akhir');
-        
+
         $jadwal->update();
 
         return redirect()->route('jadwal.view');
