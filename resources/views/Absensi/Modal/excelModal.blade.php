@@ -36,7 +36,7 @@
             success: function(data) {
                 console.log("Sukses");
                 $('.wait').html("Loading...");
-                $('.wait').prop("disabled", true);
+                // $('.wait').prop("disabled", true);
                 window.location.href = "{{url('DataAbsensi/download')}}/" + tgl;
             },
         });

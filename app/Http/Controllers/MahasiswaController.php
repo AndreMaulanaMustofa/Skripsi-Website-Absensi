@@ -8,19 +8,22 @@ use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
 {
-    public function view(){
-        $mahasiswa = mahasiswa::join('kelas','kelas.id','=','mahasiswas.id_kelas')->select('mahasiswas.*')->orderBy('mahasiswas.id', 'asc')->get();
+    public function view()
+    {
+        $mahasiswa = mahasiswa::join('kelas', 'kelas.id', '=', 'mahasiswas.id_kelas')->select('mahasiswas.*')->orderBy('mahasiswas.id', 'asc')->get();
         $title = "Mahasiswa";
         return view('dataMahasiswa.index', compact('mahasiswa', 'title'));
     }
 
-    public function create(){
+    public function create()
+    {
         $title = "Buat Data Mahasiswa";
         $kelas = kelas::all();
         return view('dataMahasiswa.create', compact('title', 'kelas'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $mahasiswa = new Mahasiswa;
 
         // Mahasiswa
@@ -46,14 +49,16 @@ class MahasiswaController extends Controller
         return redirect()->route('mahasiswa.view');
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $mahasiswa = Mahasiswa::find($id);
         $kelas = Kelas::all();
         $title = "Edit Data";
         return view('dataMahasiswa.edit', compact('title', 'kelas', 'mahasiswa'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $mahasiswa = Mahasiswa::find($id);
 
         // Mahasiswa
@@ -79,7 +84,8 @@ class MahasiswaController extends Controller
         return redirect()->route('mahasiswa.view');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         Mahasiswa::find($id)->delete();
 
         return redirect()->route('mahasiswa.view');

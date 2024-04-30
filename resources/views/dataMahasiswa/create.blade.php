@@ -35,11 +35,17 @@
                         <select name="kelas" id="kelas" class="form-control" style="width: 95px;" required>
                             <option value="" selected class="d-none">-- Kelas --</option>
                             @foreach ($kelas as $item)
-                                <option value="{{ $item->id }}">{{ $item->kelas }}</option>
+                                <option value="{{ $item->id }}">{{ $item->kelas }} &nbsp; (Semester {{ $item->semester }})</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
+                <script>
+                    document.getElementById('kelas').addEventListener('change', function() {
+                        var selectedOption = this.options[this.selectedIndex];
+                        selectedOption.textContent = selectedOption.textContent.split('(')[0].trim();
+                    });
+                </script>
                 <div class="row mt-1 d-flex align-items-center">
                     <div class="col-md-4">
                         <p>Jenis Kelamin<span class="star-wajib">*</span></p>

@@ -11,8 +11,7 @@
 </head>
 
 <body style="margin-left: 0.7in;margin-right: 0.7in;margin-top: 0.75in;margin-bottom: 0.75in;">
-{{--  --}}
-    <table border="0" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines" style="border-collapse: collapse;page-break-after: always;">
+    <table cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines" style="border-collapse: collapse;page-break-after: always;">
         <col class="col0" style="width: 22.36666641pt;">
         <col class="col1" style="width: 61.67777707pt;">
         <col class="col2" style="width: 166.05555365pt;">
@@ -26,47 +25,15 @@
         <col class="col10" style="width: 94.8888878pt;">
         <tbody>
         <tr class="row0" style="height: 15pt;">
-            {{-- <td class="column0 style0 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;">
-            <!-- <img src="{{asset('img/polinemalogo.png')}}" /> -->
-            </td> --}}
-            <!-- <td class="column1">&nbsp;</td>
-            <td class="column2">&nbsp;</td>
-            <td class="column3">&nbsp;</td>
-            <td class="column4">&nbsp;</td>
-            <td class="column5">&nbsp;</td>
-            <td class="column6">&nbsp;</td>
-            <td class="column7">&nbsp;</td>
-            <td class="column8">&nbsp;</td>
-            <td class="column9">&nbsp;</td>
-            <td class="column10">&nbsp;</td> -->
         </tr>
         <tr class="row1" style="height: 15pt;">
             <td class="column0 style3 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;"></td>
             <td class="column1 style1 s" style="text-align: left;border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;">
-                <img src="{{ asset('img/polinema_logo.png') }}" style="width: 50%;">
+                <img src="{{ public_path('img/polinemalogo.png') }}" style="width: 50%;">
             </td>
             <td class="column2 style1 s" style="text-align: left;border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;">KEMENTERIAN PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI POLITEKNIK NEGERI MALANG</td>
-            <!-- <td class="column3">&nbsp;</td>
-            <td class="column4">&nbsp;</td>
-            <td class="column5">&nbsp;</td>
-            <td class="column6">&nbsp;</td>
-            <td class="column7">&nbsp;</td>
-            <td class="column8">&nbsp;</td>
-            <td class="column9">&nbsp;</td>
-            <td class="column10">&nbsp;</td> -->
         </tr>
         <tr class="row2" style="height: 15pt;">
-            {{-- <td class="column0 style3 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;"></td>
-            <td class="column1 style3 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;"></td>
-            <td class="column2 style3 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;"></td> --}}
-            <!-- <td class="column3">&nbsp;</td>
-            <td class="column4">&nbsp;</td>
-            <td class="column5">&nbsp;</td>
-            <td class="column6">&nbsp;</td>
-            <td class="column7">&nbsp;</td>
-            <td class="column8">&nbsp;</td>
-            <td class="column9">&nbsp;</td>
-            <td class="column10">&nbsp;</td> -->
         </tr>
         <tr class="row3" style="height: 15.75pt;">
             <td class="column0 style2 null" style="border: 1px dotted black;vertical-align: bottom;border-top: none #000000;border-left: none #000000;border-right: none #000000;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 2px solid #000000 !important;"></td>
@@ -82,53 +49,22 @@
             <td class="column10 style2 null" style="border: 1px dotted black;vertical-align: bottom;border-top: none #000000;border-left: none #000000;border-right: none #000000;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 2px solid #000000 !important;"></td>
         </tr>
         <tr class="row4" style="height: 15pt;">
-            <!-- <td class="column0">&nbsp;</td>
-            <td class="column1">&nbsp;</td>
-            <td class="column2">&nbsp;</td>
-            <td class="column3">&nbsp;</td>
-            <td class="column4">&nbsp;</td>
-            <td class="column5">&nbsp;</td>
-            <td class="column6">&nbsp;</td>
-            <td class="column7">&nbsp;</td>
-            <td class="column8">&nbsp;</td>
-            <td class="column9">&nbsp;</td>
-            <td class="column10">&nbsp;</td> -->
         </tr>
+        {{-- @php
+            $jurusan_id = kelas::where('kelas', $report->kelas);
+            $jurusan = Jurusan::where('jur_id', $jurusan_id->jur_id)->first();
+        @endphp --}}
         <tr class="row5" style="height: 15pt;">
             <td class="column0 style13 s style13" colspan="2" style="text-align: left;border: 1px dotted black;vertical-align: middle;padding-left: 0px;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">JURUSAN:</td>
             <td class="column2 style4 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">-</td>
-            <!-- <td class="column3 style3 null"></td>
-            <td class="column4 style3 null"></td>
-            <td class="column5 style3 null"></td>
-            <td class="column6 style3 null"></td>
-            <td class="column7 style3 null"></td>
-            <td class="column8 style3 null"></td>
-            <td class="column9 style3 null"></td>
-            <td class="column10 style3 null"></td> -->
         </tr>
         <tr class="row6" style="height: 15pt;">
             <td class="column0 style13 s style13" colspan="2" style="text-align: left;border: 1px dotted black;vertical-align: middle;padding-left: 0px;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">KELAS :</td>
             <td class="column2 style4 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">{{$report_info->kelas}}</td>
-            <!-- <td class="column3 style3 null"></td>
-            <td class="column4 style3 null"></td>
-            <td class="column5 style3 null"></td>
-            <td class="column6 style3 null"></td>
-            <td class="column7 style3 null"></td>
-            <td class="column8 style3 null"></td>
-            <td class="column9 style3 null"></td>
-            <td class="column10 style3 null"></td> -->
         </tr>
         <tr class="row7" style="height: 15pt;">
             <td class="column0 style13 s style13" colspan="2" style="text-align: left;border: 1px dotted black;vertical-align: middle;padding-left: 0px;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">HARI:</td>
             <td class="column2 style4 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">-</td>
-            <!-- <td class="column3 style3 null"></td>
-            <td class="column4 style3 null"></td>
-            <td class="column5 style3 null"></td>
-            <td class="column6 style3 null"></td>
-            <td class="column7 style3 null"></td>
-            <td class="column8 style3 null"></td>
-            <td class="column9 style3 null"></td>
-            <td class="column10 style3 null"></td> -->
         </tr>
         <tr class="row8" style="height: 15pt;">
             @php
@@ -137,14 +73,6 @@
             <td class="column0 style13 s style13" colspan="2" style="text-align: left;border: 1px dotted black;vertical-align: middle;padding-left: 0px;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">TANGGAL LAPORAN :</td>
             <td class="column2 style4 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">{{ \Carbon\Carbon::parse($today)->locale('id_ID')->isoFormat('dddd, D MMMM YYYY') }}
             </td>
-            <!-- <td class="column3 style3 null"></td>
-            <td class="column4 style3 null"></td>
-            <td class="column5 style3 null"></td>
-            <td class="column6 style3 null"></td>
-            <td class="column7 style3 null"></td>
-            <td class="column8 style3 null"></td>
-            <td class="column9 style3 null"></td>
-            <td class="column10 style3 null"></td> -->
         </tr>
         <tr class="row9" style="height: 15pt;">
             <td class="column0 style3 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;"></td>
@@ -164,9 +92,6 @@
             <td class="column1 style9 s style10" rowspan="2" style="text-align: center;border: 1px dotted black;vertical-align: middle;border-bottom: 1px solid #000000 !important;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;">NIM</td>
             <td class="column2 style11 s style12" rowspan="2" style="text-align: center;border: 1px dotted black;vertical-align: middle;border-bottom: 1px solid #000000 !important;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;">NAMA</td>
             <td class="column3 style6 s style8" colspan="5" style="text-align: center;border: 1px dotted black;vertical-align: middle;border-right: 1px solid #000000 !important;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-left: 1px solid #000000 !important;border-bottom: 1px solid #000000 !important;border-top: 1px solid #000000 !important;">DATA ABSENSI</td>
-            <!-- <td class="column8">&nbsp;</td>
-            <td class="column9">&nbsp;</td>
-            <td class="column10">&nbsp;</td> -->
         </tr>
         <tr class="row11" style="height: 15pt;">
             <td class="column3 style5 s" style="text-align: center;border: 1px dotted black;vertical-align: middle;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 1px solid #000000 !important;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;">SEMESTER</td>
@@ -174,9 +99,6 @@
             <td class="column5 style5 s" style="text-align: center;border: 1px dotted black;vertical-align: middle;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 1px solid #000000 !important;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;">JAM MATKUL</td>
             <td class="column6 style5 s" style="text-align: center;border: 1px dotted black;vertical-align: middle;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 1px solid #000000 !important;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;">JAM ABSEN</td>
             <td class="column7 style5 s" style="text-align: center;border: 1px dotted black;vertical-align: middle;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 1px solid #000000 !important;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;">STATUS</td>
-            <!-- <td class="column8">&nbsp;</td>
-            <td class="column9">&nbsp;</td>
-            <td class="column10">&nbsp;</td> -->
         </tr>
             @php
                 $no = 1;
@@ -191,9 +113,6 @@
             <td class="column5 style5 s" style="text-align: center;border: 1px dotted black;vertical-align: middle;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 1px solid #000000 !important;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;"></td>
             <td class="column6 style5 s" style="text-align: center;border: 1px dotted black;vertical-align: middle;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 1px solid #000000 !important;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;">{{$rep->jam_absen}}</td>
             <td class="column7 style5 s" style="text-align: center;border: 1px dotted black;vertical-align: middle;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 1px solid #000000 !important;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;">{{$rep->status}}</td>
-            <!-- <td class="column8 style3 null"></td>
-            <td class="column9 style3 null"></td>
-            <td class="column10 style3 null"></td> -->
         </tr>
         @endforeach
         </tbody>
