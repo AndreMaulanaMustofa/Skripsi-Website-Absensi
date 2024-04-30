@@ -17,12 +17,6 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script>
 <script>
-    function balikTanggal(tanggal) {
-        var tanggalArray = tanggal.split('-');
-        var tanggalTerbalik = tanggalArray[2] + '-' + tanggalArray[1] + '-' + tanggalArray[0];
-        return tanggalTerbalik;
-    }
-
     $('.tgl').flatpickr({
         "locale": "id",
         "dateFormat": "d-m-Y",

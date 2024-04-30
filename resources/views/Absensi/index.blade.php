@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2 mt-2">
                 <h3 class="mb-3 ">Data Absensi</h3>
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <a href="{{ route('absensi.create') }}">
                         <button class="btn btn-outline-primary mr-2">
                             <i class="fa-solid fa-plus mr-2"></i>Tambah Data
@@ -28,8 +28,11 @@
                         <i class="fa-solid fa-rotate mr-2"></i> Reset
                     </button>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="input-group mb-3">
+                        <button class="btn btn-outline-success mr-2 date" data-bs-toggle="modal" data-bs-target="#excelModal">
+                            <i class="fa-solid fa-file-excel mr-2"></i> Export Excel
+                        </button>
                         <input type="text" class="form-control" name="search" id="searchInput" placeholder="Cari Data">
                     </div>
                 </div>
@@ -78,12 +81,13 @@
                                     <button onclick="deleteAbsensi('{{ $a->id }}')" class="btn btn-danger btn-sm">Hapus</button>
                                 </td>
                                 @empty
-                                <td colspan="7">Data Tidak Ada!</td>
+                                <td colspan="11">Data Tidak Ada!</td>
                             </tr>
                             @endforelse
                         </tbody>
                     </table>
-                    @include('Absensi.dateModal')
+                    @include('Absensi.Modal.dateModal')
+                    @include('Absensi.Modal.excelModal')
                 </div>
             </div>
         </div>

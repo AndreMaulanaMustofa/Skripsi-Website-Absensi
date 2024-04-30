@@ -75,6 +75,7 @@ Route::middleware(['admin.auth'])->group(function(){
         Route::get('/getAbsensi/{status}', [AbsensiController::class, 'getAbsensi']);
         Route::get('/getAbsensibyDate/{tgl_absen}', [AbsensiController::class, 'getAbsensibyDate']);
         Route::get('/getAbsensibyDateRange/{tglawal}/{tglakhir}', [AbsensiController::class, 'getAbsensibyDateRange']);
+        Route::get('/download/{tgl}', [AbsensiController::class, 'download']);
         Route::get('tambahData', [AbsensiController::class, 'create'])->name('absensi.create');
         Route::get('getMahasiswa/{NIM}', [AbsensiController::class, 'getMahasiswa']);
         Route::get('getKelas/{id}', [AbsensiController::class, 'getKelas']);

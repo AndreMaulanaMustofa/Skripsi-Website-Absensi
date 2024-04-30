@@ -14,12 +14,14 @@
             <button class="btn btn-danger btn-sm">{{$a->status}}</button>
         @elseif($a->status == "Tidak Terlambat")
             <button class="btn btn-success btn-sm">{{$a->status}}</button>
+        @elseif($a->status == "Tidak Absen")
+            <button class="btn btn-dark btn-sm">{{$a->status}}</button>
         @endif
     </td>
     <td>
         <button onclick="deleteAbsensi('{{ $a->id }}')" class="btn btn-danger btn-sm">Hapus</button>
     </td>
     @empty
-    <td colspan="7">Data Tidak Ada!</td>
+    <td colspan="11">Data Tidak Ada!</td>
 </tr>
 @endforelse
