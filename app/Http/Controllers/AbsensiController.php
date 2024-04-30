@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\AbsensiExport;
 use App\Models\Absensi;
 use App\Models\Jurusan;
 use App\Models\kelas;
 use App\Models\mahasiswa;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AbsensiController extends Controller
 {
@@ -79,5 +81,9 @@ class AbsensiController extends Controller
         $absen->save();
 
         return redirect()->route('absensi.view');
+    }
+
+    function download($tgl_absen){
+        return Excel::download(new AbsensiExport($tgl_absen),'Laporan Absensi ' . $tgl_absen . '.xlsx');
     }
 }
