@@ -32,8 +32,7 @@ class MahasiswaController extends Controller
         $mahasiswa->namaLengkap = $request->input('nama_lengkap');
         $mahasiswa->id_kelas = $request->input('kelas');
         $mahasiswa->jenisKelamin = $request->input('jenisKelamin');
-        // $mahasiswa->NoTelp = $request->input('NomorTelp');
-        $mahasiswa->NoTelp = "0852";
+        $mahasiswa->NoTelp = $request->input('NomorTelp');
         $mahasiswa->tahunMasuk = date('Y', strtotime($request->input('tahunMasuk')));
 
         // Ortu
