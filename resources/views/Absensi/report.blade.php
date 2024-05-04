@@ -50,28 +50,24 @@
         </tr>
         <tr class="row4" style="height: 15pt;">
         </tr>
-        {{-- @php
-            $jurusan_id = kelas::where('kelas', $report->kelas);
-            $jurusan = Jurusan::where('jur_id', $jurusan_id->jur_id)->first();
-        @endphp --}}
         <tr class="row5" style="height: 15pt;">
             <td class="column0 style13 s style13" colspan="2" style="text-align: left;border: 1px dotted black;vertical-align: middle;padding-left: 0px;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">JURUSAN:</td>
-            <td class="column2 style4 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">-</td>
+            <td class="column2 style4 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">{{ $jurusan->nama_jurusan }}</td>
         </tr>
         <tr class="row6" style="height: 15pt;">
             <td class="column0 style13 s style13" colspan="2" style="text-align: left;border: 1px dotted black;vertical-align: middle;padding-left: 0px;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">KELAS :</td>
             <td class="column2 style4 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">{{$report_info->kelas}}</td>
         </tr>
         <tr class="row7" style="height: 15pt;">
-            <td class="column0 style13 s style13" colspan="2" style="text-align: left;border: 1px dotted black;vertical-align: middle;padding-left: 0px;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">HARI:</td>
-            <td class="column2 style4 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">-</td>
-        </tr>
-        <tr class="row8" style="height: 15pt;">
             @php
                 $today = date('Y-m-d');
             @endphp
+            <td class="column0 style13 s style13" colspan="2" style="text-align: left;border: 1px dotted black;vertical-align: middle;padding-left: 0px;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">HARI:</td>
+            <td class="column2 style4 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">{{ \Carbon\Carbon::parse($today)->locale('id_ID')->isoFormat('dddd') }}</td>
+        </tr>
+        <tr class="row8" style="height: 15pt;">
             <td class="column0 style13 s style13" colspan="2" style="text-align: left;border: 1px dotted black;vertical-align: middle;padding-left: 0px;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">TANGGAL LAPORAN :</td>
-            <td class="column2 style4 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">{{ \Carbon\Carbon::parse($today)->locale('id_ID')->isoFormat('dddd, D MMMM YYYY') }}
+            <td class="column2 style4 null" style="border: 1px dotted black;vertical-align: bottom;border-bottom: none #000000;border-top: none #000000;border-left: none #000000;border-right: none #000000;font-weight: bold;color: #000000;font-family: 'Calibri';font-size: 10pt;background-color: white;">{{ \Carbon\Carbon::parse($today)->locale('id_ID')->isoFormat('D MMMM YYYY') }}
             </td>
         </tr>
         <tr class="row9" style="height: 15pt;">
@@ -110,7 +106,7 @@
             <td class="column2 style5 s" style="text-align: center;border: 1px dotted black;vertical-align: middle;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 1px solid #000000 !important;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;">{{$rep->namaMahasiswa}}</td>
             <td class="column3 style5 s" style="text-align: center;border: 1px dotted black;vertical-align: middle;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 1px solid #000000 !important;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;">{{$rep->semester}}</td>
             <td class="column4 style5 s" style="text-align: center;border: 1px dotted black;vertical-align: middle;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 1px solid #000000 !important;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;">{{$rep->mataKuliah}}</td>
-            <td class="column5 style5 s" style="text-align: center;border: 1px dotted black;vertical-align: middle;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 1px solid #000000 !important;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;"></td>
+            <td class="column5 style5 s" style="text-align: center;border: 1px dotted black;vertical-align: middle;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 1px solid #000000 !important;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;">{{ date('H:i', strtotime($matkul)) }}</td>
             <td class="column6 style5 s" style="text-align: center;border: 1px dotted black;vertical-align: middle;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 1px solid #000000 !important;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;">{{$rep->jam_absen}}</td>
             <td class="column7 style5 s" style="text-align: center;border: 1px dotted black;vertical-align: middle;color: #000000;font-family: 'Calibri';font-size: 11pt;background-color: white;border-bottom: 1px solid #000000 !important;border-top: 1px solid #000000 !important;border-left: 1px solid #000000 !important;border-right: 1px solid #000000 !important;">{{$rep->status}}</td>
         </tr>

@@ -10,13 +10,15 @@ use Illuminate\Support\Facades\DB;
 
 class JadwalController extends Controller
 {
-    public function view(){
+    public function view()
+    {
         $title = "Jadwal Kuliah";
         $jadwal = jadwal::groupBy('semester')->get();
         return view('jadwalKuliah.index', compact('title', 'jadwal'));
     }
 
-    public function create(Request $request){
+    public function create(Request $request)
+    {
         $title = "Buat Jadwal";
         $kelas = kelas::all();
         $jurusan = Jurusan::all();
@@ -24,7 +26,8 @@ class JadwalController extends Controller
         return view('jadwalKuliah.create', compact('title', 'kelas', 'jurusan'));
     }
 
-    public function storeJadwal(Request $request){
+    public function storeJadwal(Request $request)
+    {
         $jadwal = new Jadwal;
 
         $jadwal->jurusan    = $request->input('jurusan');
@@ -47,7 +50,8 @@ class JadwalController extends Controller
         return response()->json($kelas);
     }
 
-    public function getMatkul($kelas, $semesterKls){
+    public function getMatkul($kelas, $semesterKls)
+    {
         $semester = Kelas::where('kelas', $kelas)->where('semester', $semesterKls)->first();
 
         if ($semester) {
@@ -67,7 +71,8 @@ class JadwalController extends Controller
         }
     }
 
-    public function editJadwal($id){
+    public function editJadwal($id)
+    {
         $title = "Edit Jadwal";
         // $jadwal = jadwal::join('kelas','kelas.id','=','jadwals.kelas')
         // ->join('jurusan','jurusan.jur_id','=','jadwals.jurusan')
@@ -83,12 +88,13 @@ class JadwalController extends Controller
         return view('jadwalKuliah.edit', compact('title', 'jadwal', 'kelas', 'jurusan'));
     }
 
-    public function updateJadwal(Request $request, $id){
+    public function updateJadwal(Request $request, $id)
+    {
         $jadwal = Jadwal::find($id);
         $jur = Jurusan::where('jur_id', $request->input('jurusan'))->first();
 
         $jadwal->kelas = $request->input('kelas');
-        $jadwal->jurusan = $jur->nama_jurusan;
+        $jadwal->jurusan = $request->input('jurusan');
         $jadwal->semester = $request->input('semester');
         $jadwal->hari = $request->input('hari');
         $jadwal->matkul = $request->input('matkul');
@@ -100,7 +106,8 @@ class JadwalController extends Controller
         return redirect()->route('jadwal.view');
     }
 
-    public function deleteJadwal($id){
+    public function deleteJadwal($id)
+    {
         Jadwal::find($id)->delete();
 
         return redirect()->route('jadwal.view');
