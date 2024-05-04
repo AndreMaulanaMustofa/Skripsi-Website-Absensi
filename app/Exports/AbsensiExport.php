@@ -3,6 +3,9 @@
 namespace App\Exports;
 
 use App\Models\Absensi;
+use App\Models\jadwal;
+use App\Models\Jurusan;
+use App\Models\kelas;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
@@ -28,8 +31,11 @@ class AbsensiExport implements FromView, WithEvents, ShouldAutoSize
         $report = Absensi::where('tgl_absen', $tgl)
             ->where('kelas', $report_info->kelas)
             ->get();
+        $kelas = kelas::where('kelas', $report_info->kelas)->first();
+        $jurusan = Jurusan::where('jur_id', $kelas->jur_id)->first();
+        $matkul = jadwal::where('matkul', $report_info->mataKuliah)->pluck('jam_mulai');
 
-        return view('Absensi.report', compact('report', 'report_info'));
+        return view('Absensi.report', compact('report', 'report_info', 'jurusan', 'matkul'));
     }
 
     public function registerEvents(): array
