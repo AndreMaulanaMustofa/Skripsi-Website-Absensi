@@ -18,8 +18,8 @@ class JadwalSeeder extends Seeder
             DB::beginTransaction();
 
             jadwal::create([
-                'kelas' => 'TI - 3D',
-                'jurusan' => 'Teknologi Informasi',
+                'kelas' => 1,
+                'jurusan' => 1,
                 'semester' => 6,
                 'hari' => 'Senin',
                 'matkul' => 'Bahasa Indonesia',
@@ -28,8 +28,8 @@ class JadwalSeeder extends Seeder
             ]);
 
             jadwal::create([
-                'kelas' => 'TI - 3D',
-                'jurusan' => 'Teknologi Informasi',
+                'kelas' => 1,
+                'jurusan' => 1,
                 'semester' => 6,
                 'hari' => 'Selasa',
                 'matkul' => 'Bahasa Inggris',
@@ -38,8 +38,8 @@ class JadwalSeeder extends Seeder
             ]);
 
             jadwal::create([
-                'kelas' => 'TI - 3D',
-                'jurusan' => 'Teknologi Informasi',
+                'kelas' => 1,
+                'jurusan' => 1,
                 'semester' => 6,
                 'hari' => 'Rabu',
                 'matkul' => 'Bahasa Jerman',
@@ -47,8 +47,8 @@ class JadwalSeeder extends Seeder
                 'jam_akhir' => '16:00'
             ]);
             jadwal::create([
-                'kelas' => 'TI - 2D',
-                'jurusan' => 'Teknologi Informasi',
+                'kelas' => 1,
+                'jurusan' => 1,
                 'semester' => 4,
                 'hari' => 'Senin',
                 'matkul' => 'Bahasa Indonesia',
@@ -57,8 +57,8 @@ class JadwalSeeder extends Seeder
             ]);
 
             jadwal::create([
-                'kelas' => 'TI - 2D',
-                'jurusan' => 'Teknologi Informasi',
+                'kelas' => 1,
+                'jurusan' => 1,
                 'semester' => 4,
                 'hari' => 'Selasa',
                 'matkul' => 'Bahasa Inggris',
@@ -67,8 +67,8 @@ class JadwalSeeder extends Seeder
             ]);
 
             jadwal::create([
-                'kelas' => 'TI - 2D',
-                'jurusan' => 'Teknologi Informasi',
+                'kelas' => 1,
+                'jurusan' => 1,
                 'semester' => 4,
                 'hari' => 'Rabu',
                 'matkul' => 'Bahasa Jerman',

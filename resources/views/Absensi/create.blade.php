@@ -154,14 +154,14 @@
                         $("#semester").val(kelasData.semester);
 
                         $(".matkul").append('<option value="" selected class="d-none">-- Pilih Matkul --</option>');
-                        $(".matkul").append('<option value="' + kelasData.matkul_1 + '">' + kelasData.matkul_1 + '</option>');
-                        $(".matkul").append('<option value="' + kelasData.matkul_2 + '">' + kelasData.matkul_2 + '</option>');
-                        $(".matkul").append('<option value="' + kelasData.matkul_3 + '">' + kelasData.matkul_3 + '</option>');
-                        $(".matkul").append('<option value="' + kelasData.matkul_4 + '">' + kelasData.matkul_4 + '</option>');
-                        $(".matkul").append('<option value="' + kelasData.matkul_5 + '">' + kelasData.matkul_5 + '</option>');
-                        $(".matkul").append('<option value="' + kelasData.matkul_6 + '">' + kelasData.matkul_6 + '</option>');
-                        $(".matkul").append('<option value="' + kelasData.matkul_7 + '">' + kelasData.matkul_7 + '</option>');
-                        $(".matkul").append('<option value="' + kelasData.matkul_8 + '">' + kelasData.matkul_8 + '</option>');
+                        if (kelasData.matkul_1) $(".matkul").append('<option value="' + kelasData.matkul_1 + '">' + kelasData.matkul_1 + '</option>');
+                        if (kelasData.matkul_2) $(".matkul").append('<option value="' + kelasData.matkul_2 + '">' + kelasData.matkul_2 + '</option>');
+                        if (kelasData.matkul_3) $(".matkul").append('<option value="' + kelasData.matkul_3 + '">' + kelasData.matkul_3 + '</option>');
+                        if (kelasData.matkul_4) $(".matkul").append('<option value="' + kelasData.matkul_4 + '">' + kelasData.matkul_4 + '</option>');
+                        if (kelasData.matkul_5)$(".matkul").append('<option value="' + kelasData.matkul_5 + '">' + kelasData.matkul_5 + '</option>');
+                        if (kelasData.matkul_6) $(".matkul").append('<option value="' + kelasData.matkul_6 + '">' + kelasData.matkul_6 + '</option>');
+                        if (kelasData.matkul_7) $(".matkul").append('<option value="' + kelasData.matkul_7 + '">' + kelasData.matkul_7 + '</option>');
+                        if (kelasData.matkul_8)$(".matkul").append('<option value="' + kelasData.matkul_8 + '">' + kelasData.matkul_8 + '</option>');
                     }
                 });
             }
