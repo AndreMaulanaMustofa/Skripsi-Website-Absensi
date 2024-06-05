@@ -35,6 +35,15 @@ function tambahJurusan(){
                     });
                     window.location.reload();
                 },
+                error: function(){
+                    Swal.fire({
+                        title: "Tambah Data",
+                        text: "Data gagal ditambahkan.",
+                        icon: "error",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
             });
         }
     });
@@ -60,6 +69,17 @@ function editJurusan(jurusan, id){
         if (result.isConfirmed) {
             var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
             var namaJurusan = result.value;
+
+            var regex = /[.;,'[\]]/;
+            if (regex.test(namaJurusan)) {
+                Swal.fire({
+                    title: "Error",
+                    text: "Input mengandung simbol yang tidak diizinkan.",
+                    icon: "error",
+                    confirmButtonText: "OK"
+                });
+                return;
+            }
 
             $.ajax({
                 type: "POST",

@@ -23,7 +23,7 @@
                         <p>Jurusan<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-8">
-                        <select name="jurusan" id="jurusan" class="form-control">
+                        <select name="jurusan" id="jurusan" class="form-control" required>
                             @foreach($jurusan as $jur)
                                 <option value="{{ $jur->jur_id }}" {{ $jur->jur_id == $kelas->jur_id ? 'selected' : ''}}>{{ $jur->nama_jurusan }}</option>
                             @endforeach

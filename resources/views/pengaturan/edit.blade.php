@@ -51,7 +51,7 @@
                         <center><div class="card-header bg-gradient-blue">Profile Picture</div></center>
                         <div class="card-body text-center">
 
-                            <img class="img-account-profile rounded-circle mb-2" src="{{ asset('img/' . $user->imgProfile) }}" alt="" width="150px" data-toggle="modal" data-target="#profileModal">
+                            <img class="img-account-profile rounded-circle mb-2" src="{{ asset('img/' . $user->imgProfile) }}" alt="" style="width: 150px; height: 150px;" data-toggle="modal" data-target="#profileModal">
 
                             <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">

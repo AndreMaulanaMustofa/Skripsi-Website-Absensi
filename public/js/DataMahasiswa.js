@@ -82,16 +82,29 @@ function editData() {
         confirmButtonText: "Ubah",
         denyButtonText: `Batal`
     }).then((result) => {
-        if (result.isConfirmed) {
-            var myForm = document.getElementById('editForm');
+        var myForm = document.getElementById('editForm');
+        var inputs = myForm.querySelectorAll('input[required]');
 
-            Swal.fire({
-                title: "Perubahan telah disimpan",
-                icon: "success",
-                showConfirmButton: false,
-                timer: 1500
-            });
-            myForm.submit();
+        if (result.isConfirmed) {
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].value.trim() === '') {
+                    Swal.fire({
+                        title: "Lengkapi Data Terlebih Dahulu",
+                        icon: "error",
+                        showConfirmButton: false,
+                    });
+                    return;
+                }else{
+                    Swal.fire({
+                        title: "Perubahan telah disimpan",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                    myForm.submit();
+                }
+            }
 
         } else if (result.isDenied) {
             Swal.fire({

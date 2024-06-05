@@ -17,7 +17,7 @@
                     <div class="col-md-8">
                         <input type="tel" pattern="[0-9]+"
                             oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-                            class="form-control" name="NIM" id="NIM" value="{{ $mahasiswa->NIM }}">
+                            class="form-control" name="NIM" id="NIM" value="{{ $mahasiswa->NIM }}" required>
                     </div>
                 </div>
                 <div class="row mt-1">
@@ -25,7 +25,7 @@
                         <p>Nama Lengkap<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" value="{{ $mahasiswa->namaLengkap }}">
+                        <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" value="{{ $mahasiswa->namaLengkap }}" required>
                     </div>
                 </div>
                 <div class="row mt-1">
@@ -33,7 +33,7 @@
                         <p>Kelas<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-sm-2">
-                        <select name="kelas" id="kelas" class="form-control" style="width: 95px;">
+                        <select name="kelas" id="kelas" class="form-control" style="width: 95px;" required>
                             @foreach ($kelas as $item)
                                 <option value="{{ $item->id }}" {{ $item->id == $mahasiswa->id_kelas ? 'selected' : '' }}>
                                     {{ $item->kelas }} &nbsp;
@@ -67,7 +67,7 @@
                     <div class="col-md-8">
                         <input type="tel" pattern="[0-9]+"
                             oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-                            class="form-control" name="NomorTelp" id="NomorTelp" value="{{ $mahasiswa->NoTelp }}">
+                            class="form-control" name="NomorTelp" id="NomorTelp" value="{{ $mahasiswa->NoTelp }}" required>
                     </div>
                 </div>
                 <div class="row mt-1">
@@ -75,7 +75,7 @@
                         <p>Tahun Masuk<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-1">
-                        <select name="tahunMasuk" class="form-control">
+                        <select name="tahunMasuk" class="form-control" required>
                             <option value="" style="display: none;">YYYY</option>
                             @for($tahun = 2020; $tahun <= 2024; $tahun++)
                                 <option value='{{ $tahun }}' {{ $tahun == $mahasiswa->tahunMasuk ? 'selected': '' }} >{{ $tahun }}</option>";

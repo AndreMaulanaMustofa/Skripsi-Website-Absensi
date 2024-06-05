@@ -37,15 +37,28 @@ function deleteJadwal(id){
 
 function validasiJadwal(){
     const formJadwal = document.getElementById('FormJadwal');
+    const matkulSelect = document.getElementById('matkul');
 
-    if(!formJadwal.checkValidity()){
-        Swal.fire({
-            position: "center",
-            icon: "error",
-            title: "Lengkapi data terlebih dahulu!",
-            showConfirmButton: false,
-            timer: 1500,
-        });
+    if (matkulSelect.value === "-- Pilih Mata Kuliah --" || !formJadwal.checkValidity()) {
+        // Cek jika mata kuliah belum dipilih
+        if (matkulSelect.value === "-- Pilih Mata Kuliah --") {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Tolong pilih mata kuliah!",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        } else {
+            // Validasi form secara umum
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Lengkapi data terlebih dahulu!",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
         return false;
     }else{
         formJadwal.submit();

@@ -62,7 +62,7 @@
                     <div class="col-md-8">
                         <input type="tel" pattern="[0-9]+"
                             oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-                            class="form-control" name="NomorTelp" id="NomorTelp">
+                            class="form-control" name="NomorTelp" id="NomorTelp" required>
                     </div>
                 </div>
                 <div class="row mt-1">

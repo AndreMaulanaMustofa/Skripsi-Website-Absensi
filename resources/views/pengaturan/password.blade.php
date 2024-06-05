@@ -6,7 +6,6 @@
         <div class="container-fluid">
                 <div class="container mt-5" style="background-color: white; width: 60%; height: 100%;">
                     <br>
-
                     <div class="container border" style="width: 90%; height: 80%; ">
                         @error('ubah-fail')
                             <script>

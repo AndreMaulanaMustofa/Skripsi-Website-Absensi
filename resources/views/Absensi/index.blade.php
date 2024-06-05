@@ -22,6 +22,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="#" class="dropdown-item status">Terlambat</a></li>
                             <li><a href="#" class="dropdown-item status">Tidak Terlambat</a></li>
+                            <li><a href="#" class="dropdown-item status">Tidak Absen</a></li>
                         </ul>
                     </div>
                     <button class="btn btn-outline-secondary mr-2 reset" onclick="window.location.reload()">

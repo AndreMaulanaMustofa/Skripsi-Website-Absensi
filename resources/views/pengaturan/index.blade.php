@@ -10,7 +10,7 @@
                     <div class="card mb-4 mb-xl-0">
                         <center><div class="card-header bg-blue">Profile Picture</div></center>
                         <div class="card-body text-center">
-                            <img class="img-account-profile rounded-circle mb-2" src="{{ asset('img/' . $user->imgProfile) }}" alt="" width="150px" data-toggle="modal" data-target="#profileModal">
+                            <img class="img-account-profile rounded-circle mb-2" src="{{ asset('img/' . $user->imgProfile) }}" alt="" style="width: 150px; height: 150px;" data-toggle="modal" data-target="#profileModal">
                             <div class="small mb-0"><h4>{{ $user->username }}</h4></div>
                             <div class="small text-muted  mb-4">{{ $user->email }}</div>
                         </div>
