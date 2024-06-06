@@ -5,7 +5,7 @@
 <div class="content-wrapper" style="background-color: white">
     <div class="content-header p-4">
         <div class="container-fluid px-4">
-            <h3>Tambah Data Kelas</h3>
+            <h3>Edit Data Kelas</h3>
             <hr style="border-width: 2px; background-color: #B4B8C5">
             <form action="{{ route('kelas.update', $kelas->id) }}" method="POST" id="FormKelas">
                 @method('PUT')
