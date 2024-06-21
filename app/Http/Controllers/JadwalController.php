@@ -13,7 +13,7 @@ class JadwalController extends Controller
     public function view()
     {
         $title = "Jadwal Kuliah";
-        $jadwal = jadwal::groupBy('semester')->get();
+        $jadwal = jadwal::groupBy('kelas')->get();
         return view('jadwalKuliah.index', compact('title', 'jadwal'));
     }
 

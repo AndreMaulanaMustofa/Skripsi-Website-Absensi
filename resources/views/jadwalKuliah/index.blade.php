@@ -66,7 +66,7 @@
                                         </thead>
                                         <tbody class="text-center">
                                             @php
-                                                $matkul = jadwal::where('semester', $j->semester)->where('kelas', $j->kelas)->get();
+                                                $matkul = jadwal::where('kelas', $j->kelas)->get();
                                             @endphp
                                             @foreach($matkul as $key => $mk)
                                             <tr>
