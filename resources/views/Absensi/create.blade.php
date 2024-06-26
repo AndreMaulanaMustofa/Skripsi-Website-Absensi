@@ -48,7 +48,7 @@
                         <p>Semester<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-sm-1">
-                        <input type="number" min="1" max="8" class="form-control" name="semester" id="semester" required placeholder="semester">
+                        <input type="number" min="1"  max="8" class="form-control" name="semester" id="semester" required placeholder="semester">
                     </div>
                 </div>
                 <div class="row mt-1">

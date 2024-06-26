@@ -38,8 +38,9 @@ function deleteJadwal(id){
 function validasiJadwal(){
     const formJadwal = document.getElementById('FormJadwal');
     const matkulSelect = document.getElementById('matkul');
+    const hariSelect = document.getElementById('hari');
 
-    if (matkulSelect.value === "-- Pilih Mata Kuliah --" || !formJadwal.checkValidity()) {
+    if (hariSelect.value === "-- Pilih Hari --" || matkulSelect.value === "-- Pilih Mata Kuliah --" || !formJadwal.checkValidity()) {
         // Cek jika mata kuliah belum dipilih
         if (matkulSelect.value === "-- Pilih Mata Kuliah --") {
             Swal.fire({
