@@ -78,7 +78,7 @@
                         <select name="tahunMasuk" class="form-control" required>
                             <option value="" style="display: none;">YYYY</option>
                             @for($tahun = 2020; $tahun <= 2024; $tahun++)
-                                <option value='{{ $tahun }}' {{ $tahun == $mahasiswa->tahunMasuk ? 'selected': '' }} >{{ $tahun }}</option>";
+                                <option value='{{ $tahun }}' {{ $tahun == $mahasiswa->tahunMasuk ? 'selected': '' }} >{{ $tahun }}</option>
                             @endfor
                         </select>
                     </div>

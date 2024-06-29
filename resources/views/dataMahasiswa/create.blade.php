@@ -70,10 +70,10 @@
                         <p>Tahun Masuk<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-1">
-                        <select name="tahunMasuk" class="form-control" id="tahunMasuk" required>
-                            <option value="" style="display: none;">YYYY</option>
+                        <select name="tahunMasuk" class="form-control" required>
+                            <option style="display: none;" selected>YYYY</option>
                             @for($tahun = 2020; $tahun <= 2024; $tahun++)
-                                <option value='{{ $tahun }}'>{{ $tahun }}</option>";
+                                <option value='{{ $tahun }}'>{{ $tahun }}</option>
                             @endfor
                         </select>
                     </div>

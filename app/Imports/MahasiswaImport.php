@@ -27,7 +27,7 @@ class MahasiswaImport implements ToModel, WithHeadingRow
 
         return new mahasiswa([
             'NIM'           => $row['nim'],
-            'password'      => substr(Hash::make($row['nim']), 0, 17),
+            'password'      => bcrypt($row['nim']),
             'namaLengkap'   => $row['nama_lengkap'],
             'id_kelas'      => $namaKelas->id,
             'jenisKelamin'  => $row['jenis_kelamin'],

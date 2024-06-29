@@ -31,12 +31,12 @@ class MahasiswaController extends Controller
 
         // Mahasiswa
         $mahasiswa->NIM = $request->input('NIM');
-        $mahasiswa->password = Hash::make($request->input('NIM'));
+        $mahasiswa->password = bcrypt($request->input('NIM'));
         $mahasiswa->namaLengkap = $request->input('nama_lengkap');
         $mahasiswa->id_kelas = $request->input('kelas');
         $mahasiswa->jenisKelamin = $request->input('jenisKelamin');
         $mahasiswa->NoTelp = $request->input('NomorTelp');
-        $mahasiswa->tahunMasuk = date('Y', strtotime($request->input('tahunMasuk')));
+        $mahasiswa->tahunMasuk = $request->input('tahunMasuk');
 
         // Ortu
         $mahasiswa->nama_Ayah = $request->input('namaAyah');
@@ -66,12 +66,12 @@ class MahasiswaController extends Controller
 
         // Mahasiswa
         $mahasiswa->NIM = $request->input('NIM');
-        $mahasiswa->password = Hash::make($request->input('NIM'));
+        $mahasiswa->password = bcrypt($request->input('NIM'));
         $mahasiswa->namaLengkap = $request->input('nama_lengkap');
         $mahasiswa->id_kelas = $request->input('kelas');
         $mahasiswa->jenisKelamin = $request->input('jenisKelamin');
         $mahasiswa->NoTelp = $request->input('NomorTelp');
-        $mahasiswa->tahunMasuk = date('Y', strtotime($request->input('tahunMasuk')));
+        $mahasiswa->tahunMasuk = $request->input('tahunMasuk');
 
         // Ortu
         $mahasiswa->nama_Ayah = $request->input('namaAyah');
