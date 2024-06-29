@@ -107,6 +107,8 @@ class MahasiswaController extends Controller
 
         Excel::import(new MahasiswaImport, $request->file('file')->store('temp'));
 
-        return back()->with('success', 'Data berhasil diimport');
+        return back()->withErrors([
+            'upload-alert' => 'error',
+        ]);
     }
 }
