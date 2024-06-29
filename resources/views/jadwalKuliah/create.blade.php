@@ -101,6 +101,28 @@
                         time_24hr: true
                     });
                 </script>
+                <div class="row mt-1">
+                    <div class="col-md-4">
+                        <p>Pembuatan Ulang<span class="star-wajib">*</span></p>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="btn-group" role="group">
+                            <input type="checkbox" class="btn-check" id="btncheck1">
+                            <label class="btn btn-outline-dark" for="btncheck1">Enabled</label>
+
+                            <input type="checkbox" class="btn-check" id="btncheck2">
+                            <label class="btn btn-outline-danger" for="btncheck2">Disabled</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-1" id="jmlPengulangan">
+                    <div class="col-md-4">
+                        <p>Jumlah Pengulangan<span class="star-wajib">*</span></p>
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="number" max="12" min="1" class="form-control" name="jmlRepeat" value="1">
+                    </div>
+                </div>
                 <div class="col-mt-6 d-flex justify-content-center gap-3">
                     <button type="button" class="btn btn-danger" onclick="window.location.href='{{ route('jadwal.view') }}'">Kembali</button>
                     <button type="button" onclick="validasiJadwal()" class="btn btn-success">Tambah</button>
@@ -176,6 +198,8 @@
             }
         });
     });
+
+    document.addEventListener('DOMContentLoaded', buttonUlang);
 </script>
 
 @endsection

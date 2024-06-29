@@ -15,10 +15,33 @@
                 </div>
                 <div class="col-md-3">
                     <div class="input-group mb-3">
+                        <button class="btn btn-outline-success mr-2 date" data-bs-toggle="modal" data-bs-target="#importExcel">
+                            <i class="fa-solid fa-file-excel mr-2"></i> Import Excel
+                        </button>
                         <input type="text" class="form-control" id="searchInput" name="text-search" placeholder="Cari Data">
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="importExcel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header" style="border-width: 0px;">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="{{ route('mahasiswa.import') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="modal-body">
+                                <input type="file" name="file" accept=".csv" class="form-control" required>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center" style="border-width: 0px;">
+                                <button type="submit" class="btn btn-success down-excel wait">Upload
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             <div class="tbl-container">
                 <div class="row scroll">
                     <table class="table align-middle">

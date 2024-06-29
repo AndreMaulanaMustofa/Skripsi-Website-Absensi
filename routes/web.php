@@ -41,6 +41,8 @@ Route::middleware(['admin.auth'])->group(function(){
         Route::get('editData/{id}', [MahasiswaController::class, 'edit'])->name('mahasiswa.edit');
         Route::put('updateData/{id}', [MahasiswaController::class, 'update'])->name('mahasiswa.update');
         Route::delete('deleteData/{id}', [MahasiswaController::class, 'delete'])->name('mahasiswa.delete');
+        Route::get('import', [MahasiswaController::class, 'showImportForm'])->name('mahasiswa.showImport');
+        Route::post('import', [MahasiswaController::class, 'import'])->name('mahasiswa.import');
     });
 
     Route::prefix('Jurusan')->group(function(){
