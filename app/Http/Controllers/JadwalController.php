@@ -28,17 +28,21 @@ class JadwalController extends Controller
 
     public function storeJadwal(Request $request)
     {
-        $jadwal = new Jadwal;
+        $repeat = $request->input('jmlRepeat');
 
-        $jadwal->jurusan    = $request->input('jurusan');
-        $jadwal->kelas      = $request->input('kelas');
-        $jadwal->semester   = $request->input('semester');
-        $jadwal->hari       = $request->input('hari');
-        $jadwal->matkul     = $request->input('matkul');
-        $jadwal->jam_mulai  = date('H:i', strtotime($request->input('matkul_1')));
-        $jadwal->jam_akhir  = date('H:i', strtotime($request->input('matkul_2')));
+        for ($i = 0; $i < $repeat; $i++) {
+            $jadwal = new Jadwal;
 
-        $jadwal->save();
+            $jadwal->jurusan    = $request->input('jurusan');
+            $jadwal->kelas      = $request->input('kelas');
+            $jadwal->semester   = $request->input('semester');
+            $jadwal->hari       = $request->input('hari');
+            $jadwal->matkul     = $request->input('matkul');
+            $jadwal->jam_mulai  = date('H:i', strtotime($request->input('matkul_1')));
+            $jadwal->jam_akhir  = date('H:i', strtotime($request->input('matkul_2')));
+
+            $jadwal->save();
+        }
 
         return redirect()->route('jadwal.view');
     }
