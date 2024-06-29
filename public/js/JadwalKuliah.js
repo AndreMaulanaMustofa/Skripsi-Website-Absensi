@@ -111,3 +111,36 @@ function deleteJadwal(id){
     });
 }
 
+function buttonUlang(){
+    const btncheck1 = document.getElementById('btncheck1');
+    const btncheck2 = document.getElementById('btncheck2');
+
+    const pengulangan = document.getElementById('jmlPengulangan');
+
+    if (!btncheck1.checked && !btncheck2.checked) {
+        btncheck2.checked = true;
+        btncheck2.disabled = true;
+        pengulangan.style.display = 'none';
+    }
+
+    btncheck1.addEventListener('click', function() {
+        if (btncheck1.checked) {
+            btncheck2.checked  = false;
+            btncheck1.disabled = true;
+            btncheck2.disabled = false;
+
+            pengulangan.style.display = 'flex';
+        }
+    });
+
+    btncheck2.addEventListener('click', function() {
+        if (btncheck2.checked) {
+            btncheck1.checked  = false;
+            btncheck2.disabled = true;
+            btncheck1.disabled = false;
+
+            pengulangan.style.display = 'none';
+        }
+    });
+}
+
