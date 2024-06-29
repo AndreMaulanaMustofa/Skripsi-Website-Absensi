@@ -34,10 +34,28 @@
                                 <input type="file" name="file" accept=".csv" class="form-control" required>
                             </div>
                             <div class="modal-footer d-flex justify-content-center" style="border-width: 0px;">
-                                <button type="submit" class="btn btn-success down-excel wait">Upload
-                                </button>
+                                <button type="submit" class="btn btn-success down-excel wait">Upload</button>
                             </div>
                         </form>
+                        @error('upload-alert')
+                            <script>
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: "bottom-end",
+                                    showConfirmButton: false,
+                                    timer: 3000,
+                                    timerProgressBar: true,
+                                    didOpen: (toast) => {
+                                        toast.onmouseenter = Swal.stopTimer;
+                                        toast.onmouseleave = Swal.resumeTimer;
+                                    }
+                                });
+                                    Toast.fire({
+                                    icon: "success",
+                                    title: "Data telah di import!"
+                                });
+                            </script>
+                        @enderror
                     </div>
                 </div>
             </div>
