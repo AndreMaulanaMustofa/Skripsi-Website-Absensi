@@ -84,9 +84,7 @@
                                                         Delete
                                                     </button>
 
-                                                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#KuliahCode{{ $mk->id }}" onclick="generateQRCode(`{{ $mk->id }}`, `{{ $mk->matkul }}`, `{{ date('H:i', strtotime($mk->jam_mulai)) }}`, `{{ $mk->hari }}`)">
-                                                        QR Code
-                                                    </button>
+                                                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#KuliahCode{{ $mk->id }}" onclick="generateQRCode(`{{ $mk->id }}`, `{{ $mk->matkul }}`, `{{ date('H:i', strtotime($mk->jam_mulai)) }}`, `{{ $mk->hari }}`, `{{ $kelas->kelas }}`, `{{ $j->semester }}`)">QR Code</button>
 
                                                     <div class="modal animate__animated animate__zoomIn animate__faster" id="KuliahCode{{ $mk->id }}" tabindex="-1" aria-hidden="true" aria-labelledby="KuliahCodeLabel">
                                                         <div class="modal-dialog modal-dialog-centered">
