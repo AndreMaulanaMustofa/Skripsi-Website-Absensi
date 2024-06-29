@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\MahasiswaImport;
 use App\Models\kelas;
 use App\Models\mahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MahasiswaController extends Controller
 {
@@ -28,7 +31,7 @@ class MahasiswaController extends Controller
 
         // Mahasiswa
         $mahasiswa->NIM = $request->input('NIM');
-        $mahasiswa->password = $request->input('NIM');
+        $mahasiswa->password = Hash::make($request->input('NIM'));
         $mahasiswa->namaLengkap = $request->input('nama_lengkap');
         $mahasiswa->id_kelas = $request->input('kelas');
         $mahasiswa->jenisKelamin = $request->input('jenisKelamin');
@@ -63,7 +66,7 @@ class MahasiswaController extends Controller
 
         // Mahasiswa
         $mahasiswa->NIM = $request->input('NIM');
-        $mahasiswa->password = $request->input('NIM');
+        $mahasiswa->password = Hash::make($request->input('NIM'));
         $mahasiswa->namaLengkap = $request->input('nama_lengkap');
         $mahasiswa->id_kelas = $request->input('kelas');
         $mahasiswa->jenisKelamin = $request->input('jenisKelamin');
@@ -89,5 +92,21 @@ class MahasiswaController extends Controller
         Mahasiswa::find($id)->delete();
 
         return redirect()->route('mahasiswa.view');
+    }
+
+    public function showImportForm()
+    {
+        return view('dataMahasiswa.index');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:csv,txt',
+        ]);
+
+        Excel::import(new MahasiswaImport, $request->file('file')->store('temp'));
+
+        return back()->with('success', 'Data berhasil diimport');
     }
 }
