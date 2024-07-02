@@ -69,6 +69,47 @@
                 </div>
                 <div class="row mt-1">
                     <div class="col-md-4">
+                        <p>Tanggal Jadwal<span class="star-wajib">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" name="tanggal_jadwal" id="tglJadwal" value="{{ $jadwal->tanggal_jadwal }}">
+                    </div>
+                    <script>
+                        const tglJadwal = document.getElementById('tglJadwal');
+
+                        flatpickr(tglJadwal, {
+                            noCalendar: false,
+                            enableTime: false,
+                            dateFormat: "d-m-Y"
+                        });
+                    </script>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-md-4">
+                        <p>Tahun Akademik <span class="star-wajib">*</span></p>
+                    </div>
+                    <div class="col-md-1">
+                        <select class="form-control" name="tahunAkademik" id="thnAkademik">
+                            <option selected class="d-none">YYYY</option>
+                            @for ($i = 2020; $i <= date('Y'); $i++)
+                                <option value="{{ $i }}" {{ $i == $tahunAkademik1 ? 'selected' : ''}}>{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </div>
+                    <div class="col-sm-1 text-center pt-1">
+                        <p><b>-</b></p>
+                    </div>
+                    <div class="col-md-1">
+                        <select class="form-control" name="tahunAkademik2" id="thnAkademik2">
+                            <option selected class="d-none">YYYY</option>
+                            @for ($i = 2020; $i <= date('Y'); $i++)
+                                <option value="{{ $i }}" {{ $i == $tahunAkademik2 ? 'selected' : ''}}>{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-md-4">
                         <p>Jam Mulai<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-1">

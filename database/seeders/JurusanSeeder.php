@@ -20,13 +20,7 @@ class JurusanSeeder extends Seeder
                 'nama_jurusan' => 'Teknologi Informasi'
             ]);
             Jurusan::create([
-                'nama_jurusan' => 'Teknik Mesin'
-            ]);
-            Jurusan::create([
-                'nama_jurusan' => 'Sistem Informasi'
-            ]);
-            Jurusan::create([
-                'nama_jurusan' => 'Teknik Listrik'
+                'nama_jurusan' => 'Sistem Informasi Bisnis'
             ]);
             DB::commit();
         } catch (\Throwable $th) {

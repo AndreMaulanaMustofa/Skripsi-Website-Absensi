@@ -29,17 +29,20 @@ class JadwalController extends Controller
     public function storeJadwal(Request $request)
     {
         $repeat = $request->input('jmlRepeat');
+        $start_date = strtotime($request->input('tanggal_jadwal'));
 
         for ($i = 0; $i < $repeat; $i++) {
             $jadwal = new Jadwal;
 
-            $jadwal->jurusan    = $request->input('jurusan');
-            $jadwal->kelas      = $request->input('kelas');
-            $jadwal->semester   = $request->input('semester');
-            $jadwal->hari       = $request->input('hari');
-            $jadwal->matkul     = $request->input('matkul');
-            $jadwal->jam_mulai  = date('H:i', strtotime($request->input('matkul_1')));
-            $jadwal->jam_akhir  = date('H:i', strtotime($request->input('matkul_2')));
+            $jadwal->jurusan        = $request->input('jurusan');
+            $jadwal->kelas          = $request->input('kelas');
+            $jadwal->semester       = $request->input('semester');
+            $jadwal->hari           = $request->input('hari');
+            $jadwal->tanggal_jadwal = date('d-m-Y', strtotime("+{$i} week", $start_date));
+            $jadwal->matkul         = $request->input('matkul');
+            $jadwal->tahun_akademik = $request->input('tahunAkademik') . '-' . $request->input('tahunAkademik2');
+            $jadwal->jam_mulai      = date('H:i', strtotime($request->input('matkul_1')));
+            $jadwal->jam_akhir      = date('H:i', strtotime($request->input('matkul_2')));
 
             $jadwal->save();
         }
@@ -78,29 +81,27 @@ class JadwalController extends Controller
     public function editJadwal($id)
     {
         $title = "Edit Jadwal";
-        // $jadwal = jadwal::join('kelas','kelas.id','=','jadwals.kelas')
-        // ->join('jurusan','jurusan.jur_id','=','jadwals.jurusan')
-        // ->select('kelas.kelas as n_kelas','jurusan.nama_jurusan as n_jurusan','jadwals.semester as smt','hari','matkul','jam_mulai','jam_akhir','jadwals.kelas as j_kelas','jadwals.jurusan as jur_id','jadwals.kelas as kel_id','jadwals.id as jadwalid')
-        // ->where('jadwals.id',$id)->first();
-        // $kelas = kelas::whereNotIn('id', [$jadwal->j_kelas])->get();
-        // $jurusan = Jurusan::whereNotIn('jur_id', [$jadwal->jur_id])->get();
 
         $jadwal = Jadwal::find($id);
         $kelas  = Kelas::all();
         $jurusan = Jurusan::all();
 
-        return view('jadwalKuliah.edit', compact('title', 'jadwal', 'kelas', 'jurusan'));
+        $tahunAkademik = $jadwal->tahun_akademik;
+        list($tahunAkademik1, $tahunAkademik2) = explode('-', $tahunAkademik);
+
+        return view('jadwalKuliah.edit', compact('title', 'jadwal', 'kelas', 'jurusan', 'tahunAkademik1', 'tahunAkademik2'));
     }
 
     public function updateJadwal(Request $request, $id)
     {
         $jadwal = Jadwal::find($id);
-        $jur = Jurusan::where('jur_id', $request->input('jurusan'))->first();
 
         $jadwal->kelas = $request->input('kelas');
         $jadwal->jurusan = $request->input('jurusan');
         $jadwal->semester = $request->input('semester');
+        $jadwal->tanggal_jadwal = date('d-m-Y', strtotime($request->input('tanggal_jadwal')));
         $jadwal->hari = $request->input('hari');
+        $jadwal->tahun_akademik = $request->input('tahunAkademik') . '-' . $request->input('tahunAkademik2');
         $jadwal->matkul = $request->input('matkul');
         $jadwal->jam_mulai = $request->input('jam_mulai');
         $jadwal->jam_akhir = $request->input('jam_akhir');

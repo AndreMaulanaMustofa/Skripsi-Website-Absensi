@@ -67,6 +67,47 @@
                 </div>
                 <div class="row mt-1">
                     <div class="col-md-4">
+                        <p>Tanggal Jadwal<span class="star-wajib">*</span></p>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" name="tanggal_jadwal" id="tglJadwal">
+                    </div>
+                    <script>
+                        const tglJadwal = document.getElementById('tglJadwal');
+
+                        flatpickr(tglJadwal, {
+                            noCalendar: false,
+                            enableTime: false,
+                            dateFormat: "d-m-Y"
+                        });
+                    </script>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-md-4">
+                        <p>Tahun Akademik <span class="star-wajib">*</span></p>
+                    </div>
+                    <div class="col-md-1">
+                        <select class="form-control" name="tahunAkademik" id="thnAkademik">
+                            <option selected class="d-none">YYYY</option>
+                            @for ($i = 2020; $i <= date('Y'); $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </div>
+                    <div class="col-sm-1 text-center pt-1">
+                        <p><b>-</b></p>
+                    </div>
+                    <div class="col-md-1">
+                        <select class="form-control" name="tahunAkademik2" id="thnAkademik2">
+                            <option selected class="d-none">YYYY</option>
+                            @for ($i = 2020; $i <= date('Y'); $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-md-4">
                         <p>Jam Mulai<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-1">
@@ -120,7 +161,7 @@
                         <p>Jumlah Pengulangan<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-sm-1">
-                        <input type="number" max="12" min="1" class="form-control" name="jmlRepeat" value="1">
+                        <input type="number" min="1" class="form-control" name="jmlRepeat" id="jmlUlang" value="1">
                     </div>
                 </div>
                 <div class="col-mt-6 d-flex justify-content-center gap-3">

@@ -1,6 +1,6 @@
-function generateQRCode(id, matkul, jam, hari, kelas, semester) {
+function generateQRCode(id, matkul, jam, hari, kelas, semester, tglJadwal) {
     // Pastikan data yang akan di-encode tidak kosong
-    if (!id || !matkul || !jam || !hari || !kelas || !semester) {
+    if (!id || !matkul || !jam || !hari || !kelas || !semester || !tglJadwal) {
         console.error('Data cannot be empty');
         return;
     }
@@ -12,7 +12,7 @@ function generateQRCode(id, matkul, jam, hari, kelas, semester) {
 
         // Generate the new QR code
         var qrcode = new QRCode(qrcodeContainer, {
-            text: kelas + ', ' + semester + ', ' + matkul + ', ' + jam + ', ' + hari,
+            text: kelas + ', ' + semester + ', ' + matkul + ', ' + tglJadwal +  ', ' + jam + ', ' + hari,
             width: 270,
             height: 270,
         });

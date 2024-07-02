@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('semester');
             $table->string('hari');
             $table->string('matkul');
+            $table->string('tanggal_jadwal');
+            $table->string('tahun_akademik');
             $table->time('jam_mulai');
             $table->time('jam_akhir');
         });

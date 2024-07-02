@@ -114,6 +114,7 @@ function deleteJadwal(id){
 function buttonUlang(){
     const btncheck1 = document.getElementById('btncheck1');
     const btncheck2 = document.getElementById('btncheck2');
+    const jmlUlang  = document.getElementById('jmlUlang');
 
     const pengulangan = document.getElementById('jmlPengulangan');
 
@@ -138,6 +139,7 @@ function buttonUlang(){
             btncheck1.checked  = false;
             btncheck2.disabled = true;
             btncheck1.disabled = false;
+            jmlUlang.value = '1';
 
             pengulangan.style.display = 'none';
         }

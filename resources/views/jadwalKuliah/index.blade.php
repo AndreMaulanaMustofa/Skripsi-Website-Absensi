@@ -59,6 +59,7 @@
                                                 <th scope="col">No</th>
                                                 <th scope="col">Hari</th>
                                                 <th scope="col">Matkul</th>
+                                                <th scope="col">Tanggal Jadwal</th>
                                                 <th scope="col">Jam Mulai</th>
                                                 <th scope="col">Jam Akhir</th>
                                                 <th scope="col">Aksi</th>
@@ -70,11 +71,12 @@
                                             @endphp
                                             @foreach($matkul as $key => $mk)
                                             <tr>
-                                                <td>{{ $key + 1 }}</td>
-                                                <td>{{$mk->hari}}</td>
-                                                <td>{{$mk->matkul}}</td>
-                                                <td>{{$mk->jam_mulai}}</td>
-                                                <td>{{$mk->jam_akhir}}</td>
+                                                <td>{{ $key + 1 }} </td>
+                                                <td>{{ $mk->hari}} </td>
+                                                <td>{{ $mk->matkul}} </td>
+                                                <td>{{ $mk->tanggal_jadwal }} </td>
+                                                <td>{{ $mk->jam_mulai}} </td>
+                                                <td>{{ $mk->jam_akhir}} </td>
                                                 <td>
                                                     <a href="{{ route('jadwal.edit', $mk->id) }}">
                                                         <button class="btn btn-success btn-sm">Edit</button>
@@ -84,7 +86,7 @@
                                                         Delete
                                                     </button>
 
-                                                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#KuliahCode{{ $mk->id }}" onclick="generateQRCode(`{{ $mk->id }}`, `{{ $mk->matkul }}`, `{{ date('H:i', strtotime($mk->jam_mulai)) }}`, `{{ $mk->hari }}`, `{{ $kelas->kelas }}`, `{{ $j->semester }}`)">QR Code</button>
+                                                    <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#KuliahCode{{ $mk->id }}" onclick="generateQRCode(`{{ $mk->id }}`, `{{ $mk->matkul }}`, `{{ date('H:i', strtotime($mk->jam_mulai)) }}`, `{{ $mk->hari }}`, `{{ $kelas->kelas }}`, `{{ $j->semester }}`,`{{ $mk->tanggal_jadwal }}`)">QR Code</button>
 
                                                     <div class="modal animate__animated animate__zoomIn animate__faster" id="KuliahCode{{ $mk->id }}" tabindex="-1" aria-hidden="true" aria-labelledby="KuliahCodeLabel">
                                                         <div class="modal-dialog modal-dialog-centered">

@@ -15,6 +15,8 @@ class jadwal extends Model
         'kelas',
         'semester',
         'matkul',
+        'tanggal_jadwal',
+        'tahun_akademik',
         'hari',
         'jam_mulai',
         'jam_akhir'

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('NIM');
             $table->string('password');
             $table->string('namaLengkap');
-            $table->string('kelas');
+            $table->string('id_kelas');
             $table->string('jenisKelamin');
             $table->string('NoTelp', 15);
             $table->year('tahunMasuk');
