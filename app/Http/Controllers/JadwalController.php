@@ -13,7 +13,7 @@ class JadwalController extends Controller
     public function view()
     {
         $title = "Jadwal Kuliah";
-        $jadwal = jadwal::groupBy('kelas')->get();
+        $jadwal = jadwal::groupBy('kelas', 'tahun_akademik')->get();
         return view('jadwalKuliah.index', compact('title', 'jadwal'));
     }
 
@@ -40,7 +40,7 @@ class JadwalController extends Controller
             $jadwal->hari           = $request->input('hari');
             $jadwal->tanggal_jadwal = date('d-m-Y', strtotime("+{$i} week", $start_date));
             $jadwal->matkul         = $request->input('matkul');
-            $jadwal->tahun_akademik = $request->input('tahunAkademik') . '-' . $request->input('tahunAkademik2');
+            $jadwal->tahun_akademik = $request->input('tahunAkademik') . '/' . $request->input('tahunAkademik2');
             $jadwal->jam_mulai      = date('H:i', strtotime($request->input('matkul_1')));
             $jadwal->jam_akhir      = date('H:i', strtotime($request->input('matkul_2')));
 
@@ -87,7 +87,7 @@ class JadwalController extends Controller
         $jurusan = Jurusan::all();
 
         $tahunAkademik = $jadwal->tahun_akademik;
-        list($tahunAkademik1, $tahunAkademik2) = explode('-', $tahunAkademik);
+        list($tahunAkademik1, $tahunAkademik2) = explode('/', $tahunAkademik);
 
         return view('jadwalKuliah.edit', compact('title', 'jadwal', 'kelas', 'jurusan', 'tahunAkademik1', 'tahunAkademik2'));
     }
@@ -101,7 +101,7 @@ class JadwalController extends Controller
         $jadwal->semester = $request->input('semester');
         $jadwal->tanggal_jadwal = date('d-m-Y', strtotime($request->input('tanggal_jadwal')));
         $jadwal->hari = $request->input('hari');
-        $jadwal->tahun_akademik = $request->input('tahunAkademik') . '-' . $request->input('tahunAkademik2');
+        $jadwal->tahun_akademik = $request->input('tahunAkademik') . '/' . $request->input('tahunAkademik2');
         $jadwal->matkul = $request->input('matkul');
         $jadwal->jam_mulai = $request->input('jam_mulai');
         $jadwal->jam_akhir = $request->input('jam_akhir');
