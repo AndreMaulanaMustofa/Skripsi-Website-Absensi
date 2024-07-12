@@ -23,7 +23,7 @@ class JadwalSeeder extends Seeder
                 'semester' => 8,
                 'tanggal_jadwal' => '20-04-2024',
                 'hari' => 'Senin',
-                'tahun_akademik' => '2022-2024',
+                'tahun_akademik' => '2022/2023',
                 'matkul' => 'Audit Sistem Informasi Bisnis',
                 'jam_mulai' => '07:00',
                 'jam_akhir' => '10:00'
