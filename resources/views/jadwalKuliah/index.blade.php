@@ -31,6 +31,7 @@
                                 <th scope="col">Kelas</th>
                                 <th scope="col">Jurusan</th>
                                 <th scope="col">Semester</th>
+                                <th scope="col">Tahun Akademik</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -44,15 +45,16 @@
                                 @endphp
                                 <td>{{ $kelas->kelas }}</td>
                                 <td>{{ $jurusan->nama_jurusan }}</td>
-                                <td>{{$j->semester}}</td>
+                                <td>{{ $j->semester }}</td>
+                                <td>{{ $j->tahun_akademik }}</td>
                                 <td>
-                                    <a data-bs-toggle="collapse" href="#detailJadwal{{str_replace(" ","",strtolower($j->kelas))}}" role="button" aria-expanded="false" aria-controls="detailJadwal{{$j->id}}">
+                                    <a data-bs-toggle="collapse" href="#detailJadwal{{str_replace(" ","",strtolower($j->tahun_akademik) . '' . strtolower($j->kelas) . '' . strtolower($j->semester))}}" role="button" aria-expanded="false" aria-controls="detailJadwal{{$j->id}}">
                                         <button class="btn btn-info btn-sm">Detail</button>
                                     </a>
                                 </td>
                             </tr>
-                            <tr class="collapse fade" id="detailJadwal{{str_replace(" ","",strtolower($j->kelas))}}">
-                                <td colspan="5">
+                            <tr class="collapse fade" id="detailJadwal{{str_replace(" ","",strtolower($j->tahun_akademik) . '' . strtolower($j->kelas) . '' . strtolower($j->semester))}}">
+                                <td colspan="6">
                                     <table class="table align-middle">
                                         <thead>
                                             <tr>
@@ -67,7 +69,7 @@
                                         </thead>
                                         <tbody class="text-center">
                                             @php
-                                                $matkul = jadwal::where('kelas', $j->kelas)->get();
+                                                $matkul = jadwal::where('kelas', $j->kelas)->where('tahun_akademik', $j->tahun_akademik)->get();
                                             @endphp
                                             @foreach($matkul as $key => $mk)
                                             <tr>

@@ -97,15 +97,10 @@
                         </select>
                     </div>
                     <div class="col-sm-1 text-center pt-1">
-                        <p><b>-</b></p>
+                        <p><b>/</b></p>
                     </div>
                     <div class="col-md-1">
-                        <select class="form-control" name="tahunAkademik2" id="thnAkademik2">
-                            <option selected class="d-none">YYYY</option>
-                            @for ($i = 2020; $i <= date('Y'); $i++)
-                                <option value="{{ $i }}" {{ $i == $tahunAkademik2 ? 'selected' : ''}}>{{ $i }}</option>
-                            @endfor
-                        </select>
+                        <input type="text" class="form-control" name="tahunAkademik2" id="thnAkademik2" value="{{ $tahunAkademik2 }}" readonly>
                     </div>
                 </div>
                 <div class="row mt-1">
@@ -230,6 +225,8 @@ $(document).ready(function(){
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', tahunAkademik);
 </script>
 
 @endsection
