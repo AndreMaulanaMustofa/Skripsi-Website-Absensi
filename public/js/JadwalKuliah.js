@@ -146,3 +146,14 @@ function buttonUlang(){
     });
 }
 
+function tahunAkademik() {
+    const tahunAkademik = document.getElementById('thnAkademik');
+    const tahunAkademik2 = document.getElementById('thnAkademik2');
+
+    tahunAkademik.addEventListener('change', function(){
+        const selectedYear = parseInt(tahunAkademik.value);
+
+        tahunAkademik2.value = selectedYear + 1;
+    });
+}
+
