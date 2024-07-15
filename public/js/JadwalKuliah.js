@@ -37,12 +37,21 @@ function deleteJadwal(id){
 
 function validasiJadwal(){
     const formJadwal = document.getElementById('FormJadwal');
-    const matkulSelect = document.getElementById('matkul');
-    const hariSelect = document.getElementById('hari');
+    const hari = document.getElementById('hari');
+    const matkul = document.getElementById('matkul');
+    const kelas = document.getElementById('kelas').value;
+    const jurusan = document.getElementById('jurusan').value;
+    const semester = document.getElementById('semester').value;
+    const tanggal_jadwal = document.getElementById('tglJadwal').value;
+    const tahunAkademik = document.getElementById('thnAkademik').value;
+    const tahunAkademik2 = document.getElementById('thnAkademik2').value;
+    const jamMulai = document.getElementById('jam_mulai').value;
+    const jamAkhir = document.getElementById('jam_akhir').value;
 
-    if (hariSelect.value === "-- Pilih Hari --" || matkulSelect.value === "-- Pilih Mata Kuliah --" || !formJadwal.checkValidity()) {
-        // Cek jika mata kuliah belum dipilih
-        if (matkulSelect.value === "-- Pilih Mata Kuliah --") {
+    var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+
+    if (hari.value === "-- Pilih Hari --" || matkul.value === "-- Pilih Mata Kuliah --" || !formJadwal.checkValidity()) {
+        if (matkul.value === "-- Pilih Mata Kuliah --") {
             Swal.fire({
                 position: "center",
                 icon: "error",
@@ -51,7 +60,6 @@ function validasiJadwal(){
                 timer: 1500,
             });
         } else {
-            // Validasi form secara umum
             Swal.fire({
                 position: "center",
                 icon: "error",
@@ -62,15 +70,48 @@ function validasiJadwal(){
         }
         return false;
     }else{
-        formJadwal.submit();
+        $.ajax({
+            url: "/JadwalKuliah/checkJadwal",
+            method: 'POST',
+            data: {
+                _token: csrfToken,
+                kelas: kelas,
+                jurusan: jurusan,
+                semester: semester,
+                hari: hari.value,
+                matkul: matkul.value,
+                tanggal_jadwal: tanggal_jadwal,
+                tahunAkademik: tahunAkademik + '/' + tahunAkademik2,
+                jam_mulai: jamMulai,
+                jam_akhir: jamAkhir
+            },
+            success: function(response){
+                var responseString = response;
+                var start = responseString.indexOf('"checking":') + 11;
+                var end = responseString.indexOf('}', start);
+                var checkingValue = responseString.substring(start, end).trim();
 
-        Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Data telah disimpan!",
-            showConfirmButton: false,
-            timer: 1500,
-        });
+                console.log("Status checking:", checkingValue);
+                if(checkingValue === 'true'){
+                    Swal.fire({
+                        icon: "error",
+                        position: "center",
+                        title: "Data Sudah Tersedia!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }else{
+                    // formJadwal.submit();
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Data telah disimpan!",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                }
+            }
+        })
     }
 }
 

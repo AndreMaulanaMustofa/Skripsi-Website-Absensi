@@ -66,6 +66,7 @@ Route::middleware(['admin.auth'])->group(function(){
         Route::get('createJadwal', [JadwalController::class, 'create'])->name('jadwal.create');
         Route::get('getKelas/{jur_id}', [JadwalController::class, 'getKelas']);
         Route::get('getMatkul/{kelas}/{semester}', [JadwalController::class, 'getMatkul']);
+        Route::post('checkJadwal', [JadwalController::class, 'check'])->name('jadwal.check');
         Route::post('storeJadwal', [JadwalController::class, 'storeJadwal'])->name('jadwal.store');
         Route::get('editJadwal/{id}', [JadwalController::class, 'editJadwal'])->name('jadwal.edit');
         Route::put('updateJadwal/{id}', [JadwalController::class, 'updateJadwal'])->name('jadwal.update');
