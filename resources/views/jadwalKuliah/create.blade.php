@@ -106,11 +106,11 @@
                         <p>Jam Mulai<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-1">
-                        <input type="text" class="form-control" name="matkul_1" id="matkul_1">
+                        <input type="text" class="form-control" name="jam_mulai" id="jam_mulai">
                     </div>
                 </div>
                 <script>
-                    const jamMulai = document.getElementById('matkul_1');
+                    const jamMulai = document.getElementById('jam_mulai');
 
                     flatpickr(jamMulai, {
                         enableTime: true,
@@ -124,11 +124,11 @@
                         <p>Jam Akhir<span class="star-wajib">*</span></p>
                     </div>
                     <div class="col-md-1">
-                        <input type="text" class="form-control" name="matkul_2" id="matkul_2">
+                        <input type="text" class="form-control" name="jam_akhir" id="jam_akhir">
                     </div>
                 </div>
                 <script>
-                    const jamAkhir = document.getElementById('matkul_2');
+                    const jamAkhir = document.getElementById('jam_akhir');
 
                     flatpickr(jamAkhir, {
                         enableTime: true,
