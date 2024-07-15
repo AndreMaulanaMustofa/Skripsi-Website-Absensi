@@ -41,8 +41,8 @@ class JadwalController extends Controller
             $jadwal->tanggal_jadwal = date('d-m-Y', strtotime("+{$i} week", $start_date));
             $jadwal->matkul         = $request->input('matkul');
             $jadwal->tahun_akademik = $request->input('tahunAkademik') . '/' . $request->input('tahunAkademik2');
-            $jadwal->jam_mulai      = date('H:i', strtotime($request->input('matkul_1')));
-            $jadwal->jam_akhir      = date('H:i', strtotime($request->input('matkul_2')));
+            $jadwal->jam_mulai      = date('H:i', strtotime($request->input('jam_mulai')));
+            $jadwal->jam_akhir      = date('H:i', strtotime($request->input('jam_akhir')));
 
             $jadwal->save();
         }
@@ -116,5 +116,24 @@ class JadwalController extends Controller
         Jadwal::find($id)->delete();
 
         return redirect()->route('jadwal.view');
+    }
+
+    public function check(Request $request)
+    {
+        $kelas          = $request->kelas;
+        $jurusan        = $request->jurusan;
+        $semester       = $request->semester;
+        $hari           = $request->hari;
+        $matkul         = $request->matkul;
+        $tanggal_jadwal = $request->tanggal_jadwal;
+        $tahunAkademik  = $request->tahunAkademik;
+        $jam_mulai      = $request->jam_mulai;
+        $jam_akhir      = $request->jam_akhir;
+
+        $kombinasi      = "$kelas-$jurusan-$semester-$tanggal_jadwal-$hari-$tahunAkademik-$matkul-$jam_mulai-$jam_akhir";
+
+        $checking       = Jadwal::where('kode_jadwal', $kombinasi)->exists();
+
+        return response()->json(['checking' => $checking]);
     }
 }
