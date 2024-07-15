@@ -100,7 +100,7 @@ function validasiJadwal(){
                         timer: 1500
                     });
                 }else{
-                    // formJadwal.submit();
+                    formJadwal.submit();
                     Swal.fire({
                         position: "center",
                         icon: "success",
