@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_jadwal');
             $table->string('kelas');
             $table->string('jurusan');
             $table->string('semester');

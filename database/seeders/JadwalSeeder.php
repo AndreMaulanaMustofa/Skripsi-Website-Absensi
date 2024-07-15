@@ -18,6 +18,7 @@ class JadwalSeeder extends Seeder
             DB::beginTransaction();
 
             jadwal::create([
+                'kode_jadwal' => '3-2-8-20-04-2024-Senin-2022/2023-Audit Sistem Informasi Bisnis-07:00-10:00',
                 'kelas' => 3,
                 'jurusan' => 2,
                 'semester' => 8,

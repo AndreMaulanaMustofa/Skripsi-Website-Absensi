@@ -11,6 +11,7 @@ class jadwal extends Model
     use Notifiable;
 
     protected $fillable = [
+        'kode_jadwal',
         'jurusan',
         'kelas',
         'semester',
