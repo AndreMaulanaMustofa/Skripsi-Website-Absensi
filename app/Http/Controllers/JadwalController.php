@@ -7,6 +7,7 @@ use App\Models\kelas;
 use App\Models\Jurusan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class JadwalController extends Controller
 {
@@ -34,15 +35,18 @@ class JadwalController extends Controller
         for ($i = 0; $i < $repeat; $i++) {
             $jadwal = new Jadwal;
 
-            $jadwal->jurusan        = $request->input('jurusan');
             $jadwal->kelas          = $request->input('kelas');
+            $jadwal->jurusan        = $request->input('jurusan');
             $jadwal->semester       = $request->input('semester');
             $jadwal->hari           = $request->input('hari');
-            $jadwal->tanggal_jadwal = date('d-m-Y', strtotime("+{$i} week", $start_date));
             $jadwal->matkul         = $request->input('matkul');
+            $jadwal->tanggal_jadwal = date('d-m-Y', strtotime("+{$i} week", $start_date));
             $jadwal->tahun_akademik = $request->input('tahunAkademik') . '/' . $request->input('tahunAkademik2');
             $jadwal->jam_mulai      = date('H:i', strtotime($request->input('jam_mulai')));
             $jadwal->jam_akhir      = date('H:i', strtotime($request->input('jam_akhir')));
+
+            $kombinasi = "{$jadwal->kelas}-{$jadwal->jurusan}-{$jadwal->semester}-{$jadwal->tanggal_jadwal}-{$jadwal->hari}-{$jadwal->tahun_akademik}-{$jadwal->matkul}-{$jadwal->jam_mulai}-{$jadwal->jam_akhir}";
+            $jadwal->kode_jadwal = Hash::make($kombinasi);
 
             $jadwal->save();
         }
@@ -132,7 +136,22 @@ class JadwalController extends Controller
 
         $kombinasi      = "$kelas-$jurusan-$semester-$tanggal_jadwal-$hari-$tahunAkademik-$matkul-$jam_mulai-$jam_akhir";
 
-        $checking       = Jadwal::where('kode_jadwal', $kombinasi)->exists();
+        echo "Kombinasi yang dicari: " . $kombinasi;
+        flush();
+
+        $jadwals = Jadwal::all();
+        $checking = false;
+
+        foreach($jadwals as $jadwal){
+            if(Hash::check($kombinasi, $jadwal->kode_jadwal)){
+                $checking = true;
+                break;
+            }
+        }
+
+        echo "Checking Status: " . $checking;
+
+        // $checking       = Jadwal::where('kode_jadwal', $kombinasi)->exists();
 
         return response()->json(['checking' => $checking]);
     }

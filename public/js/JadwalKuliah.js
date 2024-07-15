@@ -91,7 +91,6 @@ function validasiJadwal(){
                 var end = responseString.indexOf('}', start);
                 var checkingValue = responseString.substring(start, end).trim();
 
-                console.log("Status checking:", checkingValue);
                 if(checkingValue === 'true'){
                     Swal.fire({
                         icon: "error",
