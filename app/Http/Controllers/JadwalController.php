@@ -31,6 +31,22 @@ class JadwalController extends Controller
     {
         $repeat = $request->input('jmlRepeat');
         $start_date = strtotime($request->input('tanggal_jadwal'));
+        $hari_date = strtotime($request->input('hari'));
+
+        function HariIndonesia($day)
+        {
+            $days = [
+                'Sunday' => 'Minggu',
+                'Monday' => 'Senin',
+                'Tuesday' => 'Selasa',
+                'Wednesday' => 'Rabu',
+                'Thursday' => 'Kamis',
+                'Friday' => 'Jumat',
+                'Saturday' => 'Sabtu'
+            ];
+
+            return $days[$day];
+        }
 
         for ($i = 0; $i < $repeat; $i++) {
             $jadwal = new Jadwal;
@@ -38,7 +54,7 @@ class JadwalController extends Controller
             $jadwal->kelas          = $request->input('kelas');
             $jadwal->jurusan        = $request->input('jurusan');
             $jadwal->semester       = $request->input('semester');
-            $jadwal->hari           = $request->input('hari');
+            $jadwal->hari           = HariIndonesia(date('l', strtotime("+{$i} week", $hari_date)));
             $jadwal->matkul         = $request->input('matkul');
             $jadwal->tanggal_jadwal = date('d-m-Y', strtotime("+{$i} week", $start_date));
             $jadwal->tahun_akademik = $request->input('tahunAkademik') . '/' . $request->input('tahunAkademik2');
@@ -142,8 +158,8 @@ class JadwalController extends Controller
         $jadwals = Jadwal::all();
         $checking = false;
 
-        foreach($jadwals as $jadwal){
-            if(Hash::check($kombinasi, $jadwal->kode_jadwal)){
+        foreach ($jadwals as $jadwal) {
+            if (Hash::check($kombinasi, $jadwal->kode_jadwal)) {
                 $checking = true;
                 break;
             }
