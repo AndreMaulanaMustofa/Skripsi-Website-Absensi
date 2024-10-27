@@ -1,4 +1,3 @@
-<h3>Nama: Andre Maulana Mustofa <span style="background-image: url(https://static.wikia.nocookie.net/logopedia/images/8/8a/Politeknik_Negeri_Malang.png/revision/latest?cb=20190922202558); display: inline-block; width: 30px; height: 30px;"></span> <br>
-Kelas: TI - 4F </h3>
-<p>Repository Github ini bertujuan untuk menampung code yang berguna untuk membuat website informasi yang dihasilkan oleh aplikasi absensi yang akan dimiliki di setiap mahasiswa</p>
-<p>Untuk link repository aplikasinya ada disini <a href="https://github.com/AndreMaulanaMustofa/Skripsi-Aplikasi-Absensi" target="_blank">https://github.com/AndreMaulanaMustofa/Skripsi-Aplikasi-Absensi</a></p>
+<h3>Andre Maulana Mustofa <span style="background-image: url(https://static.wikia.nocookie.net/logopedia/images/8/8a/Politeknik_Negeri_Malang.png/revision/latest?cb=20190922202558); display: inline-block; width: 30px; height: 30px;"></span></h3>
+<p>This repository contains the code for the GeoScan Attendance web application, specifically designed for managing student attendance. It enables administrators to create and print QR codes for student attendance, ensuring accurate record-keeping and easy access to attendance data for each student.</p>
+<p>For the application repository link, click here: <a href="https://github.com/andremm73/Skripsi-Aplikasi-Absensi" target="_blank">GeoScan Attendance Github</a></p>
